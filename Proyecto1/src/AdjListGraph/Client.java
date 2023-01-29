@@ -5,6 +5,7 @@
 package AdjListGraph;
 
 import javax.swing.JOptionPane;
+import AdjListGraph.linkedList.LinkedList;
 
 /**
  *Descripcion: clase Cliente

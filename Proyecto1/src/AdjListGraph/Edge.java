@@ -22,7 +22,7 @@ public class Edge {
         this.weight = weight;   
     }
     
-    public int getDirection(){
+    public String getDirection(){
         return direction;
     }
     

@@ -40,7 +40,17 @@ public class LinkedList <T> {
             pFirst = pFirst.pNext; 
             size --;
         }
-    }
+    } 
+    
+     public T poll(){
+        if (pFirst != null){
+            ListNode pAux = pFirst;
+            pFirst = pFirst.pNext; 
+            size --;
+            return (T) pAux.element;
+        }
+        return null;
+     } 
     
     public int len(){
         return size;
@@ -87,6 +97,23 @@ public class LinkedList <T> {
             pAux.pNext = newNode;
         }
         size ++;
+    }
+    
+    public T getByPosition(int position){
+       if (position <0 || position > size){
+            System.out.println("Posición no válida");
+            return null;
+        } else {
+            if (position == 0){
+                return null;
+            } else {
+                ListNode pAux = pFirst; 
+                for (int i = 0; i < (position -1); i++) {
+                    pAux = pAux.pNext; 
+                }
+                return (T) pAux.element;
+            }
+        }
     }
     
 }

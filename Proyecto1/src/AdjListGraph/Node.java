@@ -10,32 +10,51 @@ import AdjListGraph.linkedList.LinkedList;
  *
  * @author user
  */
-public class Node {
-    private char name;
-    private LinkedList <Object> elements;
-    private int numNode;
-    LinkedList adjacencyList; 
+
+public class Node  <T>  {
+    private String name;
+    private LinkedList <T> products;
+    private boolean visited; 
+    public LinkedList <T> neighbors; 
     
     
     public Node (String name){
         this.name = name; 
-        this.numNode = -1; 
-        // Todos los vertices nacen con posición -1 por default y luego con el metodo newNumNode se le asigna su numero de vertice.
-        this.lad= new LinkedList();
+        this.products= new LinkedList();
+        this.visited = false;
+        this.neighbors = new LinkedList();
+        
+    }
+    
+    
+    // Determina si ya fue visitado o no este nodo durante busqueda BFS o DFS
+    public boolean isVisited(){
+        return visited;
+    }
+
+    /**
+     * @param visited the visited to set
+     */
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+   
+     /**
+     * @param neighbors the neighbors to set
+     */
+    public void setNeighbors(LinkedList <T> neighbors) {
+        this.neighbors = neighbors;
     }
     
     // Evaluar si dos vertices tienen el mismo nombre
     public boolean equals(Node b){
         return name.equals(b.name);
     }
-     
-    // Asignar el número de vertice al nodo que se está creando
-    public void newNumNode(int num){
-        numNode = num;
-    }
     
     // Se muestran los atributos del vértice
-    public String showAttr(){
-        return name + "(" + numNode + ")";
+    public void showAttr(){
+        System.out.println("Almacen:" + "(" + name + ")");
     }
+
+   
 }
