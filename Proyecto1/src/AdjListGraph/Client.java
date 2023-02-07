@@ -13,14 +13,17 @@ import AdjListGraph.linkedList.LinkedList;
  * @version: 24/01/2023
  */
 public class Client {
-    private String name; 
-    private int id; 
-    private String location; 
-    private Warehouse warehouse; 
-    private LinkedList products; 
+
+    // atributos de la clase
+    private String name; // nombre del cliente
+    private String lastName; // apellido del cliente
+    private int id; // cédula de identidad del cliente
+    private String location; // la dirección del cliente
+    private Warehouse warehouse; // PREGUNTAR: almacen que el cliente desea 
+    private LinkedList products; // una lista con los productos que el cliente desea
     
     /**
-     * Descripcion: Muestra un mensaje al cliente que su pedido fue procesado con éxito. 
+     * Muestra un mensaje al cliente que su pedido fue procesado con éxito. 
      * @author: Catalina Matheus
      * @version: 24/01/2023
      */
@@ -99,6 +102,18 @@ public class Client {
     public void setProducts(LinkedList products) {
         this.products = products;
     }
+        /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     
     
     

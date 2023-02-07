@@ -10,4 +10,7 @@ package AdjListGraph;
  */
 public class Warehouse {
     
+    // atributos de la clase 
+    
+    
 }

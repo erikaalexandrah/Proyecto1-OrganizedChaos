@@ -4,7 +4,10 @@
  */
 package AdjListGraph;
 
+<<<<<<< Updated upstream
 import AdjListGraph.linkedList.LinkedList;
+=======
+>>>>>>> Stashed changes
 import Interface.Interface;
 
 
@@ -18,6 +21,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+<<<<<<< Updated upstream
        
         // LLamando a la interfaz
         Interface newScreen = new Interface();
@@ -40,6 +44,11 @@ public class Main {
         neiB.append(vC);
         neiB.append(vD);
         vB.setNeighbors(neiB);
+=======
+        Interface newScreen = new Interface();
+        newScreen.setVisible(true);
+        newScreen.setLocationRelativeTo(null);
+>>>>>>> Stashed changes
         
         LinkedList <Node> neiC = new LinkedList();
         neiC.append(vD);
