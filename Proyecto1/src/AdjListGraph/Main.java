@@ -20,54 +20,44 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       String line;
-        String txtAlmacenes = "";
-        String txtRutas = "";
+        String line;
+        String txt = "";
+        String txtWarehouse = "";
+        String txtEdge = "";
         String path = "src//Files//FileRestarter.txt";
        
+        
+        //// LEER EL TXT Y ALMACENARLO EN UNA VARIABLE 
         File file = new File(path);
         try {
             FileReader fr = new FileReader (file);
             BufferedReader br = new BufferedReader (fr);
-//            System.out.println("FLAG 1");
             while ((line = br.readLine()) != null) {
-//                System.out.println("FLAG 2");
-                if (!line.isEmpty()) {
-//                    System.out.println("FLAG 3");
-                    while (!line.equals("Rutas;")){
-//                        System.out.println("FLAG 4");
-                        if (line.contains("Almacen") && !line.contains(";")){
-//                            System.out.println("FLAG 5");
-//                            System.out.println(line);
-                            String[] arregloAux = line.split(" ");
-                          
-                            txtAlmacenes +=arregloAux[1] + "\n";
-                            
-//                            System.out.println("FLAG 6");
-                 
-                    }else if(line.contains(",")){
-//                            System.out.println("FLAG 7");
-                          txtAlmacenes += line + "\n";  
-                        }
-                      
-                    }
-//                    System.out.println("FLAG 8");
-                    txtRutas += line +"\n";
-                    
-                    
+                if (!line.equals("Almacenes;")){
+                    if (line.contains("Almacen")){
+                      String[] arrayAux1 = line.split(" ");
+                        txt += arrayAux1[1] + "\n";
+                    } else {
+                        txt += line + "\n";
                 }
-                br.close();
             }
-           br.close();
-            System.out.println(txtAlmacenes);
-            System.out.println(txtRutas);
-        }
-        catch(Exception e){
+            }
+
+            br.close();
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se logró cargar el archivo. Intente nuevamente.");
         }
-      
+        
+        String[] arrayAux = txt.split("Rutas;");
+        txtWarehouse = arrayAux[0];
+        txtEdge = arrayAux[1];
+         
+        System.out.println(txtWarehouse);
+        System.out.println(txtEdge);
         
         
+        
+
 //        Interface newScreen = new Interface();
 //        newScreen.setVisible(true);
 //        newScreen.setLocationRelativeTo(null);
