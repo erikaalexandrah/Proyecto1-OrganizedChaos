@@ -18,9 +18,9 @@ public class Warehouse  <T>  {
     public LinkedList <T> neighbors; 
     
     
-    public Warehouse (String name){
+    public Warehouse (String name, LinkedList products1){
         this.name = name; 
-        this.products= new LinkedList();
+        this.products= products1;
         this.visited = false;
         this.neighbors = new LinkedList();
         
@@ -48,12 +48,40 @@ public class Warehouse  <T>  {
     
     // Evaluar si dos vertices tienen el mismo nombre
     public boolean equals(Warehouse b){
-        return name.equals(b.name);
+        return getName().equals(b.getName());
     }
     
     // Se muestran los atributos del vértice
     public void showAttr(){
-        System.out.println("Almacen:" + "(" + name + ")");
+        System.out.println("Almacen:" + "(" + getName() + ")");
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the products
+     */
+    public LinkedList <T> getProducts() {
+        return products;
+    }
+
+    /**
+     * @param products the products to set
+     */
+    public void setProducts(LinkedList <T> products) {
+        this.products = products;
     }
 
    

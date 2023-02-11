@@ -57,7 +57,7 @@ public class LinkedList <T> {
     }
     
     public void printList(){
-        ListNode pAux = getpFirst();
+        ListNode pAux = this.getpFirst();
         while (pAux != null){
             System.out.println("->" + pAux.element);
             pAux = pAux.pNext;
@@ -116,10 +116,6 @@ public class LinkedList <T> {
         }
     }
 
-    public int getSize() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     /**
      * @return the pFirst
      */
@@ -139,6 +135,13 @@ public class LinkedList <T> {
      */
     public void setSize(int size) {
         this.size = size;
+    }
+
+    /**
+     * @return the size
+     */
+    public int getSize() {
+        return size;
     }
     
 }
