@@ -6,6 +6,8 @@ package AdjListGraph;
 
 import javax.swing.JOptionPane;
 import AdjListGraph.linkedList.LinkedList;
+import AdjListGraph.linkedList.ListNode;
+
 
 /**
  *Descripcion: clase Cliente
@@ -22,15 +24,49 @@ public class Client {
     private Warehouse warehouse; // PREGUNTAR: almacen que el cliente desea 
     private LinkedList products; // una lista con los productos que el cliente desea
     
+    // constructor: 
+
+    public Client(String name, String lastName, int id, String location, Warehouse warehouse) {
+        this.name = name;
+        this.lastName = lastName;
+        this.id = id;
+        this.location = location;
+        this.warehouse = warehouse;
+    }
+    
+    // metodo para revisar si hay productos en la lista products: 
+    private boolean isEmpty(){
+        return products.getSize() == 0; 
+    }
+    
+    
     /**
      * Muestra un mensaje al cliente que su pedido fue procesado con éxito. 
      * @author: Catalina Matheus
      * @version: 24/01/2023
      */
+    
     public void show(){
         
-        JOptionPane.showMessageDialog(null, "Cliente: " +name + " \nSu pedido fue procesado con éxito.\n Para ver los productos comprados de a siguiente. ");
-        JOptionPane.showMessageDialog(null, "PRODUCTOS:\n ");// falta que se vean los productos comprados
+        if(!this.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Cliente: " +name + " \nSu pedido fue procesado con éxito.\n Para ver los productos comprados de a siguiente. ");
+        
+        // para desplegar producto: 
+        String productString = ""; 
+        for (int i = 0; i < products.getSize(); i++) {
+            ListNode aux = products.getpFirst(); 
+            productString += aux.getElement().getName() + "\n"; 
+            aux = aux.getpNext(); 
+  
+       }JOptionPane.showMessageDialog(null, "PRODUCTOS:\n " + productString);// falta que se vean los productos comprados
+        }
+        else{
+            JOptionPane.showMessageDialog( null, "No se pudo procesar su compra ya que no hay productos. ");
+        }
+            
+        }
+
+        
     }
 
     /**

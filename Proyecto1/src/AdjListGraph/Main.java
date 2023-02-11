@@ -29,18 +29,18 @@ public class Main {
         newScreen.setLocationRelativeTo(null);
         
         // PROBANDO SOLAMENTE que el BFS funcione. Se borrará eventualmente.  
-        Node vA = new Node("A");
-        Node vB = new Node("B");
-        Node vC = new Node("C");
-        Node vD = new Node("D");
-        Node vE = new Node("E");
+        Warehouse vA = new Warehouse("A");
+        Warehouse vB = new Warehouse("B");
+        Warehouse vC = new Warehouse("C");
+        Warehouse vD = new Warehouse("D");
+        Warehouse vE = new Warehouse("E");
         
-        LinkedList <Node> neiA = new LinkedList();
+        LinkedList <Warehouse> neiA = new LinkedList();
         neiA.append(vB);
         neiA.append(vC);
         vA.setNeighbors(neiA);
         
-        LinkedList <Node> neiB = new LinkedList();
+        LinkedList <Warehouse> neiB = new LinkedList();
         neiB.append(vC);
         neiB.append(vD);
         vB.setNeighbors(neiB);
@@ -55,11 +55,11 @@ public class Main {
         neiC.append(vE);
         vC.setNeighbors(neiC);
         
-        LinkedList <Node> neiD = new LinkedList();
+        LinkedList <Warehouse> neiD = new LinkedList();
         neiD.append(vE);
         vD.setNeighbors(neiD);
         
-        LinkedList <Node> neiE = new LinkedList();
+        LinkedList <Warehouse> neiE = new LinkedList();
         neiE.append(vA);
         vD.setNeighbors(neiE);
         

@@ -14,15 +14,15 @@ import AdjListGraph.linkedList.ListNode;
 public class Graph {
     private int numVerts; 
     private int maxVerts = 10;
-    private Node [] nodes; 
+    private Warehouse [] nodes; 
     
     public Graph (int max){              // inicialización del grafo vacío
-        this.nodes = new Node[max];
+        this.nodes = new Warehouse[max];
         this.maxVerts = max; 
         this.numVerts = 0;  
     }
     
-    public Node [] showTable(){
+    public Warehouse [] showTable(){
         return nodes;            // Devuelve la tabla de adyacencia completa 
     }
     
@@ -36,7 +36,7 @@ public class Graph {
     }
         
     public int findNodeByName(String name){    // Busca por nombre del nodo y devuelve el numero de nodo
-        Node v = new Node(name);
+        Warehouse v = new Warehouse(name);
         boolean found = false; 
         for (int i = 0; (i < numVerts) && found; i++){
             if (nodes[i].equals(v)){
@@ -52,7 +52,7 @@ public class Graph {
     public void newNode (String name){                      // Añadir un nuevo nodo al grafo
         boolean exists = findNodeByName(name)>=0;
         if (!exists){
-            Node v = new Node(name); 
+            Warehouse v = new Warehouse(name); 
             nodes[numVerts]= v;
             numVerts++;
         }

@@ -18,11 +18,11 @@ public class LinkedList <T> {
     }
     
     public boolean isEmpty(){
-        return (pFirst == null);
+        return (getpFirst() == null);
     }
     
     public ListNode first(){
-        return pFirst;
+        return getpFirst();
     }
     public ListNode last(){
         return null;
@@ -30,34 +30,34 @@ public class LinkedList <T> {
     
     public void insertAtHead(T element){
         ListNode newNode= new ListNode(element); 
-        newNode.pNext = pFirst;
-        pFirst = newNode;
-        size++;
+        newNode.pNext = getpFirst();
+        setpFirst(newNode);
+        setSize(getSize() + 1);
     }
     
     public void deleteAtHead(){
-        if (pFirst != null){
-            pFirst = pFirst.pNext; 
-            size --;
+        if (getpFirst() != null){
+            setpFirst(getpFirst().pNext); 
+            setSize(getSize() - 1);
         }
     } 
     
      public T poll(){
-        if (pFirst != null){
-            ListNode pAux = pFirst;
-            pFirst = pFirst.pNext; 
-            size --;
+        if (getpFirst() != null){
+            ListNode pAux = getpFirst();
+            setpFirst(getpFirst().pNext); 
+            setSize(getSize() - 1);
             return (T) pAux.element;
         }
         return null;
      } 
     
     public int len(){
-        return size;
+        return getSize();
     }
     
     public void printList(){
-        ListNode pAux = pFirst;
+        ListNode pAux = getpFirst();
         while (pAux != null){
             System.out.println("->" + pAux.element);
             pAux = pAux.pNext;
@@ -66,54 +66,79 @@ public class LinkedList <T> {
     }
     
     public void inserAtPosition (T element, int position){
-        if (position <0 || position > size){
+        if (position <0 || position > getSize()){
             System.out.println("Posición no válida");
         } else {
             ListNode newNode = new ListNode(element);
             if (position == 0){
-                newNode.pNext = pFirst; 
-                pFirst = newNode; 
+                newNode.pNext = getpFirst(); 
+                setpFirst(newNode); 
             } else {
-                ListNode pAux = pFirst; 
+                ListNode pAux = getpFirst(); 
                 for (int i = 0; i < (position -1); i++) {
                     pAux = pAux.pNext; 
                 }
                 newNode.pNext = pAux.pNext;
                 pAux.pNext = newNode;
             }
-            size ++;
+            setSize(getSize() + 1);
         }
     }
     
     public void append (T element){
         ListNode newNode = new ListNode(element);
-        if (pFirst == null){
-            pFirst = newNode;
+        if (getpFirst() == null){
+            setpFirst(newNode);
         } else {
-            ListNode pAux = pFirst; 
+            ListNode pAux = getpFirst(); 
             while (pAux.pNext != null){
                 pAux = pAux.pNext;
             }
             pAux.pNext = newNode;
         }
-        size ++;
+        setSize(getSize() + 1);
     }
     
     public T getByPosition(int position){
-       if (position <0 || position > size){
+       if (position <0 || position > getSize()){
             System.out.println("Posición no válida");
             return null;
         } else {
             if (position == 0){
                 return null;
             } else {
-                ListNode pAux = pFirst; 
+                ListNode pAux = getpFirst(); 
                 for (int i = 0; i < (position -1); i++) {
                     pAux = pAux.pNext; 
                 }
                 return (T) pAux.element;
             }
         }
+    }
+
+    public int getSize() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    /**
+     * @return the pFirst
+     */
+    public ListNode getpFirst() {
+        return pFirst;
+    }
+
+    /**
+     * @param pFirst the pFirst to set
+     */
+    public void setpFirst(ListNode pFirst) {
+        this.pFirst = pFirst;
+    }
+
+    /**
+     * @param size the size to set
+     */
+    public void setSize(int size) {
+        this.size = size;
     }
     
 }
