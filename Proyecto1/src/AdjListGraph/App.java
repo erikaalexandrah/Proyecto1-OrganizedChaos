@@ -6,6 +6,11 @@ package AdjListGraph;
 
 import AdjListGraph.linkedList.LinkedList;
 import Interface.Interface;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,10 +23,46 @@ public class App {
     private LinkedList grafo = new LinkedList ();
     private LinkedList orders = new LinkedList ();
 
+    public void restartProgram() throws FileNotFoundException{
+        String line;
+        String txtAlmacenes = "";
+        String txtRutas = "";
+        String path = "test//FileRestarter.txt";
+       
+        File file = new File(path);
+        try {
+            FileReader fr = new FileReader (file);
+            BufferedReader br = new BufferedReader (fr);
+            while ((line = br.readLine()) != null) {
+                if (!line.isEmpty()) {
+                    while (!line.equals("Rutas;")){
+                        if (line.contains("Almacen")){
+                            String[] arregloAux = line.split(" ");
+                            txtAlmacenes +=arregloAux[1] + "\n";
+                 
+                    }else{
+                          txtAlmacenes += line + "\n";  
+                        }
+                      
+                    }
+                    txtRutas += line +"\n";
+                    
+                    
+                }
+            }
+            System.out.println(txtAlmacenes);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se logró cargar el archivo. Intente nuevamente.");
+        }
+        
+    }
+    
     public void start (){
       
         
     }
+    
     
     /**
      * @return the clients
