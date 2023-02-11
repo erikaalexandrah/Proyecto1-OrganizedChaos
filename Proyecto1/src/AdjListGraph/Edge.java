@@ -9,25 +9,58 @@ package AdjListGraph;
  * @author user
  */
 public class Edge {
-    private String direction; // Al numNode al cual va a ir, no el nombre. 
+    private String originNode;
+    private String nextNode; 
     private int weight; 
+
     
-    public Edge(String vertex){
-        this.direction = vertex;
-        this.weight = 0;   
+    public Edge(String originNode, String nextNode, int weight) {
+        this.originNode = originNode;
+        this.nextNode = nextNode;
+        this.weight = weight;
     }
+
+    /**
+     * @return the originNode
+     */
+    public String getOriginNode() {
+        return originNode;
+    }
+
+    /**
+     * @param originNode the originNode to set
+     */
+    public void setOriginNode(String originNode) {
+        this.originNode = originNode;
+    }
+
+    /**
+     * @return the nextNode
+     */
+    public String getNextNode() {
+        return nextNode;
+    }
+
+    /**
+     * @param nextNode the nextNode to set
+     */
+    public void setNextNode(String nextNode) {
+        this.nextNode = nextNode;
+    }
+
+    /**
+     * @return the weight
+     */
+    public int getWeight() {
+        return weight;
+    }
+
+    /**
+     * @param weight the weight to set
+     */
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+    
  
-    public Edge(String vertex, int weight){
-        this.direction = vertex;
-        this.weight = weight;   
-    }
-    
-    public String getDirection(){
-        return direction;
-    }
-    
-    public boolean equals(Edge b){
-        return direction == b.direction;
-    }
-    
 }
