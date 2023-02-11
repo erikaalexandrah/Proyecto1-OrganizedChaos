@@ -22,6 +22,9 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public Product() {
+    }
+
     /**
      * @return the name
      */

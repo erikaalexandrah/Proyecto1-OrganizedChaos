@@ -36,7 +36,7 @@ public class Client {
     
     // metodo para revisar si hay productos en la lista products: 
     private boolean isEmpty(){
-        return products.getSize() == 0; 
+        return getProducts().getSize() == 0; 
     }
     
     
@@ -49,13 +49,15 @@ public class Client {
     public void show(){
         
         if(!this.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Cliente: " +name + " \nSu pedido fue procesado con éxito.\n Para ver los productos comprados de a siguiente. ");
+            JOptionPane.showMessageDialog(null, "Cliente: " +getName() + " \nSu pedido fue procesado con éxito.\n Para ver los productos comprados de a siguiente. ");
         
         // para desplegar producto: 
         String productString = ""; 
-        for (int i = 0; i < products.getSize(); i++) {
-            ListNode aux = products.getpFirst(); 
-            productString += aux.getElement().getName() + "\n"; 
+        Product product = new Product();
+        for (int i = 0; i < getProducts().getSize(); i++) {
+            ListNode aux = getProducts().getpFirst(); 
+            product = (Product) aux.getElement();
+            productString += product.getName() + "\n"; 
             aux = aux.getpNext(); 
   
        }JOptionPane.showMessageDialog(null, "PRODUCTOS:\n " + productString);// falta que se vean los productos comprados
@@ -63,11 +65,9 @@ public class Client {
         else{
             JOptionPane.showMessageDialog( null, "No se pudo procesar su compra ya que no hay productos. ");
         }
-            
-        }
-
+         
         
-    }
+        }
 
     /**
      * @return the name
@@ -81,6 +81,20 @@ public class Client {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**
@@ -138,22 +152,10 @@ public class Client {
     public void setProducts(LinkedList products) {
         this.products = products;
     }
-        /**
-     * @return the lastName
-     */
-    public String getLastName() {
-        return lastName;
-    }
 
-    /**
-     * @param lastName the lastName to set
-     */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+        
     
-    
-    
-    
+
     
 }
 
