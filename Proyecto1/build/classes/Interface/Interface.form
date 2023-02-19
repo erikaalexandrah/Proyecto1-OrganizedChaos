@@ -54,7 +54,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="management" max="32767" attributes="0"/>
+                              <Component id="newWarehouse" max="32767" attributes="0"/>
                               <Component id="showGraph" alignment="0" max="32767" attributes="0"/>
                               <Component id="placeOrder" alignment="0" max="32767" attributes="0"/>
                           </Group>
@@ -64,7 +64,7 @@
                           <Component id="Title" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -80,15 +80,14 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="management" pref="49" max="32767" attributes="0"/>
+                      <Component id="newWarehouse" pref="49" max="32767" attributes="0"/>
                       <Component id="saveFile" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="warehouseReport" pref="52" max="32767" attributes="0"/>
-                      <Component id="showGraph" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="31" max="32767" attributes="0"/>
+                  <Component id="warehouseReport" min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                  <Component id="showGraph" min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -134,12 +133,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="placeOrderActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="management">
+        <Component class="javax.swing.JButton" name="newWarehouse">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Gestionar almacenes y caminos"/>
+            <Property name="text" type="java.lang.String" value="Agregar un nuevo almacen"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="managementActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newWarehouseActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="showGraph">

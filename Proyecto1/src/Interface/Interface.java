@@ -4,19 +4,29 @@
  */
 package Interface;
 
+import AdjListGraph.App;
+
 /**
  *
  * @author user
  */
 public class Interface extends javax.swing.JFrame {
 
-    /**
+    public static Interface Instancia;
+    private App app;
+    
+/**
      * Creates new form Interface
      */
-    public Interface() {
+        public Interface() {
         initComponents();
+        Instancia = this;
+        App app;
     }
-
+        
+        public void getApp(App app1){
+            this.app = app1;
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +42,7 @@ public class Interface extends javax.swing.JFrame {
         saveFile = new javax.swing.JButton();
         warehouseReport = new javax.swing.JButton();
         placeOrder = new javax.swing.JButton();
-        management = new javax.swing.JButton();
+        newWarehouse = new javax.swing.JButton();
         showGraph = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,10 +76,10 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        management.setText("Gestionar almacenes y caminos");
-        management.addActionListener(new java.awt.event.ActionListener() {
+        newWarehouse.setText("Agregar un nuevo almacen");
+        newWarehouse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                managementActionPerformed(evt);
+                newWarehouseActionPerformed(evt);
             }
         });
 
@@ -94,13 +104,13 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(warehouseReport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(38, 38, 38)
                         .addGroup(mainWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(management, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(newWarehouse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(showGraph, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(placeOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(mainWindowLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(Title)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         mainWindowLayout.setVerticalGroup(
             mainWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,13 +123,13 @@ public class Interface extends javax.swing.JFrame {
                     .addComponent(uploadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(management, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(newWarehouse, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                     .addComponent(saveFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(mainWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(warehouseReport, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                    .addComponent(showGraph, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(warehouseReport, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(showGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,12 +158,16 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_placeOrderActionPerformed
 
-    private void managementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managementActionPerformed
+    private void newWarehouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWarehouseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_managementActionPerformed
+        app.addNewWarehouse();
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_newWarehouseActionPerformed
 
     private void showGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGraphActionPerformed
         // TODO add your handling code here:
+        //this.app.showGraph();
     }//GEN-LAST:event_showGraphActionPerformed
 
     /**
@@ -194,7 +208,7 @@ public class Interface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
     private javax.swing.JPanel mainWindow;
-    private javax.swing.JButton management;
+    private javax.swing.JButton newWarehouse;
     private javax.swing.JButton placeOrder;
     private javax.swing.JButton saveFile;
     private javax.swing.JButton showGraph;

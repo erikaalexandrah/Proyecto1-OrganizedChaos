@@ -6,6 +6,7 @@ package AdjListGraph;
 
 
 
+import AdjListGraph.linkedList.LinkedList;
 import Interface.Interface;
 
 /**
@@ -17,14 +18,15 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) {   
+        App app = new App();
+        app.start();
         
-      
-
         Interface newScreen = new Interface();
         newScreen.setVisible(true);
         newScreen.setLocationRelativeTo(null);
-        
+        newScreen.getApp(app);
+//     
     }
     
 }
