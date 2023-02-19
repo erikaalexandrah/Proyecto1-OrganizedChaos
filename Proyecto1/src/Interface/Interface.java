@@ -155,7 +155,9 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_saveFileActionPerformed
 
     private void placeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false); 
+        RegisterClient registerCliente = new RegisterClient(); 
+        registerCliente.setVisible(true); 
     }//GEN-LAST:event_placeOrderActionPerformed
 
     private void newWarehouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWarehouseActionPerformed

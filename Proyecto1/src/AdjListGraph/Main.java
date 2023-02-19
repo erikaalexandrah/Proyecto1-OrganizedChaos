@@ -19,7 +19,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {   
-        App app = new App();
+        App app = new App.getInstance();
         app.start();
         
         Interface newScreen = new Interface();

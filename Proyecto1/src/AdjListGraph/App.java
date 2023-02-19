@@ -33,10 +33,30 @@ import org.graphstream.ui.view.Viewer;
  */
 public class App {
     
-    private LinkedList clients = new LinkedList ();
-    private LinkedList products = new LinkedList ();
-    private GraphMA graphMA =  new GraphMA(5);
-    private LinkedList orders = new LinkedList ();
+    private LinkedList clients;
+    private LinkedList products;
+    private GraphMA graphMA;
+    private LinkedList orders;
+    private static App app; 
+
+    private App() {
+        this.clients = new LinkedList(); 
+        this.products = new LinkedList(); 
+        this.graphMA =  new GraphMA(5); 
+        this.orders = new LinkedList(); 
+        
+        
+    }
+    
+    public static synchronized App getInstance(){
+        if (app == null){
+            app = new App();
+        }
+        return app; 
+    }
+    
+    
+    
 
     public void restartProgram() throws FileNotFoundException{
         String line;
