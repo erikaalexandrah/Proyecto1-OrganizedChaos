@@ -79,23 +79,23 @@ public class RegisterClient extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 120, 40));
 
         jLabel2.setText("Por favor, ingrese los siguientes datos personales: ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 330, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 330, 30));
 
         jLabel3.setText("Nombre: ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
-        getContentPane().add(inputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 430, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        getContentPane().add(inputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 120, -1));
 
         jLabel4.setText("Apellido: ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, 20));
-        getContentPane().add(inputLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 430, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
+        getContentPane().add(inputLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 130, -1));
 
         jLabel5.setText("Cédula: ");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
-        getContentPane().add(inputId, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 430, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
+        getContentPane().add(inputId, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 210, -1));
 
         jLabel6.setText("Dirección para el envío: ");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
-        getContentPane().add(inputLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 340, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        getContentPane().add(inputLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 510, -1));
 
         jToggleButton1.setText("REGISTRAR DATOS");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -103,16 +103,16 @@ public class RegisterClient extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 960, -1, -1));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 710, -1, -1));
 
         jLabel7.setText("Almacenes disponibles:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 160, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 160, 20));
 
         warehousesAvailable.setColumns(20);
         warehousesAvailable.setRows(5);
         jScrollPane1.setViewportView(warehousesAvailable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 470, 110));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 640, 70));
 
         jToggleButton2.setText("VER ALMACENES");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -120,22 +120,22 @@ public class RegisterClient extends javax.swing.JFrame {
                 jToggleButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
+        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, -1, -1));
 
         jLabel8.setText("Coloque el nombre de el almacen a donde quiere hacer el pedido: ");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         inputWarehouse.setText("Ejemplo: A");
-        getContentPane().add(inputWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 470, -1));
+        getContentPane().add(inputWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 660, -1));
 
         jLabel9.setText("Productos disponibles:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 180, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 180, 20));
 
         availableProducts.setColumns(20);
         availableProducts.setRows(5);
         jScrollPane2.setViewportView(availableProducts);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 490, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 660, 60));
 
         jToggleButton3.setText("VER PRODUCTOS");
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -143,24 +143,24 @@ public class RegisterClient extends javax.swing.JFrame {
                 jToggleButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 700, -1, -1));
+        getContentPane().add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, -1, -1));
 
         jLabel10.setText("Coloque los productos y la cantidad que desea: ");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 740, 380, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 380, -1));
 
         inputProducts.setColumns(20);
         inputProducts.setRows(5);
         jScrollPane3.setViewportView(inputProducts);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 850, 550, 100));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 680, 100));
 
-        jTextField1.setText("Coloca :el nombre del producto// cantidad. Separa cada producto con una coma \",\".");
+        jTextField1.setText("Coloca: el nombre del producto// cantidad. Separa cada producto con una coma \",\".");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 770, 540, 30));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 670, 30));
 
         jTextField2.setText("Ejemplo: Teclado//2,Pantalla//1");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +168,7 @@ public class RegisterClient extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 810, 540, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 670, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
