@@ -165,7 +165,7 @@ public class App {
         }else{
             ListNode aux = list.getpFirst(); 
             for (int i = 0; i < list.getSize(); i++) {
-                if (((Product)aux.getElement()).getName().equals(product.getName())) {
+                if (((Product)aux.getElement()).getName().compareToIgnoreCase(product.getName()) == 0) {
                     exists = true; 
                     return exists;
                 }aux.getpNext(); 

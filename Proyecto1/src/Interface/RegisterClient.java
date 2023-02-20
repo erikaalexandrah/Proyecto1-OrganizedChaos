@@ -245,49 +245,52 @@ public class RegisterClient extends javax.swing.JFrame {
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // PARA VISUALIZAR TODOS LOS PRODUCTOS QUE HAY
-        
-        LinkedList allProducts = new LinkedList(); // lista con todos los productos de todos los almacenes (y la cantidad total de cada producto entre todos los almacenes)
-        for (int i = 0; i < app.getGraph().getNumVertices(); i++) {
-            ListNode aux = app.getGraph().getVertices()[i].getProducts().getpFirst(); // el primer producto de la lista productos
-            for (int j = 0; j < app.getGraph().getVertices()[i].getProducts().getSize(); j++) {
-                if(!app.itExists(allProducts, (Product)aux.getElement())){// si el producto no existe
+
+    
+        LinkedList allProducts = new LinkedList(); // lista que va a tener todos los productos (repetidos)
+            for (int j = 0; j < app.getGraph().getNumVertices(); j++) {
+                ListNode aux = app.getGraph().getVertices()[j].getProducts().getpFirst(); 
+                for (int k = 0; k < app.getGraph().getVertices()[j].getProducts().getSize(); k++) {
                     allProducts.append(aux.getElement());
-                }else{// el producto si existe ya en la lista
-                    ListNode aux2 = allProducts.getpFirst();// el primer nodo de lista creada
-                    for (int k = 0; k < allProducts.getSize(); k++) {
-                        if(((Product)aux2.getElement()).getName().equals(((Product)aux.getElement()).getName())){
-                            ((Product)aux2.getElement()).setQuantity(((Product)aux2.getElement()).getQuantity()+((Product)aux.getElement()).getQuantity());
-                            break;
-                        }aux2.getpNext();
-                        
-                    }
+                    aux = aux.getpNext();
                 }
                 
             }
-            aux.getpNext();
+         LinkedList allProductsSet = new LinkedList(); // lista con todos los productos sin repetir
+         
+         ListNode aux2 = allProducts.getpFirst(); 
+         for (int j = 0; j < allProducts.getSize(); j++) {
+             if(allProductsSet.getSize() == 0){
+                 allProductsSet.append(aux2.getElement());
             
+        } else{
+                 if (!app.itExists(allProductsSet, (Product)aux2.getElement())) {// si no existe se agrega
+                     allProductsSet.append(aux2.getElement());
+                 }else{// si existe hay que sumarle el resto de los elementos
+                    ListNode aux3 = allProductsSet.getpFirst(); 
+                     for (int i = 0; i < allProductsSet.getSize(); i++) {
+                         if (((Product)aux2.getElement()).getName().equals(((Product)aux3.getElement()).getName())) {
+                             ((Product)aux3.getElement()).setQuantity(((Product)aux3.getElement()).getQuantity() + ((Product)aux2.getElement()).getQuantity());
+                         } aux3= aux3.getpNext(); 
+                     }
+                 }
+             }
+             aux2 = aux2.getpNext();
+      
         }
         
         
         
         String products = ""; 
         
-        ListNode aux3 = allProducts.getpFirst(); 
-        for (int i = 0; i < allProducts.getSize(); i++) {
-            products += "-PRODUCTO: "+ ((Product)aux3.getElement()).getName()+", CANTIDAD: " + ((Product)aux3.getElement()).getQuantity()+"\n";
+        ListNode aux4 = allProductsSet.getpFirst(); 
+        for (int i = 0; i < allProductsSet.getSize(); i++) {
+            products += "-PRODUCTO: "+ ((Product)aux4.getElement()).getName()+", CANTIDAD: " + ((Product)aux4.getElement()).getQuantity()+"\n";
+            aux4 = aux4.getpNext();
         }
         
         
-//        for (int i = 0; i < app.getGraph().getVertices().length; i++) {
-//           products += "*** ALMACEN " + app.getGraph().getVertices()[i].getName()+ "*** \n";
-//           ListNode aux = app.getGraph().getVertices()[i].getProducts().getpFirst(); 
-//          
-//            for (int j = 0; j < app.getGraph().getVertices()[i].getProducts().getSize(); j++) {
-//                products += "* PRODUCTO: " + ((Product)aux.getElement()).getName() + ". CANTIDAD: " + Integer.toString(((Product)aux.getElement()).getQuantity())+"\n";
-//                
-//            }
-//   
-//        }
+
         availableProducts.setText(products); 
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
