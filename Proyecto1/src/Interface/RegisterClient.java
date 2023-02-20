@@ -6,19 +6,24 @@ package Interface;
 
 import AdjListGraph.App;
 import AdjListGraph.Client;
+import AdjListGraph.Product;
+import AdjListGraph.Warehouse;
+import AdjListGraph.linkedList.ListNode;
 import javax.swing.JOptionPane;
 
 /**
- * Descripción: interface gráfica para que el cliente realice su compra
+ * @Descripción: interfaz gráfica para que el cliente realice su compra
  * @author Catalina Matheus
  * @version: 19/02/2023
  */
 public class RegisterClient extends javax.swing.JFrame {
     
-    private App app;
+    private App app = App.getInstance(); 
     
     /**
-     * Creates new form RegisterClient
+     * @Descripción: constructor 
+     * @author Catalina Matheus
+     * @version: 19/02/2023
      */
     public RegisterClient() {
         initComponents();
@@ -49,6 +54,21 @@ public class RegisterClient extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         inputLocation = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        warehousesAvailable = new javax.swing.JTextArea();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jLabel8 = new javax.swing.JLabel();
+        inputWarehouse = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        availableProducts = new javax.swing.JTextArea();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        inputProducts = new javax.swing.JTextArea();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,7 +104,67 @@ public class RegisterClient extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, -1, -1));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 960, -1, -1));
+
+        jLabel7.setText("Almacenes disponibles:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 160, 20));
+
+        warehousesAvailable.setColumns(20);
+        warehousesAvailable.setRows(5);
+        jScrollPane1.setViewportView(warehousesAvailable);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 470, 110));
+
+        jToggleButton2.setText("VER ALMACENES");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
+
+        jLabel8.setText("Coloque el nombre de el almacen a donde quiere hacer el pedido: ");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
+
+        inputWarehouse.setText("Ejemplo: A");
+        getContentPane().add(inputWarehouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 470, -1));
+
+        jLabel9.setText("Productos disponibles:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 180, 20));
+
+        availableProducts.setColumns(20);
+        availableProducts.setRows(5);
+        jScrollPane2.setViewportView(availableProducts);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 490, -1));
+
+        jToggleButton3.setText("VER PRODUCTOS");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 700, -1, -1));
+
+        jLabel10.setText("Coloque los productos y la cantidad que desea: ");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 740, 380, -1));
+
+        inputProducts.setColumns(20);
+        inputProducts.setRows(5);
+        jScrollPane3.setViewportView(inputProducts);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 850, 550, 100));
+
+        jTextField1.setText("Coloca :el nombre del producto// cantidad. Separa cada producto con una coma \",\".");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 770, 540, 30));
+
+        jTextField2.setText("Ejemplo: Teclado//2,Pantalla//1");
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 810, 540, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,20 +174,9 @@ public class RegisterClient extends javax.swing.JFrame {
         String clientLastName; 
         int clientId; 
         String clientLocation; 
+        String nameWarehouse; 
         
-        
-//        if(inputName.getText().equals("")){
-//            inputName.setText("Debe colocar su nombre");
-//        }if(inputLastName.getText().equals("")){
-//            inputLastName.setText("Debe colocar su apellido"); 
-//        }if(inputId.getText().equals("")){
-//            inputId.setText("Debe colocar su cédula"); 
-//        }if(inputLocation.getText().equals("")){
-//            inputLocation.setText("Debe colocar la dirección donde quiere que envié el pedido");
-//        }
-        
-        
-        
+
         try{
             
             clientName = inputName.getText(); 
@@ -126,25 +195,58 @@ public class RegisterClient extends javax.swing.JFrame {
             if (clientLocation.equals("")) throw new Exception("Debe colocar una dirección donde se mandarán los productos seleccionados."); 
             inputLocation.setText(""); 
             
+            nameWarehouse = inputWarehouse.getText(); 
+            if(nameWarehouse.equals("")) throw new Exception("Debe colocar el nombre del almacen.");
+            inputWarehouse.setText("");
+            
+            String strProducts = inputProducts.getText();
+            if(strProducts.equals("")) throw new Exception("Debe colocar los productos que desea.");
+            inputProducts.setText("");
+            
+            JOptionPane.showMessageDialog(null, "Registro exitoso"); 
+            
             
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "No se logró registrar al cliente"); 
+            JOptionPane.showMessageDialog(null, "No se logró registrar al cliente. Debe suministrar toda la información que se pide. "); 
             inputName.setText(""); 
             inputLastName.setText(""); 
             inputId.setText(""); 
             inputLocation.setText(""); 
-            
-            
-        
+           
         }
-        
-       
-        
-        
-        
-        
+ 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+       // para desplegar los almacenes que hay: 
+       
+       String warehouses = ""; 
+        for (int i = 0; i < app.getGraph().getVertices().length; i++) {
+            warehouses += Integer.toString(i+1)+".-" + app.getGraph().getVertices()[i].getName()+"\n";  
+        }
+        warehousesAvailable.setText(warehouses); 
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // PARA VISUALIZAR TODOS LOS PRODUCTOS QUE HAY
+        String products = ""; 
+        for (int i = 0; i < app.getGraph().getVertices().length; i++) {
+           products += "*** ALMACEN " + app.getGraph().getVertices()[i].getName()+ "*** \n";
+           ListNode aux = app.getGraph().getVertices()[i].getProducts().getpFirst(); 
+          
+            for (int j = 0; j < app.getGraph().getVertices()[i].getProducts().getSize(); j++) {
+                products += "* PRODUCTO: " + ((Product)aux.getElement()).getName() + ". CANTIDAD: " + Integer.toString(((Product)aux.getElement()).getQuantity())+"\n";
+                
+            }
+   
+        }
+        availableProducts.setText(products); 
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,17 +284,32 @@ public class RegisterClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea availableProducts;
     private javax.swing.JTextField inputId;
     private javax.swing.JTextField inputLastName;
     private javax.swing.JTextField inputLocation;
     private javax.swing.JTextField inputName;
+    private javax.swing.JTextArea inputProducts;
+    private javax.swing.JTextField inputWarehouse;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JTextArea warehousesAvailable;
     // End of variables declaration//GEN-END:variables
 }

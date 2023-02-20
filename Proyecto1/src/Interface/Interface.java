@@ -5,10 +5,11 @@
 package Interface;
 
 import AdjListGraph.App;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author Erika Hernández
  */
 public class Interface extends javax.swing.JFrame {
 
@@ -146,8 +147,23 @@ public class Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    /**
+     * Descripcion: llena las estructuras de datos de app con la información de un txt.
+     * @author: Catalina Matheus
+     * @version: 19/02/2023
+     * @param evt 
+     */
     private void uploadTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadTxtActionPerformed
-        // TODO add your handling code here:
+
+        App app = App.getInstance(); 
+        try{
+            app.restartProgram(); 
+            JOptionPane.showMessageDialog(null, "Se cargaron los archivos con éxito!"); 
+        }catch(Exception e){
+            
+        }
+             
     }//GEN-LAST:event_uploadTxtActionPerformed
 
     private void saveFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFileActionPerformed

@@ -8,7 +8,7 @@ import AdjListGraph.linkedList.LinkedList;
 import AdjListGraph.linkedList.ListNode;
 
 /**
- * Descripcion: clase Grafo por Matriz de adyacencia.
+ * @Descripcion: clase Grafo por Matriz de adyacencia.
  * @author Erika Hernandez & Catalina Matheus
  * @version: 18/02/2023
  * 

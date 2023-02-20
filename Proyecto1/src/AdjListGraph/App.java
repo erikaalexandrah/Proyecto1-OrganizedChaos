@@ -29,7 +29,7 @@ import org.graphstream.ui.view.Viewer;
 
 /**
  *
- * @author david
+ * @author David
  */
 public class App {
     
@@ -39,15 +39,25 @@ public class App {
     private LinkedList orders;
     private static App app; 
 
+    /**
+    *@Descripcion: constructor privado de la clase App
+    * @author: Catalina Matheus
+    * @version: 19/02/2023
+    **/
     private App() {
         this.clients = new LinkedList(); 
         this.products = new LinkedList(); 
         this.graphMA =  new GraphMA(5); 
         this.orders = new LinkedList(); 
-        
-        
+           
     }
     
+    /**
+     * @Descripcion: método que retorna la única instancia de la clase App (crea el objeto si no existe)
+     * @author: Catalina Matheus
+     * @version: 19/02/2023
+     * @return 
+     */
     public static synchronized App getInstance(){
         if (app == null){
             app = new App();
@@ -123,6 +133,7 @@ public class App {
                  }
              }  
             }
+//    JOptionPane.showMessageDialog(null, "Los archivos se cargaron con éxito."); 
          
     }
     
