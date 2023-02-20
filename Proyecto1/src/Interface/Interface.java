@@ -180,7 +180,6 @@ public class Interface extends javax.swing.JFrame {
      */
     private void uploadTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadTxtActionPerformed
 
-        App app = App.getInstance(); 
         try{
             app.restartProgram(); 
             JOptionPane.showMessageDialog(null, "Se cargaron los archivos con éxito!"); 

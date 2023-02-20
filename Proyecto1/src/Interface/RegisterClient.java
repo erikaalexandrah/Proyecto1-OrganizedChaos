@@ -8,6 +8,7 @@ import AdjListGraph.App;
 import AdjListGraph.Client;
 import AdjListGraph.Product;
 import AdjListGraph.Warehouse;
+import AdjListGraph.linkedList.LinkedList;
 import AdjListGraph.linkedList.ListNode;
 import javax.swing.JOptionPane;
 
@@ -204,13 +205,13 @@ public class RegisterClient extends javax.swing.JFrame {
             
             if(app.getGraph().searchVertice(nameWarehouse)<0) throw new Exception("El almacen colocado no existe"); // revisa si ese almacen existe
             inputWarehouse.setText("");
-            Warehouse warehouse = app.getGraph().findWarehouse(nameWarehouse); 
+            Warehouse wa = app.getGraph().findWarehouse(nameWarehouse); 
             
             String strProducts = inputProducts.getText();
             if(strProducts.equals("")) throw new Exception("Debe colocar los productos que desea.");
             inputProducts.setText("");
             
-            Client client = new Client(clientName, clientLastName, clientId, clientLocation, warehouse,strProducts); // se crea al cliente
+            Client client = new Client(clientName, clientLastName, clientId, clientLocation, wa,strProducts); // se crea al cliente
             
             app.addClient(client);
             
@@ -233,25 +234,60 @@ public class RegisterClient extends javax.swing.JFrame {
        // para desplegar los almacenes que hay: 
        
        String warehouses = ""; 
-        for (int i = 0; i < app.getGraph().getVertices().length; i++) {
-            warehouses += Integer.toString(i+1)+".-" + app.getGraph().getVertices()[i].getName()+"\n";  
+       
+        for (int i = 0; i < app.getGraph().getNumVertices(); i++) {
+            warehouses += "-" + app.getGraph().getVertices()[i].getName()+"\n";  
         }
         warehousesAvailable.setText(warehouses); 
+       
+   
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // PARA VISUALIZAR TODOS LOS PRODUCTOS QUE HAY
-        String products = ""; 
-        for (int i = 0; i < app.getGraph().getVertices().length; i++) {
-           products += "*** ALMACEN " + app.getGraph().getVertices()[i].getName()+ "*** \n";
-           ListNode aux = app.getGraph().getVertices()[i].getProducts().getpFirst(); 
-          
+        
+        LinkedList allProducts = new LinkedList(); // lista con todos los productos de todos los almacenes (y la cantidad total de cada producto entre todos los almacenes)
+        for (int i = 0; i < app.getGraph().getNumVertices(); i++) {
+            ListNode aux = app.getGraph().getVertices()[i].getProducts().getpFirst(); // el primer producto de la lista productos
             for (int j = 0; j < app.getGraph().getVertices()[i].getProducts().getSize(); j++) {
-                products += "* PRODUCTO: " + ((Product)aux.getElement()).getName() + ". CANTIDAD: " + Integer.toString(((Product)aux.getElement()).getQuantity())+"\n";
+                if(!app.itExists(allProducts, (Product)aux.getElement())){// si el producto no existe
+                    allProducts.append(aux.getElement());
+                }else{// el producto si existe ya en la lista
+                    ListNode aux2 = allProducts.getpFirst();// el primer nodo de lista creada
+                    for (int k = 0; k < allProducts.getSize(); k++) {
+                        if(((Product)aux2.getElement()).getName().equals(((Product)aux.getElement()).getName())){
+                            ((Product)aux2.getElement()).setQuantity(((Product)aux2.getElement()).getQuantity()+((Product)aux.getElement()).getQuantity());
+                            break;
+                        }aux2.getpNext();
+                        
+                    }
+                }
                 
             }
-   
+            aux.getpNext();
+            
         }
+        
+        
+        
+        String products = ""; 
+        
+        ListNode aux3 = allProducts.getpFirst(); 
+        for (int i = 0; i < allProducts.getSize(); i++) {
+            products += "-PRODUCTO: "+ ((Product)aux3.getElement()).getName()+", CANTIDAD: " + ((Product)aux3.getElement()).getQuantity()+"\n";
+        }
+        
+        
+//        for (int i = 0; i < app.getGraph().getVertices().length; i++) {
+//           products += "*** ALMACEN " + app.getGraph().getVertices()[i].getName()+ "*** \n";
+//           ListNode aux = app.getGraph().getVertices()[i].getProducts().getpFirst(); 
+//          
+//            for (int j = 0; j < app.getGraph().getVertices()[i].getProducts().getSize(); j++) {
+//                products += "* PRODUCTO: " + ((Product)aux.getElement()).getName() + ". CANTIDAD: " + Integer.toString(((Product)aux.getElement()).getQuantity())+"\n";
+//                
+//            }
+//   
+//        }
         availableProducts.setText(products); 
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 

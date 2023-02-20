@@ -154,6 +154,26 @@ public class App {
     }
         graph2.display();
     }
+    
+    
+    public boolean itExists(LinkedList list, Product product){
+        // revisa si ese producto está en la lista
+        boolean exists = false; 
+        
+        if(list.getSize() == 0){
+            return exists; 
+        }else{
+            ListNode aux = list.getpFirst(); 
+            for (int i = 0; i < list.getSize(); i++) {
+                if (((Product)aux.getElement()).getName().equals(product.getName())) {
+                    exists = true; 
+                    return exists;
+                }aux.getpNext(); 
+ 
+        }return exists; 
+      
+    }
+    }
      
     public void start () {
         try {
