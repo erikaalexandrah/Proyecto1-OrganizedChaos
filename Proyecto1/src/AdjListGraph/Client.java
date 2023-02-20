@@ -33,6 +33,31 @@ public class Client {
         this.location = location;
         this.warehouse = warehouse;
     }
+
+    // constructor para la interfaz RegisterClient
+    public Client(String name, String lastName, int id, String location, Warehouse warehouse, String strProducts) {
+        this.name = name; 
+        this.lastName = lastName; 
+        this.id = id; 
+        this.location = location; 
+        this.warehouse = warehouse; 
+        
+        LinkedList products = new LinkedList(); 
+        
+        // se colocan los productos en una lista enlazada: 
+        String[] listProducts = strProducts.split(","); 
+        for (int i = 0; i < listProducts.length; i++) {
+            String[] pro = listProducts[i].split("//"); //separa el producto en 2 
+            Product product = new Product(pro[0], Integer.parseInt(pro[1])); 
+            products.append(product); 
+            
+        this.products = products; 
+            
+        }
+        
+    }
+    
+    // Teclado//2,Pantalla//1
     
     // metodo para revisar si hay productos en la lista products: 
     private boolean isEmpty(){
@@ -69,6 +94,7 @@ public class Client {
         
         }
 
+    
     /**
      * @return the name
      */

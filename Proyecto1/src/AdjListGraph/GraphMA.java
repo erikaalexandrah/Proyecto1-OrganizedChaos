@@ -48,6 +48,18 @@ public class GraphMA {
         return (i<numVertices)? i: -1;   
     }
     
+    public Warehouse findWarehouse(String nameVertice){
+        Warehouse warehouse = null; 
+        for (int i = 0; i < this.numVertices; i++) {
+            if(vertices[i].getName().equals(nameVertice)){
+                warehouse = vertices[i]; 
+            }
+            
+        }
+        return warehouse; 
+    }
+    
+    
      /** 
       * Anadir el vértice al grafo una vez se haya creado el objeto almacen.
       * Se pasa para que entre dentro del arreglo auxiliar del grafo.

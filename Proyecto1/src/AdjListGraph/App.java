@@ -65,9 +65,7 @@ public class App {
         return app; 
     }
     
-    
-    
-
+  
     public void restartProgram() throws FileNotFoundException{
         String line;
         String txt = "";
@@ -164,6 +162,10 @@ public class App {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
     
+    }
+    
+    public void addClient(Client client){
+        this.clients.append(client); 
     }
     
     

@@ -29,8 +29,7 @@ public class RegisterClient extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null); 
-        
-        
+          
     }
 
     /**
@@ -164,6 +163,11 @@ public class RegisterClient extends javax.swing.JFrame {
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 770, 540, 30));
 
         jTextField2.setText("Ejemplo: Teclado//2,Pantalla//1");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 810, 540, -1));
 
         pack();
@@ -197,11 +201,18 @@ public class RegisterClient extends javax.swing.JFrame {
             
             nameWarehouse = inputWarehouse.getText(); 
             if(nameWarehouse.equals("")) throw new Exception("Debe colocar el nombre del almacen.");
+            
+            if(app.getGraph().searchVertice(nameWarehouse)<0) throw new Exception("El almacen colocado no existe"); // revisa si ese almacen existe
             inputWarehouse.setText("");
+            Warehouse warehouse = app.getGraph().findWarehouse(nameWarehouse); 
             
             String strProducts = inputProducts.getText();
             if(strProducts.equals("")) throw new Exception("Debe colocar los productos que desea.");
             inputProducts.setText("");
+            
+            Client client = new Client(clientName, clientLastName, clientId, clientLocation, warehouse,strProducts); // se crea al cliente
+            
+            app.addClient(client);
             
             JOptionPane.showMessageDialog(null, "Registro exitoso"); 
             
@@ -247,6 +258,10 @@ public class RegisterClient extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
