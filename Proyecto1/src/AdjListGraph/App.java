@@ -7,7 +7,7 @@ package AdjListGraph;
 import AdjListGraph.linkedList.LinkedList;
 import AdjListGraph.linkedList.ListNode;
 import Interface.Interface;
-import Interface.NewWarehouse;
+import Interface.NewWarehouse2;
 import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.File;
@@ -47,7 +47,7 @@ public class App {
     private App() {
         this.clients = new LinkedList(); 
         this.products = new LinkedList(); 
-        this.graphMA =  new GraphMA(5); 
+        this.graphMA =  new GraphMA(10); 
         this.orders = new LinkedList(); 
            
     }
@@ -137,31 +137,6 @@ public class App {
          
     }
     
-    
-    public void addNewWarehouse() {
-        NewWarehouse newWarehouse = new NewWarehouse();
-        newWarehouse.setVisible(true);
-        newWarehouse.setLocationRelativeTo(null);
-        newWarehouse.setGraph(this.graphMA);
-//        Warehouse warehouseReceived = newWarehouse.getWarehouse();
-//        Edge edge1Received = newWarehouse.getEdge1();
-//        Edge edge2Received = newWarehouse.getEdge2();
-//        try{
-//            this.getGraph().addVertice(warehouseReceived);
-//            this.getGraph().addEdge(edge1Received);
-//            this.getGraph().addEdge(edge2Received);
-//        } catch (Exception e){
-//            JOptionPane.showMessageDialog(null, "No se pudo cargar la información");
-//        }
-//        
-//         for (int i=0; i<this.graphMA.getNumVertices();i++){
-//             System.out.println(this.graphMA.getVertices()[i].getName());
-//             for (int j=0;j<this.graphMA.getMatAd()[i].length;j++){
-//                 System.out.println(this.graphMA.getMatAd()[i][j]);
-//             }
-//         }
-       
-    }
     
     
     public void showGraph(){

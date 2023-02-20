@@ -14,20 +14,22 @@ import javax.swing.JOptionPane;
 public class Interface extends javax.swing.JFrame {
 
     public static Interface Instancia;
-    private App app;
+    private App app = App.getInstance(); 
     
 /**
      * Creates new form Interface
      */
         public Interface() {
         initComponents();
+        this.setLocationRelativeTo(null);
         Instancia = this;
-        App app;
     }
         
         public void getApp(App app1){
             this.app = app1;
         }
+        
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,6 +47,7 @@ public class Interface extends javax.swing.JFrame {
         placeOrder = new javax.swing.JButton();
         newWarehouse = new javax.swing.JButton();
         showGraph = new javax.swing.JButton();
+        newEdge = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +94,13 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        newEdge.setText("Agregar nueva ruta");
+        newEdge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newEdgeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainWindowLayout = new javax.swing.GroupLayout(mainWindow);
         mainWindow.setLayout(mainWindowLayout);
         mainWindowLayout.setHorizontalGroup(
@@ -107,7 +117,8 @@ public class Interface extends javax.swing.JFrame {
                         .addGroup(mainWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(newWarehouse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(showGraph, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(placeOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(placeOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(newEdge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(mainWindowLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(Title)))
@@ -127,7 +138,9 @@ public class Interface extends javax.swing.JFrame {
                     .addComponent(newWarehouse, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                     .addComponent(saveFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(warehouseReport, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(mainWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(warehouseReport, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(newEdge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(showGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
@@ -178,7 +191,8 @@ public class Interface extends javax.swing.JFrame {
 
     private void newWarehouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWarehouseActionPerformed
         // TODO add your handling code here:
-        app.addNewWarehouse();
+        NewWarehouse newWarehouse = new NewWarehouse();
+        newWarehouse.setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_newWarehouseActionPerformed
@@ -187,6 +201,13 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
         //this.app.showGraph();
     }//GEN-LAST:event_showGraphActionPerformed
+
+    private void newEdgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newEdgeActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        NewEdge newEdge = new NewEdge();
+        newEdge.setVisible(true);
+    }//GEN-LAST:event_newEdgeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,6 +247,7 @@ public class Interface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
     private javax.swing.JPanel mainWindow;
+    private javax.swing.JButton newEdge;
     private javax.swing.JButton newWarehouse;
     private javax.swing.JButton placeOrder;
     private javax.swing.JButton saveFile;

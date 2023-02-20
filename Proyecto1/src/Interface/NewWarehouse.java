@@ -6,8 +6,9 @@ package Interface;
 
 import AdjListGraph.App;
 import AdjListGraph.Edge;
-import AdjListGraph.GraphMA;
 import AdjListGraph.Warehouse;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,12 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class NewWarehouse extends javax.swing.JFrame {
 
-    private String[] data;
-    private App app;
-    private GraphMA graph;
-    private Warehouse warehouse;
-    private Edge edge1;
-    private Edge edge2;
+    private App app = App.getInstance(); 
     
 
     /**
@@ -29,10 +25,8 @@ public class NewWarehouse extends javax.swing.JFrame {
      */
     public NewWarehouse() {
         initComponents();
-        GraphMA graph;
-        Warehouse warehouse;
-        Edge edge1;
-        Edge edge2;
+        this.setVisible(true);
+        this.setLocationRelativeTo(null); 
        
     }
     
@@ -66,6 +60,7 @@ public class NewWarehouse extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        returnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +90,12 @@ public class NewWarehouse extends javax.swing.JFrame {
 
         jLabel8.setText("Alm. Destino");
 
+        edge1Weight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edge1WeightActionPerformed(evt);
+            }
+        });
+
         jLabel9.setText("Distancia");
 
         jLabel4.setText("Arista 2");
@@ -115,6 +116,13 @@ public class NewWarehouse extends javax.swing.JFrame {
         });
 
         jLabel6.setText("agregar un nuevo camino del menu  principal");
+
+        returnButton.setText("Volver");
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,6 +163,9 @@ public class NewWarehouse extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(203, 203, 203))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,11 +187,9 @@ public class NewWarehouse extends javax.swing.JFrame {
                                         .addComponent(jLabel6))
                                     .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(203, 203, 203))))
+                                .addComponent(jButton1))
+                            .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +233,9 @@ public class NewWarehouse extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jButton1)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(returnButton)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,7 +246,7 @@ public class NewWarehouse extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -250,50 +261,71 @@ public class NewWarehouse extends javax.swing.JFrame {
     }//GEN-LAST:event_nameNewWarehouseActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        try{
-            String data0 = nameNewWarehouse.getText();
-            // Se valida si ese vertice ya existe o no 
-            if (this.graph.searchVertice(data0)!=-1) throw new Exception("El almacen ya existe");
-            String data1 = edge1Origin.getText();
-            String data2  = edge1Next.getText();
-            // Se valida que el vertice exista, sino existe tiene que ser igual que el nombre del vertice que creamos y se valida que el vertice no se dirija al mismo vertice
-            if ((this.graph.searchVertice(data1)==-1 && !data0.equalsIgnoreCase(data1))|| (data1.equalsIgnoreCase(data2))) throw new Exception("El almacen ya existe");
-            // Se valida que el vertice exista, sino existe tiene que ser igual que el nombre del vertice que creamos/
-            if (this.graph.searchVertice(data2)==-1 && !data0.equalsIgnoreCase(data2)) throw new Exception("El almacen ya existe");   
+           
+        try{   
+            String data0 = nameNewWarehouse.getText().toUpperCase();
+        // Se valida por el nombre del almacen nuevo si ya existe ese vertice en la MA o no. 
+            if (app.getGraph().searchVertice(data0)!=-1) throw new Exception("El almacen ya existe");
+        // Se valida la PRIMERA ARISTA 
+            String data1 = edge1Origin.getText().toUpperCase();
+            String data2  = edge1Next.getText().toUpperCase();
+            // Se valida si el vertice de Origen existe en el grafo, de no existir tiene que ser igual que el nombre del almacen nuevo. Y adicionalmente se valida que el origen y el destino no sean iguales.
+            if ((app.getGraph().searchVertice(data1)==-1 && !data0.equalsIgnoreCase(data1))|| (data1.equalsIgnoreCase(data2))) throw new Exception("El almacen ya existe");
+            // Se valida si el vertice de Origen exista en el grafo y que no se haya escrito el mismo vertice tanto de origen como destino. 
+            if (app.getGraph().searchVertice(data2)==-1 && !data0.equalsIgnoreCase(data2)) throw new Exception("El almacen ya existe");   
+            // casteo del peso de la arista
             int data3 = Integer.parseInt(edge1Weight.getText());
-            String data4 = edge2Origin.getText();
-            String data5 = edge2Next.getText();
-            if ((this.graph.searchVertice(data4)==-1 && !data0.equalsIgnoreCase(data4))|| (data4.equalsIgnoreCase(data5))) throw new Exception("El almacen ya existe");   
-            if (this.graph.searchVertice(data5)==-1 && !data0.equalsIgnoreCase(data5)) throw new Exception("El almacen ya existe");   
+           
+        // Se valida la SEGUNDA ARISTA 
+            String data4 = edge2Origin.getText().toUpperCase();
+            String data5 = edge2Next.getText().toUpperCase();
+             // Se valida si el vertice de Origen existe en el grafo, de no existir tiene que ser igual que el nombre del almacen nuevo. Y adicionalmente se valida que el origen y el destino no sean iguales.
+            if ((app.getGraph().searchVertice(data4)==-1 && !data0.equalsIgnoreCase(data4))|| (data4.equalsIgnoreCase(data5))) throw new Exception("El almacen ya existe");   
+             // Se valida si el vertice de Destino existe en el grafo, de no existir tiene que ser igual que el nombre del almacen nuevo.            if (app.getGraph().searchVertice(data2)==-1 && !data0.equalsIgnoreCase(data2)) throw new Exception("El almacen ya existe");   
+            if (app.getGraph().searchVertice(data5)==-1 && !data0.equalsIgnoreCase(data5)) throw new Exception("El almacen ya existe");   
+            // casteo del peso de la arista
             int data6 = Integer.parseInt(edge2Weight.getText());
+            
+        // Se valida que las aristas que se hayan colocado no sean las mismas.
             if (data4.equalsIgnoreCase(data1) && data2.equalsIgnoreCase(data5))throw new Exception("El almacen ya existe");       
-            this.warehouse = new Warehouse(data0);
-            this.edge1 = new Edge(data1, data2, data3);
-            this.edge2 = new Edge (data4, data5, data6);
+        
+        // Se limpian los textfield de la ventana.
+            this.clearWindow();
+            app.getGraph().addVertice(new Warehouse(nameNewWarehouse.getText().toUpperCase()));
+//            app.getGraph().addEdge(new Edge (data1, data2, data3));
+//            app.getGraph().addEdge(new Edge (data4, data5, data6));
+            JOptionPane.showMessageDialog(null, "Cargado puedo almacen con exito.");
+            this.setVisible(false);
+            Interface interface1 = new Interface();
+            interface1.setVisible(true);
+
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "Alguno de los datos introducidos NO es compatible o ese almacen ya existe");
-            nameNewWarehouse.setText("");
-            edge1Origin.setText("");
-            edge1Next.setText("");
-            edge1Weight.setText("");
-            edge2Origin.setText("");
-            edge2Next.setText("");
-            edge2Weight.setText("");
+            this.clearWindow();
         }
-        
-        try{
-            this.graph.addVertice(warehouse);
-            this.graph.addEdge(edge1);
-            this.graph.addEdge(edge2);
-        }catch (Exception e){
-          JOptionPane.showMessageDialog(null, "Error al cargar los datos al grafo.");
-
-        }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+    private void edge1WeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edge1WeightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edge1WeightActionPerformed
+
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+        // TODO add your handling code here:
+        this.clearWindow();
+        this.setVisible(false);
+        Interface interface1 = new Interface();
+        interface1.setVisible(true);
+    }//GEN-LAST:event_returnButtonActionPerformed
+
+    private void clearWindow(){
+         nameNewWarehouse.setText("");
+         edge1Origin.setText("");
+         edge1Next.setText("");
+         edge1Weight.setText("");
+         edge2Origin.setText("");
+         edge2Next.setText("");
+         edge2Weight.setText("");
+    }
     /**
      * @param args the command line arguments
      */
@@ -319,6 +351,21 @@ public class NewWarehouse extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(NewWarehouse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -351,34 +398,8 @@ public class NewWarehouse extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nameNewWarehouse;
+    private javax.swing.JButton returnButton;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @return the warehouse
-     */
-    public Warehouse getWarehouse() {
-        return warehouse;
-    }
-
-    /**
-     * @return the edge1
-     */
-    public Edge getEdge1() {
-        return edge1;
-    }
-
-    /**
-     * @return the edge2
-     */
-    public Edge getEdge2() {
-        return edge2;
-    }
-
-    /**
-     * @param graph the graph to set
-     */
-    public void setGraph(GraphMA graph) {
-        this.graph = graph;
-    }
     
 }
