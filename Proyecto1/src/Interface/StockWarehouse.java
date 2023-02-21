@@ -73,8 +73,18 @@ public class StockWarehouse extends javax.swing.JFrame {
         jScrollPane2.setViewportView(showProducts);
 
         jButton1.setText("Modificar producto existente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Añadir nuevo producto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +155,20 @@ public class StockWarehouse extends javax.swing.JFrame {
         this.setVisible(false);
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        StockAddProduct newProduct = new StockAddProduct(number);
+        newProduct.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        StockModifyProduct modifyProduct = new StockModifyProduct(number);
+        modifyProduct.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private String getProducts (){
     Warehouse warehouse = app.getGraph().getVertices()[this.number-1];

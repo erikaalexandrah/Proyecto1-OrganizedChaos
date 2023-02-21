@@ -5,6 +5,7 @@
         <group>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/GraphMA.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/Interface/Interface.java</file>
+            <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/Interface/StockAddProduct.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/linkedList/Queue.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/linkedList/LinkedList.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/linkedList/StackNode.java</file>
@@ -14,6 +15,7 @@
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/App.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/Interface/StockWarehouse.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/Interface/RegisterClient.java</file>
+            <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/Interface/StockModifyProduct.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/Client.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/linkedList/QueueNode.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/Interface/NewEdge.java</file>
