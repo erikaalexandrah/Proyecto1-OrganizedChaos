@@ -71,7 +71,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
 
         jLabel4.setText("Tome en cuenta que se recorre desde el almacen de menor ID");
 
-        jButton1.setText("Volver");
+        jButton1.setText("ATRÁS");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

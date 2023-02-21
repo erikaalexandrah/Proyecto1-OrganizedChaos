@@ -189,17 +189,25 @@ public class Interface extends javax.swing.JFrame {
      */
     private void uploadTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadTxtActionPerformed
 
-        try{
-            app.restartProgram(); 
-            JOptionPane.showMessageDialog(null, "Se cargaron los archivos con éxito!"); 
-        }catch(Exception e){
-            
-        }
+        this.setVisible(false); 
+        SelectFile selectFile = new SelectFile(); 
+        selectFile.setVisible(true); 
+//        try{
+//            app.restartProgram(); 
+//            JOptionPane.showMessageDialog(null, "Se cargaron los archivos con éxito!"); 
+//        }catch(Exception e){
+//            
+//        }
              
     }//GEN-LAST:event_uploadTxtActionPerformed
 
     private void saveFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFileActionPerformed
-        // TODO add your handling code here:
+        try{
+            app.updateRepository(); 
+            JOptionPane.showMessageDialog(null, "Se actualizó el repositorio exitosamente.");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "¡Error!\nNo se logró actualizar el repositorio. ");
+        }
     }//GEN-LAST:event_saveFileActionPerformed
 
     private void placeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderActionPerformed

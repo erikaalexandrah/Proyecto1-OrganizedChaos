@@ -86,7 +86,7 @@ public class StockWarehouse extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Volver");
+        jButton3.setText("Atrás");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

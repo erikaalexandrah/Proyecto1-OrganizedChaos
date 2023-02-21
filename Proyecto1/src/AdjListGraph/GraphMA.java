@@ -145,6 +145,11 @@ public class GraphMA {
         this.matAd = matAd;
     }
     
+    public int getIntMatAd(int i, int j){
+        return this.matAd[i][j]; 
+        
+    }
+    
     
     
 }

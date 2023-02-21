@@ -69,6 +69,7 @@ public class RegisterClient extends javax.swing.JFrame {
         inputProducts = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jToggleButton4 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -171,6 +172,14 @@ public class RegisterClient extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 670, -1));
 
+        jToggleButton4.setText("ATRÁS");
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 710, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -181,6 +190,7 @@ public class RegisterClient extends javax.swing.JFrame {
         String clientLocation; 
         String nameWarehouse; 
         
+        if(!app.getProducts().isEmpty()){
 
         try{
             
@@ -234,12 +244,16 @@ public class RegisterClient extends javax.swing.JFrame {
             inputId.setText(""); 
             inputLocation.setText(""); 
            
+        }}
+        else{
+            JOptionPane.showMessageDialog(null, "Actualmente no hay productos ni almacenes disponibles. Debe cargar un archivo en el sistema primero");
         }
  
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
        // para desplegar los almacenes que hay: 
+       
        
        String warehouses = ""; 
        
@@ -248,7 +262,10 @@ public class RegisterClient extends javax.swing.JFrame {
         }
         warehousesAvailable.setText(warehouses); 
        
-   
+       if(warehouses.length() == 0){
+        warehousesAvailable.setText("Actualmente no hay almacenes en el sistema"); 
+    }
+       
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
@@ -300,6 +317,10 @@ public class RegisterClient extends javax.swing.JFrame {
         
 
         availableProducts.setText(products); 
+        
+        if(products.length() == 0){
+            availableProducts.setText("No hay productos en la base de datos actualmente. "); 
+        }
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -309,6 +330,13 @@ public class RegisterClient extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+        this.setVisible(false); 
+        Interface inter = new Interface(); 
+        inter.setVisible(true); 
+        
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,6 +400,7 @@ public class RegisterClient extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JTextArea warehousesAvailable;
     // End of variables declaration//GEN-END:variables
 }

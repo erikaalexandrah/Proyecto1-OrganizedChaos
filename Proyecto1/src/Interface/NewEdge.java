@@ -68,14 +68,14 @@ public class NewEdge extends javax.swing.JFrame {
 
         jLabel5.setText("almacenes");
 
-        addEge.setText("Listo");
+        addEge.setText("AGREGAR");
         addEge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addEgeActionPerformed(evt);
             }
         });
 
-        returnButton.setText("Volver");
+        returnButton.setText("ATRÁS");
         returnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnButtonActionPerformed(evt);

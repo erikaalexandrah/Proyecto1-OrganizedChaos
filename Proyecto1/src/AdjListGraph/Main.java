@@ -20,13 +20,13 @@ public class Main {
      */
     public static void main(String[] args) {   
         App app =  App.getInstance();
-        app.start();
-        
+
+  
         Interface newScreen = new Interface();
         newScreen.setVisible(true);
         newScreen.setLocationRelativeTo(null);
         newScreen.getApp(app);
-//     
+  
     }
     
 }

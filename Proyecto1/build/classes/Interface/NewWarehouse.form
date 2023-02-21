@@ -272,7 +272,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Listo"/>
+            <Property name="text" type="java.lang.String" value="AGREGAR"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -285,7 +285,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="returnButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Volver"/>
+            <Property name="text" type="java.lang.String" value="ATR&#xc1;S"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnButtonActionPerformed"/>

@@ -55,14 +55,14 @@ public class StockManagement extends javax.swing.JFrame {
 
         jLabel3.setText("Indique el NUMERO de almacen que desea gestionar:");
 
-        showStock.setText("Listo");
+        showStock.setText("BUSCAR");
         showStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showStockActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Volver");
+        jButton2.setText("ATRÁS");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

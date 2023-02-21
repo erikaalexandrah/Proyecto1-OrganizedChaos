@@ -108,7 +108,7 @@ public class NewWarehouse extends javax.swing.JFrame {
 
         jLabel5.setText("Para agregar más aristas debe agregarlas en");
 
-        jButton1.setText("Listo");
+        jButton1.setText("AGREGAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -117,7 +117,7 @@ public class NewWarehouse extends javax.swing.JFrame {
 
         jLabel6.setText("agregar un nuevo camino del menu  principal");
 
-        returnButton.setText("Volver");
+        returnButton.setText("ATRÁS");
         returnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnButtonActionPerformed(evt);
