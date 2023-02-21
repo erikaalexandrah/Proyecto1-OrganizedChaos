@@ -137,24 +137,6 @@ public class App {
     
     
     
-    public void showGraph(){
-        // Se crea un objeto de la clase graphstream
-        Graph graph2 = new SingleGraph("Amazon");
-        // Se recorre nuestro grafo para agregar cada ALMACEN(WAREHOUSE) como NODO de la clase graphstream.
-       for (int k=0;k<this.graphMA.getNumVertices();k++){
-           graph2.addNode(this.graphMA.getVertices()[k].getName());
-       }
-       // Se recorre nuestro grafo para agregar cada ARISTA(EDGE) como NODO de la clase graphstream.
-       for (int i=0; i<this.graphMA.getNumVertices(); i++){
-           for (int j=0; j<this.graphMA.getNumVertices(); j++){
-            if (this.graphMA.getMatAd()[i][j]>0){
-                graph2.addEdge(this.graphMA.getVertices()[i].getName() + "-" + this.graphMA.getVertices()[j].getName(),this.graphMA.getVertices()[i].getName(),this.graphMA.getVertices()[j].getName(),true);
-            }
-        }
-    }
-        graph2.display();
-    }
-    
     // método que revisa si un producto se encuentra en la lista pasada como parámetro
     public boolean itExists(LinkedList list, Product product){
         // revisa si ese producto está en la lista

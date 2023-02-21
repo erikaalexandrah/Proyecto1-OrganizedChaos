@@ -5,7 +5,11 @@
 package Interface;
 
 import AdjListGraph.App;
+import AdjListGraph.Warehouse;
 import javax.swing.JOptionPane;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -214,7 +218,27 @@ public class Interface extends javax.swing.JFrame {
 
     private void showGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGraphActionPerformed
         // TODO add your handling code here:
-        //this.app.showGraph();
+        // Se modifica para que la ventana aparezca ya que sin esto el .display() no funciona.
+        System.setProperty("org.graphstream.ui", "swing");
+        // Se crea el objeto grafo de tipo grafoGraphStream.
+        Graph graph = new MultiGraph("Amazon");
+        // Se recorre nuestro arreglo de almacenes del grafo para ahora meterlos en el objeto grafo de GraphStream.
+        for (int i=0;i<app.getGraph().getNumVertices();i++){
+            graph.addNode(app.getGraph().getVertices()[i].getName());
+        }
+        // Se recorre la matriz de adyacencia para añadir los arcos al objeto grafoGraphStream.
+        for (int i=0; i<app.getGraph().getNumVertices(); i++){
+            String node1 = app.getGraph().getVertices()[i].getName();
+            for (int j=0; j<app.getGraph().getNumVertices(); j++){
+                String node2 = app.getGraph().getVertices()[j].getName();
+                if (app.getGraph().getMatAd()[i][j]>0){
+                    String nodeAux = node1 + node2;
+                    graph.addEdge(nodeAux, node1, node2, true).setAttribute("ui.label",app.getGraph().getMatAd()[i][j]);
+                }
+            }
+        }
+        Viewer viewer = graph.display();
+        viewer.enableAutoLayout();
     }//GEN-LAST:event_showGraphActionPerformed
 
     private void newEdgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newEdgeActionPerformed
