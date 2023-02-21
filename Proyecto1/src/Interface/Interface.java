@@ -73,6 +73,11 @@ public class Interface extends javax.swing.JFrame {
         });
 
         warehouseReport.setText("Reporte de almacenes");
+        warehouseReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                warehouseReportActionPerformed(evt);
+            }
+        });
 
         placeOrder.setText("Realizar un pedido");
         placeOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -225,6 +230,13 @@ public class Interface extends javax.swing.JFrame {
         newstock.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_stockManagementActionPerformed
+
+    private void warehouseReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warehouseReportActionPerformed
+        // TODO add your handling code here:
+        DisponibilityReport newReport = new DisponibilityReport();
+        newReport.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_warehouseReportActionPerformed
 
     /**
      * @param args the command line arguments
