@@ -155,7 +155,7 @@ public class App {
         graph2.display();
     }
     
-    
+    // método que revisa si un producto se encuentra en la lista pasada como parámetro
     public boolean itExists(LinkedList list, Product product){
         // revisa si ese producto está en la lista
         boolean exists = false; 
@@ -170,10 +170,66 @@ public class App {
                     return exists;
                 }aux.getpNext(); 
  
-        }return exists; 
+            }return exists; 
       
+        }
     }
+    
+    // método que retorna el producto de la lista: 
+    public Product getProduct(LinkedList list, Product product){
+        Product productFound = null; 
+        if (app.itExists(list, product)) {
+            ListNode aux = list.getpFirst(); 
+            for (int i = 0; i < list.getSize(); i++) {
+                if (((Product)aux.getElement()).getName().equals(product.getName())) {
+                    productFound = (Product)aux.getElement(); 
+                    return productFound; 
+
+                }
+                aux = aux.getpNext(); 
+                
+            }
+            
+        }
+    return productFound; 
     }
+    
+    
+    
+    // método para revisar si el almacen seleccionado tiene todos los productos que el cliente quiere
+    // si ese almacen tiene todo entonces se descuenta la cantidad de los productos
+    
+    public boolean productsAvailableInWarehouse(LinkedList productsClient, Warehouse warehouse){
+        boolean productsAvailable = true;
+        
+        ListNode aux = productsClient.getpFirst(); 
+       
+        for (int i = 0; i < productsClient.getSize(); i++) {
+            if(!this.itExists(warehouse.getProducts(), (Product)aux.getElement())){
+                productsAvailable = false; 
+                return productsAvailable; 
+            } else if (((Product)aux.getElement()).getQuantity() > app.getProduct(warehouse.getProducts(), ((Product)aux.getElement())).getQuantity()) {
+                productsAvailable = false; 
+                return productsAvailable; 
+            }
+            aux = aux.getpNext(); 
+        }
+        
+        // si al final del for loop productsAvailable es true es porque si estan todos los productos y hay la cantidad que el cliente pide
+        // ahora se descuentan las cantidades pedidas: 
+        
+        ListNode aux2 = productsClient.getpFirst(); 
+        if (productsAvailable) {
+            for (int i = 0; i < productsClient.getSize(); i++) {
+                Product pro = app.getProduct(warehouse.getProducts(), (Product)aux2.getElement()); 
+                pro.setQuantity(pro.getQuantity() -((Product) aux2.getElement()).getQuantity()); 
+                aux2 = aux2.getpNext(); 
+            } 
+        }
+        
+        return productsAvailable; 
+    }
+    
      
     public void start () {
         try {

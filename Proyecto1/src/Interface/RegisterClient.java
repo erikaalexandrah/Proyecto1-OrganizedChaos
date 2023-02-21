@@ -211,9 +211,17 @@ public class RegisterClient extends javax.swing.JFrame {
             if(strProducts.equals("")) throw new Exception("Debe colocar los productos que desea.");
             inputProducts.setText("");
             
+        
+            
             Client client = new Client(clientName, clientLastName, clientId, clientLocation, wa,strProducts); // se crea al cliente
             
-            app.addClient(client);
+            
+            // revisa si en el mismo almacen estan todos los productos
+            // si estan los descuenta
+           boolean productsAvailableInWarehouse = app.productsAvailableInWarehouse(client.getProducts(), client.getWarehouse()); 
+           app.addClient(client);
+            
+          
             
             JOptionPane.showMessageDialog(null, "Registro exitoso"); 
             
