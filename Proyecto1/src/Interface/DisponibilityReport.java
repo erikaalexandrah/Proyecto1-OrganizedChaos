@@ -10,6 +10,7 @@ import AdjListGraph.Warehouse;
 import AdjListGraph.linkedList.LinkedList;
 import AdjListGraph.linkedList.ListNode;
 import AdjListGraph.linkedList.Queue;
+import AdjListGraph.linkedList.Stack;
 
 /**
  *
@@ -26,6 +27,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.showBFS();
+        this.showDFS();
         
     }
 
@@ -48,7 +50,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        dfs = new javax.swing.JTextArea();
 
         jLabel2.setText("A continuación encontrará una lista de los almacenes existentes.");
 
@@ -78,22 +80,17 @@ public class DisponibilityReport extends javax.swing.JFrame {
 
         jLabel5.setText("Recorrido DFS por profundida.");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        dfs.setColumns(20);
+        dfs.setRows(5);
+        jScrollPane2.setViewportView(dfs);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jLabel4)))
+                .addGap(114, 114, 114)
+                .addComponent(jLabel4)
                 .addContainerGap(131, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -102,9 +99,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(171, 171, 171))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
+                        .addComponent(jButton1)
                         .addGap(37, 37, 37))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
@@ -112,6 +107,12 @@ public class DisponibilityReport extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(63, 63, 63))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,6 +157,51 @@ public class DisponibilityReport extends javax.swing.JFrame {
         interface1.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
     
+    private void showDFS(){
+        // Recorrido por profundidad del grafo.    
+        // Creamos un arreglo auxiliar que permita determinar que vertices fueron visitados.     
+        boolean[] visited = new boolean[app.getGraph().getNumVertices()];
+        // Creamos una pila.
+        Stack stack = new Stack();
+        // Se agrega al almacen de menor ID.
+        stack.push(app.getGraph().getVertices()[0]);
+        // Se crea una lista simple donde se guarda el orden de almacenes recorridos. Util para luego desplegar los productos más facil.
+        LinkedList walked= new LinkedList();
+        while (!stack.isEmpty()){
+            // Desapilamos al primer elemento y lo captamos en un nodo auxiliar. 
+            Warehouse warehouse = (Warehouse) stack.getPop().getData();
+            // Si un no se ha visitado ese alamacen, se vista
+            if (!visited[warehouse.getNumVertice()]){
+                // Se marca como visitado
+                visited[warehouse.getNumVertice()]= true;
+                walked.append(warehouse);
+                // Creamos un arreglo auxiliar que nos permita acceder más facil a los vecinos de la matriz de adyacencia. 
+                int[] neighbors = app.getGraph().getMatAd()[warehouse.getNumVertice()];
+                for (int i=0; i<neighbors.length; i++){
+                    if (neighbors[i]!=0 && !visited[i]){
+                        stack.push(app.getGraph().getVertices()[i]);
+                    }
+                }
+
+            }
+        }
+        String information = "";
+        ListNode pAux = walked.getpFirst();
+        for (int i=0;i<walked.getSize();i++){
+            Warehouse aux = (Warehouse) pAux.getElement();
+            information += "Almacen: " + aux.getName() +"\n";
+            ListNode pAux2 = aux.getProducts().getpFirst();
+            for (int j=0; j<aux.getProducts().len(); j++){
+                Product aux2 = (Product) pAux2.getElement();
+                information += "Producto: " + aux2.getName() + " Almacen: "+ aux2.getQuantity() +"\n";
+                pAux2 = pAux2.getpNext();
+            }
+            information += "\n";
+            pAux = pAux.getpNext();
+        }
+        dfs.setText(information); 
+    }
+    
     private void showBFS(){
         // Recorrido por anchura del grafo    
         // Creamos un arreglo auxiliar que permita determinar que vertices fueron visitados.     
@@ -196,6 +242,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
             for (int j=0; j<aux.getProducts().len(); j++){
                 Product aux2 = (Product) pAux2.getElement();
                 information += "Producto: " + aux2.getName() + " Almacen: "+ aux2.getQuantity() +"\n";
+                pAux2 = pAux2.getpNext();
             }
             information += "\n";
             pAux = pAux.getpNext();
@@ -240,6 +287,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea bfs;
+    private javax.swing.JTextArea dfs;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -249,6 +297,5 @@ public class DisponibilityReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

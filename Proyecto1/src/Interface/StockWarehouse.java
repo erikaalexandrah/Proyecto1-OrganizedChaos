@@ -29,6 +29,10 @@ public class StockWarehouse extends javax.swing.JFrame {
         showProducts.setText(this.getProducts());
     }
 
+    private StockWarehouse() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,6 +77,11 @@ public class StockWarehouse extends javax.swing.JFrame {
         jButton2.setText("Añadir nuevo producto");
 
         jButton3.setText("Volver");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,6 +137,14 @@ public class StockWarehouse extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        StockManagement newstock = new StockManagement();
+        newstock.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     private String getProducts (){
     Warehouse warehouse = app.getGraph().getVertices()[this.number-1];

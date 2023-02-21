@@ -7,6 +7,8 @@
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/Interface/Interface.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/linkedList/Queue.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/linkedList/LinkedList.java</file>
+            <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/linkedList/StackNode.java</file>
+            <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/linkedList/Stack.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/Warehouse.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/Interface/DisponibilityReport.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/App.java</file>
@@ -20,7 +22,6 @@
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/Interface/NewWarehouse.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/Main.java</file>
             <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/Product.java</file>
-            <file>file:/Users/user/Documents/GitHub/Proyecto1-OrganizedChaos/Proyecto1/src/AdjListGraph/BFS.java</file>
         </group>
     </open-files>
 </project-private>
