@@ -10,8 +10,9 @@ import AdjListGraph.linkedList.ListNode;
 import AdjListGraph.Product;
 
 /**
- *
- * @author user
+ * Descripción: Interfaz donde se despliega el inventario de un almacen.
+ * @author Erika Hernández & Catalina Matheus.
+ * @version 20/02/2023
  */
 public class StockWarehouse extends javax.swing.JFrame {
     private int number;
@@ -171,7 +172,9 @@ public class StockWarehouse extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private String getProducts (){
+    // Se instancia el almacen en específico que se seleccionó.
     Warehouse warehouse = app.getGraph().getVertices()[this.number-1];
+    // String auxiliar para guardar la info de producto y cantidad que luego se retorna para enseña en textArea.
     String products = "";
     ListNode pAux = warehouse.getProducts().getpFirst();
     for (int i=0; i<warehouse.getProducts().getSize();i++){

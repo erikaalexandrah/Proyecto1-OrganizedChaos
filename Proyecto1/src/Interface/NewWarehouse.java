@@ -12,8 +12,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author user
+ * Descripción: Añadir nuevo almacen.
+ * @author Erika Hernández.
+ * @version 19/02/2023
  */
 public class NewWarehouse extends javax.swing.JFrame {
 
