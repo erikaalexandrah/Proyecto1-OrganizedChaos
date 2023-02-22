@@ -20,8 +20,6 @@ public class Main {
      */
     public static void main(String[] args) {   
         App app =  App.getInstance();
-
-  
         Interface newScreen = new Interface();
         newScreen.setVisible(true);
         newScreen.setLocationRelativeTo(null);

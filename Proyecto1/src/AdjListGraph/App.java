@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -56,7 +57,7 @@ public class App {
      * @Descripcion: método que retorna la única instancia de la clase App (crea el objeto si no existe)
      * @author: Catalina Matheus
      * @version: 19/02/2023
-     * @return 
+     * @return: App 
      */
     public static synchronized App getInstance(){
         if (app == null){
@@ -201,17 +202,63 @@ public class App {
          
     }
     
-    // metodo para guardar toda la información que se encuentra en la base de datos
+       /**
+     * @Descripcion: procedimiento que guarda los almacenes y rutas de la base de datos en un txt. 
+     * @author: Catalina Matheus
+     * @version: 22/02/2023
+     */
     public void updateRepository(){
-        
+        // para escribir en el txt
+        String fileStr = ""; 
+        if (0 != graphMA.getVertices().length) {// getVertices() me retorna un arreglo de warehouses 
+            // no necesarimanete esta llena 
+         
+            Warehouse[] warehouses = graphMA.getVertices(); 
+            // se colocan primero en el String los almacenes
+            fileStr += "Almacenes;\n";
+            for (int i = 0; i < warehouses.length && warehouses[i] != null; i++) {
+                fileStr += "Almacen "+ warehouses[i].getName()+":\n"; // coloca  el nombre del almacen
+                ListNode aux = warehouses[i].getProducts().getpFirst(); 
+                for (int j = 0; j < warehouses[i].getProducts().getSize(); j++) {
+                    if (aux.getpNext() != null) {
+                        fileStr += ((Product)aux.getElement()).getName()+","+ ((Product)aux.getElement()).getQuantity()+"\n"; // coloca el nombre
+                    }else{// es el ultimo producto de la lista de productos
+                        fileStr += ((Product)aux.getElement()).getName()+","+((Product)aux.getElement()).getQuantity()+";\n";
+                        
+                    } aux = aux.getpNext(); 
+                    
+                }
+            }
+            
+            // Ahora se colocan las rutas: 
+            fileStr +="Rutas;\n";
+            for (int i = 0; i < graphMA.getNumVertices(); i++) {
+                String start = graphMA.getVertices()[i].getName();
+                for (int j = 0; j < graphMA.getMatAd()[i].length; j++) {
+                    if (graphMA.getMatAd()[i][j] != 0) {
+                        
+                        fileStr += start +","+ graphMA.getVertices()[j].getName()+","+graphMA.getMatAd()[i][j]+"\n";
+                    }
+                }
+            }
+            System.out.println(fileStr);
+            
+            // Se guarda todo en el txt: 
+            
+            try{
+                PrintWriter pw = new PrintWriter("src//Files//FileRestarter.txt");
+                pw.print(fileStr); 
+                pw.close(); 
+                JOptionPane.showMessageDialog(null, "La actualización del repositorio fue realizada con éxito. "); 
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "No se logró actualizar el repositorio"); 
+            }
+            
+        }
+      
     }
     
-    
-    
-    
-    
-    
-    
+
     
     // método que revisa si un producto se encuentra en la lista pasada como parámetro
     public boolean itExists(LinkedList list, Product product){

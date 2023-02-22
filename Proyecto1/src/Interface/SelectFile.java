@@ -96,8 +96,7 @@ public class SelectFile extends javax.swing.JFrame {
         }catch(Exception e){
            JOptionPane.showMessageDialog(null, "No se logró leer el archivo. ");
         }
-        
-        
+        inputFile.setText("");
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 

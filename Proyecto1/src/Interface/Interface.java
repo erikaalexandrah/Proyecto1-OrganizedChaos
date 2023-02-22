@@ -202,12 +202,7 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_uploadTxtActionPerformed
 
     private void saveFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFileActionPerformed
-        try{
-            app.updateRepository(); 
-            JOptionPane.showMessageDialog(null, "Se actualizó el repositorio exitosamente.");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "¡Error!\nNo se logró actualizar el repositorio. ");
-        }
+     app.updateRepository();
     }//GEN-LAST:event_saveFileActionPerformed
 
     private void placeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderActionPerformed
