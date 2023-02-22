@@ -6,6 +6,9 @@ package Interface;
 
 import AdjListGraph.App;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -42,6 +45,9 @@ public class SelectFile extends javax.swing.JFrame {
         inputFile = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jToggleButton3 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,7 +82,21 @@ public class SelectFile extends javax.swing.JFrame {
                 jToggleButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, -1, -1));
+
+        jLabel3.setText("También puede cargar el archivo del repositorio. ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 290, -1));
+
+        jLabel4.setText("Se actualizará la base de datos con lo guardado por última vez. ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 420, -1));
+
+        jToggleButton3.setText("CARGAR REPOSITORIO");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,6 +131,19 @@ public class SelectFile extends javax.swing.JFrame {
        
        
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+       
+        try { 
+            app.restartProgram();
+            JOptionPane.showMessageDialog(null, "Se logró cargar con éxito el archivo.");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SelectFile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+       
+        
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,8 +184,11 @@ public class SelectFile extends javax.swing.JFrame {
     private javax.swing.JTextField inputFile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 }

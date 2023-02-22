@@ -157,6 +157,7 @@ public class App {
             }
             }
             br.close();
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se logró cargar el archivo. Intente nuevamente.");
         }
