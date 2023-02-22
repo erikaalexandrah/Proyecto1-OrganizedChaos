@@ -13,8 +13,9 @@ import AdjListGraph.linkedList.Queue;
 import AdjListGraph.linkedList.Stack;
 
 /**
- *
- * @author user
+ * Descripción: Interfaz gráfica de reporte de stock (disponibilidad)
+ * @author Erika Hernández
+ * @version 20/02/2023
  */
 public class DisponibilityReport extends javax.swing.JFrame {
     private App app = App.getInstance(); 
@@ -185,8 +186,12 @@ public class DisponibilityReport extends javax.swing.JFrame {
 
             }
         }
+        
+        // Se crea un string vacio para guardar la informacion de los productos y poder mostrar en textArea
         String information = "";
+        // Nodo auxiliar para recorrer la lista
         ListNode pAux = walked.getpFirst();
+       // Se recorre la lista y se guarda en el string los productos con cantidades.
         for (int i=0;i<walked.getSize();i++){
             Warehouse aux = (Warehouse) pAux.getElement();
             information += "Almacen: " + aux.getName() +"\n";
@@ -199,6 +204,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
             information += "\n";
             pAux = pAux.getpNext();
         }
+        // Se desplega informacion en textArea.
         dfs.setText(information); 
     }
     
@@ -233,8 +239,11 @@ public class DisponibilityReport extends javax.swing.JFrame {
                    }
                 }
             }
+        // Se crea un string vacio para guardar la informacion de los productos y poder mostrar en textArea
         String information = "";
+        // Nodo auxiliar para recorrer la lista
         ListNode pAux = walked.getpFirst();
+        // Se recorre la lista y se guarda en el string los productos con cantidades.
         for (int i=0;i<walked.getSize();i++){
             Warehouse aux = (Warehouse) pAux.getElement();
             information += "Almacen: " + aux.getName() +"\n";
@@ -247,6 +256,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
             information += "\n";
             pAux = pAux.getpNext();
         }
+       // Se desplega informacion en textArea.
         bfs.setText(information); 
     }
     /**

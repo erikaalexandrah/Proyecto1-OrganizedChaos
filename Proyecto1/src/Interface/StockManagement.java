@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author Erika Hernández & Catalina Matheus.
+ * @version 20/02/2023
  */
 public class StockManagement extends javax.swing.JFrame {
     
@@ -138,8 +139,11 @@ public class StockManagement extends javax.swing.JFrame {
     private void showStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStockActionPerformed
         // TODO add your handling code here:
         try{
+         // Casteo int 
          int number = Integer.parseInt(answer.getText());
+         // se verifica que se esté introduciendo un numero en el rango desplegado.
          if (number > app.getGraph().getNumVertices() ||number<1) throw new Exception("Fuera del rango");
+         // Se limpia la ventana.
          this.clearWindow();
          this.setVisible(false);
          StockWarehouse interface2 = new StockWarehouse(number);
@@ -159,7 +163,8 @@ public class StockManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
      private String showWarehouses (){
-        String warehouses = "";
+        // Se guarda en string los almacenes para luego mostrar en textArea.
+         String warehouses = "";
         for (int i=0; i<app.getGraph().getNumVertices();i++){
                 warehouses += i+1 +". Almacen:  " + app.getGraph().getVertices()[i].getName() + "\n";
         }

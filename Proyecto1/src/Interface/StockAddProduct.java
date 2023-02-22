@@ -11,8 +11,9 @@ import AdjListGraph.linkedList.ListNode;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author user
+ * Descripción: Interfaz añadir nuevo producto.
+ * @author Erika Hernández & Catalina Matheus.
+ * @version 20/02/2023
  */
 public class StockAddProduct extends javax.swing.JFrame {
     private int number;
