@@ -116,12 +116,7 @@ public class LinkedList <T> {
         }
     }
 
-    
-    
-    
-    
-    
-    
+
     
     // para insertar en orden (tomando en cuenta la distacia). Esto es para el algoritmo de dijkstra
     
@@ -155,9 +150,7 @@ public class LinkedList <T> {
         }
         } 
     }
-    
-    
-    
+
     
     /**
      * @return the pFirst

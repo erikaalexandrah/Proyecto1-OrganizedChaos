@@ -351,8 +351,26 @@ public class App {
         // si se encuentra el almacen se retorna el mismo, si no se encuentra se retorna null
     }
     
-
     
+    // metodo que retorna el indice donde se encuentra un vertice en la lista vertices del grafo
+    // si no encuentra al almacen retorna -1
+       public int getIndexVertex(Warehouse warehouse){
+           int index = -1; 
+           
+           for (int i = 0; i < graphMA.getVertices().length; i++) {
+               
+               if(graphMA.getVertices()[i] == null) break; 
+               else{
+                   if (graphMA.getVertices()[i].getName().equals(warehouse.getName())) {
+                       index = i; 
+                       
+                   }
+               }
+               
+           } return index; 
+        
+    }
+
      
 //    public void start () {
 //        try {
