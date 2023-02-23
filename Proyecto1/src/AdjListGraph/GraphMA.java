@@ -67,9 +67,7 @@ public class GraphMA {
         }
         return warehouse; 
     }
-    
-
-    
+  
     
      /** 
       * Anadir el vértice al grafo una vez se haya creado el objeto almacen.

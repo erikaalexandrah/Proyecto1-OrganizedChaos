@@ -190,7 +190,7 @@ public class RegisterClient extends javax.swing.JFrame {
         String clientLocation; 
         String nameWarehouse; 
         
-        if(!app.getProducts().isEmpty()){
+        if(app.getGraph().getVertices().length != 0){
 
         try{
             
@@ -245,10 +245,22 @@ public class RegisterClient extends javax.swing.JFrame {
                    JOptionPane.showMessageDialog(null, "Compra exitosa.\nEl almacen seleccionado no tiene todos los productos que desea, sin embargo, el Alamacen "+warehouseFound.getName() + " mandará al almacen seleccionado todos los productos");
                    // se muestra la ruta mas corta: 
                    int indexWarehouse = app.getIndexVertex(warehouseFound);// buscamos el indice del almacen que tiene todos los productos que es el inicio del recorrido.
+                   // se busca el camino mas cercano: 
+                   LinkedList allPaths = app.getGraph().dijkstra(indexWarehouse); 
+                   
+                   // para ver lo que me retorna: 
+                   System.out.println("FLAGGGG. LO QUE TE RETORNA: ");
+                   String print =""; 
+                   ListNode aux = allPaths.getpFirst(); 
+                   for (int i = 0; i < allPaths.getSize(); i++) {
+                       print += ((String[])aux.getElement())[0] + " //"+((String[]) aux.getElement())[1] + " //"+((String[])aux.getElement())[3] + "\n";
+                   }
+                   System.out.println(print);
+   
                }
            }
-        
-       
+           
+
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se logró registrar al cliente. Debe suministrar toda la información que se pide. "); 
             inputName.setText(""); 
