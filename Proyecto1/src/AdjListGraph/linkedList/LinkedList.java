@@ -116,6 +116,49 @@ public class LinkedList <T> {
         }
     }
 
+    
+    
+    
+    
+    
+    
+    
+    // para insertar en orden (tomando en cuenta la distacia). Esto es para el algoritmo de dijkstra
+    
+    public void insertInOrder(String[] result){
+        if(isEmpty()){
+            insertAtHead((T)result);    
+        }else{
+            double first = Double.parseDouble(((String[])getpFirst().getElement())[1]); 
+            double res = Double.parseDouble(result[1]); 
+            
+            if(first > res){
+               insertAtHead((T)result);   
+            }
+            boolean notFound = true; 
+            ListNode aux = getpFirst(); 
+            double next = Double.parseDouble(((String[])aux.getpNext().getElement())[1]); 
+            
+            while (res<next && notFound ){
+                if(aux.getpNext() == null){
+                    append((T)result);
+                    notFound = false;   
+                }else if(next > res){
+                    ListNode node = new ListNode(result); 
+                    node.setpNext(aux.getpNext()); 
+                    aux.setpNext(node); 
+                    notFound = false; 
+                    
+                }
+                aux = aux.getpNext(); 
+    
+        }
+        } 
+    }
+    
+    
+    
+    
     /**
      * @return the pFirst
      */

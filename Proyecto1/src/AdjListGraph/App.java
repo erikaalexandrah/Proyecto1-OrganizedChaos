@@ -336,6 +336,21 @@ public class App {
         return productsAvailable; 
     }
     
+    // revisa que almacen tiene todos los productos pedidos por el cliente y te devuelve el almacen y descuenta la cantidad al almacen
+    public Warehouse findWarehouse(LinkedList productsClient){
+        Warehouse[] vertices = app.getGraph().getVertices(); // arreglo de almancenes
+        Warehouse foundWarehouse = null; 
+       
+        for (int i = 0; i < vertices.length; i++) {
+            if (productsAvailableInWarehouse(productsClient, vertices[i])) {// si se encuentran todos los productos 
+                foundWarehouse = vertices[i]; 
+                break; 
+            }
+            
+        }return foundWarehouse; 
+        // si se encuentra el almacen se retorna el mismo, si no se encuentra se retorna null
+    }
+    
 
     
      

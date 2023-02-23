@@ -228,8 +228,27 @@ public class RegisterClient extends javax.swing.JFrame {
             
             // revisa si en el mismo almacen estan todos los productos
             // si estan los descuenta
-           boolean productsAvailableInWarehouse = app.productsAvailableInWarehouse(client.getProducts(), client.getWarehouse()); 
-           app.addClient(client);
+            
+           
+           boolean productsAvailable = app.productsAvailableInWarehouse(client.getProducts(), client.getWarehouse()); 
+           
+           if (productsAvailable){
+               app.addClient(client);
+               JOptionPane.showMessageDialog(null, "Registro exitoso. El almacén escogido tiene todos los productos que desea."); 
+    
+           }else{
+               Warehouse warehouseFound = app.findWarehouse(client.getProducts()); 
+               if(warehouseFound == null){
+                   JOptionPane.showMessageDialog(null, "No se logró procesar el pedido.\nActualmente ningún almacen tiene todos los productos que desea."); 
+               }else{
+                   app.addClient(client);
+                   JOptionPane.showMessageDialog(null, "Compra exitosa.\nEl almacen seleccionado no tiene todos los productos que desea, sin embargo, el Alamacen "+warehouseFound.getName() + " mandará al almacen seleccionado todos los productos");
+                   // se muestra la ruta mas corta: 
+                   
+               }
+           }
+           
+           
             
           
             

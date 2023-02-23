@@ -18,9 +18,18 @@ public class GraphMA {
    private int numVertices; 
    private Warehouse[] vertices;
    private int[][] matAd;
+   private int n; 
+   
+   // PARA EL ALGORITMO DE DIJKSTRA: 
+   private double[] distance; 
+   private String[] path; 
+   private boolean[] visited; 
 
+   
+   
    // Constructor del grafo vacio. 
     public GraphMA(int max) {
+        this.n = max; 
         this.matAd = new int[max][max];
         this.vertices = new Warehouse[max];
         for (int i =0; i<max; i++){
@@ -58,6 +67,8 @@ public class GraphMA {
         }
         return warehouse; 
     }
+    
+
     
     
      /** 
@@ -98,8 +109,96 @@ public class GraphMA {
         if (origin <0 || next<0) throw new Exception ("Alguno de los dos almacenes NO existe.");
         return matAd[origin][next]>=1;
     }
+    // PARA EL ALGORITMO DE DIJKSTRA: 
+    public int getFirstVertex(int index){
+        // retorna el primer vértice adyacente del vértice especificado
+        for (int i = 0; i < numVertices; i++) {
+            if(matAd[index][i]>0) return i;  
+        }return n; 
+        
+    }
+    
+    public int getNextVertex(int index, int firstVertex){
+        // devuelve los vertices adyacentes secuenciales del vértice pasado como parámetro
+        for (int i = firstVertex+1; i < numVertices; i++) {
+            if (matAd[index][i]>0) return i; 
+   
+        }return n; 
+    }
     
     
+    public int getIndex(double[] distance, boolean[] visited ){
+        // retorna el siguiente vértice requerido con la matriz de distancia y la de vertices visitados 
+        int j = 0; 
+        double min = Double.POSITIVE_INFINITY; // Te devuelve el valor del infinito positivo de tipo double
+        for (int i = 0; i < distance.length; i++) {
+            if (!visited[i]) {
+                if (distance[i] < min) {
+                    min = distance[i]; 
+                    j = i; 
+                }
+            }
+        }return j; 
+    }
+    
+ 
+    
+    // ALGORITMO DE DIJKSTRA: 
+    public LinkedList dijkstra(int index){
+        int CO; // vertices necesarios para la iteración
+        int startIndex = index; // vertice inicial 
+        distance[index] = 0; // se establece la distancia desde el punto inicial al punto inicial como cero
+        
+        
+        // PARA CADA VÉRTICE: 
+        //1. Establece este vértice en conocido, no te preocupes por la distancia y la ruta de este punto, porque ha sido diseñado antes
+        //2. Encuentra cada vértice adyacente de este vértice. Para un vértice desconocido, compare la distancia alcanzada a lo largo de este vértice con su distancia original, si es menor que la distancia original, actualice la distancia y actualice la ruta
+        //3. Después de establecer este vértice, use la función indexGet para encontrar el vértice con la distancia más pequeña entre los vértices desconocidos actuales, y utilícelo como el siguiente vértice para realizar el paso 2
+        
+        while(!visited[startIndex]){
+            CO = getFirstVertex(startIndex); // CO es la primera coordenada que no ha sido visitada
+            while(visited[CO]){
+                CO= getNextVertex(startIndex, CO);  
+            }if (CO == n) {// si el vértice inicial no tiene vértices adyacentes que no hayan sido visitados la coordenada que se retorna del método es n
+                // es el último vértice desconocido
+                visited[startIndex] = true; // se marca como conocido     
+            } // Ahora se ejecuta el paso 2 para todos los vértices adyacentes al inicial
+            
+            else{
+                while(!visited[CO] && CO <n){
+                    visited[startIndex] = true; 
+                    double currentDistance = distance[startIndex] + matAd[startIndex][CO]; // Le sumas lo que ya tenías mas lo actual
+                    if (currentDistance < distance[CO]) {// si es menor se agarra ese camino
+                        distance[CO] = currentDistance; 
+                        path[CO] = path[startIndex] + " " + vertices[startIndex];
+                    }
+                    
+                    CO = getNextVertex(startIndex, CO); 
+              
+                }
+            } startIndex = getIndex(distance, visited); 
+     
+        }
+        
+        for (int i = 0; i < numVertices; i++) {
+            path[i] = path[i] + " " + vertices[i].getName(); 
+            
+        }System.out.println("Iniciar nodo: " + vertices[index].getName());
+        
+        LinkedList listOfDijskstra = new LinkedList(); 
+        for (int i = 0; i < numVertices; i++) {
+            String[] result = new String[3]; 
+            result[0] = vertices[i].getName(); 
+            result[1] = String.valueOf(distance[i]); 
+            result[2] = path[i]; 
+    
+           listOfDijskstra.insertInOrder(result);
+        }
+        listOfDijskstra.setpFirst(listOfDijskstra.getpFirst().getpNext()); 
+        return listOfDijskstra;
+    }
+    
+ 
     
     ////////////////////////////////////////////
 
