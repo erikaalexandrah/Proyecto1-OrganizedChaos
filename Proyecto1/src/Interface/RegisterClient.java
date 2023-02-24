@@ -246,16 +246,22 @@ public class RegisterClient extends javax.swing.JFrame {
                    // se muestra la ruta mas corta: 
                    int indexWarehouse = app.getIndexVertex(warehouseFound);// buscamos el indice del almacen que tiene todos los productos que es el inicio del recorrido.
                    // se busca el camino mas cercano: 
-                   LinkedList allPaths = app.getGraph().dijkstra(indexWarehouse); 
+//                   LinkedList allPaths = app.getGraph().dijkstra(indexWarehouse); 
+                     int[] shortesDistances = app.getGraph().dijkstraAlgorithm(indexWarehouse);
+                     String distances = ""; 
+                     for (int i = 0; i < shortesDistances.length; i++) {
+                       distances += Integer.toString(shortesDistances[i]) +","; 
+                   }
+                     System.out.println("Distancias:" + distances);
                    
                    // para ver lo que me retorna: 
-                   System.out.println("FLAGGGG. LO QUE TE RETORNA: ");
-                   String print =""; 
-                   ListNode aux = allPaths.getpFirst(); 
-                   for (int i = 0; i < allPaths.getSize(); i++) {
-                       print += ((String[])aux.getElement())[0] + " //"+((String[]) aux.getElement())[1] + " //"+((String[])aux.getElement())[3] + "\n";
-                   }
-                   System.out.println(print);
+//                   System.out.println("FLAGGGG. LO QUE TE RETORNA: ");
+//                   String print =""; 
+//                   ListNode aux = allPaths.getpFirst(); 
+//                   for (int i = 0; i < allPaths.getSize(); i++) {
+//                       print += ((String[])aux.getElement())[0] + " //"+((String[]) aux.getElement())[1] + " //"+((String[])aux.getElement())[3] + "\n";
+//                   }
+//                   System.out.println(print);
    
                }
            }

@@ -6,6 +6,7 @@ package AdjListGraph;
 
 import AdjListGraph.linkedList.LinkedList;
 import AdjListGraph.linkedList.ListNode;
+import java.util.Arrays;
 
 /**
  * @Descripcion: clase Grafo por Matriz de adyacencia.
@@ -142,62 +143,109 @@ public class GraphMA {
  
     
     // ALGORITMO DE DIJKSTRA: 
-    public LinkedList dijkstra(int index){
-        int CO; // vertices necesarios para la iteración
-        int startIndex = index; // vertice inicial 
-        distance[index] = 0; // se establece la distancia desde el punto inicial al punto inicial como cero
-        
-        
-        // PARA CADA VÉRTICE: 
-        //1. Establece este vértice en conocido, no te preocupes por la distancia y la ruta de este punto, porque ha sido diseñado antes
-        //2. Encuentra cada vértice adyacente de este vértice. Para un vértice desconocido, compare la distancia alcanzada a lo largo de este vértice con su distancia original, si es menor que la distancia original, actualice la distancia y actualice la ruta
-        //3. Después de establecer este vértice, use la función indexGet para encontrar el vértice con la distancia más pequeña entre los vértices desconocidos actuales, y utilícelo como el siguiente vértice para realizar el paso 2
-        
-        while(!visited[startIndex]){
-            CO = getFirstVertex(startIndex); // CO es la primera coordenada que no ha sido visitada
-            while(visited[CO]){
-                CO= getNextVertex(startIndex, CO);  
-            }if (CO == n) {// si el vértice inicial no tiene vértices adyacentes que no hayan sido visitados la coordenada que se retorna del método es n
-                // es el último vértice desconocido
-                visited[startIndex] = true; // se marca como conocido     
-            } // Ahora se ejecuta el paso 2 para todos los vértices adyacentes al inicial
-            
-            else{
-                while(!visited[CO] && CO <n){
-                    visited[startIndex] = true; 
-                    double currentDistance = distance[startIndex] + matAd[startIndex][CO]; // Le sumas lo que ya tenías mas lo actual
-                    if (currentDistance < distance[CO]) {// si es menor se agarra ese camino
-                        distance[CO] = currentDistance; 
-                        path[CO] = path[startIndex] + " " + vertices[startIndex];
-                    }
-                    
-                    CO = getNextVertex(startIndex, CO); 
-              
-                }
-            } startIndex = getIndex(distance, visited); 
-     
-        }
-        
-        for (int i = 0; i < numVertices; i++) {
-            path[i] = path[i] + " " + vertices[i].getName(); 
-            
-        }System.out.println("Iniciar nodo: " + vertices[index].getName());
-        
-        LinkedList listOfDijskstra = new LinkedList(); 
-        for (int i = 0; i < numVertices; i++) {
-            String[] result = new String[3]; 
-            result[0] = vertices[i].getName(); 
-            result[1] = String.valueOf(distance[i]); 
-            result[2] = path[i]; 
+//    public LinkedList dijkstra(int index){
+//        int CO; // vertices necesarios para la iteración
+//        int startIndex = index; // vertice inicial 
+//        distance[index] = 0; // se establece la distancia desde el punto inicial al punto inicial como cero
+//        
+//        
+//        // PARA CADA VÉRTICE: 
+//        //1. Establece este vértice en conocido, no te preocupes por la distancia y la ruta de este punto, porque ha sido diseñado antes
+//        //2. Encuentra cada vértice adyacente de este vértice. Para un vértice desconocido, compare la distancia alcanzada a lo largo de este vértice con su distancia original, si es menor que la distancia original, actualice la distancia y actualice la ruta
+//        //3. Después de establecer este vértice, use la función indexGet para encontrar el vértice con la distancia más pequeña entre los vértices desconocidos actuales, y utilícelo como el siguiente vértice para realizar el paso 2
+//        
+//        while(!visited[startIndex]){
+//            CO = getFirstVertex(startIndex); // CO es la primera coordenada que no ha sido visitada
+//            while(visited[CO]){
+//                CO= getNextVertex(startIndex, CO);  
+//            }if (CO == n) {// si el vértice inicial no tiene vértices adyacentes que no hayan sido visitados la coordenada que se retorna del método es n
+//                // es el último vértice desconocido
+//                visited[startIndex] = true; // se marca como conocido     
+//            } // Ahora se ejecuta el paso 2 para todos los vértices adyacentes al inicial
+//            
+//            else{
+//                while(!visited[CO] && CO <n){
+//                    visited[startIndex] = true; 
+//                    double currentDistance = distance[startIndex] + matAd[startIndex][CO]; // Le sumas lo que ya tenías mas lo actual
+//                    if (currentDistance < distance[CO]) {// si es menor se agarra ese camino
+//                        distance[CO] = currentDistance; 
+//                        path[CO] = path[startIndex] + " " + vertices[startIndex];
+//                    }
+//                    
+//                    CO = getNextVertex(startIndex, CO); 
+//              
+//                }
+//            } startIndex = getIndex(distance, visited); 
+//     
+//        }
+//        
+//        for (int i = 0; i < numVertices; i++) {
+//            path[i] = path[i] + " " + vertices[i].getName(); 
+//            
+//        }System.out.println("Iniciar nodo: " + vertices[index].getName());
+//        
+//        LinkedList listOfDijskstra = new LinkedList(); 
+//        for (int i = 0; i < numVertices; i++) {
+//            String[] result = new String[3]; 
+//            result[0] = vertices[i].getName(); 
+//            result[1] = String.valueOf(distance[i]); 
+//            result[2] = path[i]; 
+//    
+//           listOfDijskstra.insertInOrder(result);
+//        }
+//        listOfDijskstra.setpFirst(listOfDijskstra.getpFirst().getpNext()); 
+//        return listOfDijskstra;
+//    }
     
-           listOfDijskstra.insertInOrder(result);
+    
+ // intento 2 algoritmo de Dijkstra: 
+    // TE DEVUELVE LAS DISTANCIAS MAS CORTAS PARA CUALQUIER VERTICE DESDE EL QUE TU PIDAS COMO INICIAL: 
+    public int[] dijkstraAlgorithm(int start){
+        // start es el indice desde donde quieres que comience. 
+        boolean[] visited = new boolean[numVertices]; // aqui marcaremos si el vertice fue marcado o no 
+        visited[start] = true; // marcamos como visitado el vertice donde inicia el recorrido
+        int[] shortesDistances = new int[numVertices];  
+        String pathIndices = ""; // donde vamos a guardar el índice de cada vertice visitado
+        pathIndices += Integer.toString(start) + "->"; // se separa cada indice por ->
+        Arrays.fill(shortesDistances, Integer.MAX_VALUE);// el algoritmo dice que para los vertices no visitados se le pone como distancia infinito
+        shortesDistances[start] = 0; // porque el vertice del inicio tiene una distancia de 0 para llegar a el mismo 
+        
+        
+        
+        for (int i = 0; i < numVertices; i++) {
+            if (i != start) {// para que no cuente el vértice donde empieza el recorrido
+                int minVertex = findMinVertex(shortesDistances,visited); // para encontrar el vértice con el menor peso 
+                visited[minVertex] = true; // se marca que ya fue visitado
+                // exploramos vertices vecinos: 
+                for (int j = 0; j < numVertices; j++) {
+                    if (matAd[minVertex][j] != 0 && !visited[j] && shortesDistances[minVertex] != Integer.MAX_VALUE) {
+                        int newDistance = shortesDistances[minVertex] + matAd[minVertex][j]; 
+                        if(newDistance < shortesDistances[j]){
+                            shortesDistances[j] = newDistance; 
+                            pathIndices += Integer.toString(j) + "->"; 
+              
+                    }else pathIndices += Integer.toString(minVertex) + "->"; 
+                }
+            }
+            
         }
-        listOfDijskstra.setpFirst(listOfDijskstra.getpFirst().getpNext()); 
-        return listOfDijskstra;
+    }
+        System.out.println( "PATH: " +pathIndices);
+        return shortesDistances; 
     }
     
     
- 
+    
+    public int findMinVertex(int[] shortesDistances, boolean[] visited){// te retorna el indice del vertice con menor peso
+        int minVertex = -1; // lo inicializamos 
+        
+        for (int i = 0; i < shortesDistances.length; i++) {
+            if(!visited[i] && minVertex == -1 || shortesDistances[i] < shortesDistances[minVertex]){
+                minVertex = i; 
+            }
+        }
+        return minVertex; 
+    }
  
     
     ////////////////////////////////////////////
