@@ -6,9 +6,17 @@ package AdjListGraph;
 
 import AdjListGraph.linkedList.LinkedList;
 import AdjListGraph.linkedList.ListNode;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import org.graphstream.graph.Graph;
+import org.graphstream.ui.swing_viewer.SwingViewer;
+import org.graphstream.ui.swing_viewer.ViewPanel;
+import org.graphstream.ui.view.Viewer;
 
 /**
  * @Descripcion: clase Grafo por Matriz de adyacencia.
@@ -240,6 +248,19 @@ public class GraphMA {
 //        System.out.println( "PATH: " +pathIndices);
 //        return shortestDistances; 
 //    }
+    
+    
+        
+//    public int findMinVertex(int[] shortesDistances, boolean[] visited){// te retorna el indice del vertice con menor peso
+//        int minVertex = -1; // lo inicializamos 
+//        
+//        for (int i = 0; i < shortesDistances.length; i++) {
+//            if(!visited[i] && minVertex == -1 || shortesDistances[i] < shortesDistances[minVertex]){
+//                minVertex = i; 
+//            }
+//        }
+//        return minVertex; 
+//    }
 
     //INTENTO 3: algoritmo de dijkstra: 
     public int dijkstraAlgorithm(int start, int end){// start es el índice del  vértice desde donde se inicia el recorrido 
@@ -299,21 +320,27 @@ public class GraphMA {
         return resultados; // estoy devolviendo el indice del vertice y la distancia total hasta el momento. 
     }
     
-    
-    
-    
-    
-//    public int findMinVertex(int[] shortesDistances, boolean[] visited){// te retorna el indice del vertice con menor peso
-//        int minVertex = -1; // lo inicializamos 
-//        
-//        for (int i = 0; i < shortesDistances.length; i++) {
-//            if(!visited[i] && minVertex == -1 || shortesDistances[i] < shortesDistances[minVertex]){
-//                minVertex = i; 
-//            }
-//        }
-//        return minVertex; 
-//    }
- 
+    public void displayGraph(Graph graph){// crea JFrame para el grafo. Cuando se cierra no se cierra todo el programa
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        JPanel panel = new JPanel(new GridLayout()){
+            public Dimension getPreferredSize(){
+                return new Dimension(640,480); 
+            }
+        }; 
+        frame.setSize(panel.getWidth(), panel.getHeight()); 
+         Viewer viewer = new SwingViewer(graph, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
+         viewer.enableAutoLayout(); 
+         ViewPanel viewPanel = (ViewPanel) viewer.addDefaultView(false); 
+         panel.add(viewPanel); 
+         frame.add(panel);
+         frame.pack();
+         frame.setLocationRelativeTo(null); 
+         frame.setVisible(true); 
+         
+
+        
+    }
     
     ////////////////////////////////////////////
 

@@ -6,9 +6,12 @@ package Interface;
 
 import AdjListGraph.App;
 import AdjListGraph.Warehouse;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.graphstream.graph.Graph;
@@ -219,7 +222,9 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_newWarehouseActionPerformed
 
     private void showGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGraphActionPerformed
-        // TODO add your handling code here:
+        
+
+// TODO add your handling code here:
         // Se modifica para que la ventana aparezca ya que sin esto el .display() no funciona.
         System.setProperty("org.graphstream.ui", "swing");
         // Se crea el objeto grafo de tipo grafoGraphStream.
@@ -241,10 +246,8 @@ public class Interface extends javax.swing.JFrame {
                 }
             }
         }
-        
-        // Se crea el visor del grafo
-        Viewer viewer = graph.display();
-        viewer.enableAutoLayout();
+ 
+        app.getGraph().displayGraph(graph); 
    
     }//GEN-LAST:event_showGraphActionPerformed
 
