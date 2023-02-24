@@ -247,12 +247,12 @@ public class RegisterClient extends javax.swing.JFrame {
                    int indexWarehouse = app.getIndexVertex(warehouseFound);// buscamos el indice del almacen que tiene todos los productos que es el inicio del recorrido.
                    // se busca el camino mas cercano: 
 //                   LinkedList allPaths = app.getGraph().dijkstra(indexWarehouse); 
-                     int[] shortesDistances = app.getGraph().dijkstraAlgorithm(indexWarehouse);
-                     String distances = ""; 
-                     for (int i = 0; i < shortesDistances.length; i++) {
-                       distances += Integer.toString(shortesDistances[i]) +","; 
-                   }
-                     System.out.println("Distancias:" + distances);
+                     int shortesDistances = app.getGraph().dijkstraAlgorithm(indexWarehouse, app.getIndexVertex(client.getWarehouse()));
+//                     String distances = ""; 
+//                     for (int i = 0; i < shortesDistances.length; i++) {
+//                       distances += Integer.toString(shortesDistances[i]) +","; 
+//                   }
+                     System.out.println("Distancia total:" + shortesDistances);
                    
                    // para ver lo que me retorna: 
 //                   System.out.println("FLAGGGG. LO QUE TE RETORNA: ");

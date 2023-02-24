@@ -7,6 +7,8 @@ package AdjListGraph;
 import AdjListGraph.linkedList.LinkedList;
 import AdjListGraph.linkedList.ListNode;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * @Descripcion: clase Grafo por Matriz de adyacencia.
@@ -200,52 +202,117 @@ public class GraphMA {
     
  // intento 2 algoritmo de Dijkstra: 
     // TE DEVUELVE LAS DISTANCIAS MAS CORTAS PARA CUALQUIER VERTICE DESDE EL QUE TU PIDAS COMO INICIAL: 
-    public int[] dijkstraAlgorithm(int start){
-        // start es el indice desde donde quieres que comience. 
-        boolean[] visited = new boolean[numVertices]; // aqui marcaremos si el vertice fue marcado o no 
-        visited[start] = true; // marcamos como visitado el vertice donde inicia el recorrido
-        int[] shortesDistances = new int[numVertices];  
-        String pathIndices = ""; // donde vamos a guardar el índice de cada vertice visitado
-        pathIndices += Integer.toString(start) + "->"; // se separa cada indice por ->
-        Arrays.fill(shortesDistances, Integer.MAX_VALUE);// el algoritmo dice que para los vertices no visitados se le pone como distancia infinito
-        shortesDistances[start] = 0; // porque el vertice del inicio tiene una distancia de 0 para llegar a el mismo 
+//    public int[] dijkstraAlgorithm(int start){
+//        // start es el indice desde donde quieres que comience. 
+//        boolean[] visited = new boolean[numVertices]; // aqui marcaremos si el vertice fue marcado o no 
+//        visited[start] = true; // marcamos como visitado el vertice donde inicia el recorrido
+//        int[] shortestDistances = new int[numVertices];  
+//        String pathIndices = ""; // donde vamos a guardar el índice de cada vertice visitado
+//        pathIndices += Integer.toString(start) + "->"; // se separa cada indice por ->
+//        
+//        for (int i = 0; i < numVertices; i++) {
+//            if(i != start){
+//                shortestDistances[i] = Integer.MAX_VALUE;
+//            }else{
+//                shortestDistances[i] = 0; 
+//            }
+//            
+//        }
+//
+//        for (int i = 0; i < numVertices; i++) {
+//            if (i != start) {// para que no cuente el vértice donde empieza el recorrido
+//                int minVertex = findMinVertex(shortestDistances,visited); // para encontrar el vértice con el menor peso 
+//                visited[minVertex] = true; // se marca que ya fue visitado
+//                // exploramos vertices vecinos: 
+//                for (int j = 0; j < numVertices; j++) {
+//                    if (matAd[minVertex][j] != 0 && !visited[j] && shortestDistances[minVertex] != Integer.MAX_VALUE) {
+//                        int newDistance = shortestDistances[minVertex] + matAd[minVertex][j]; 
+//                        if(newDistance < shortestDistances[j]){
+//                            shortestDistances[j] = newDistance; 
+//                            pathIndices += Integer.toString(j) + "->"; 
+//              
+//                    }else pathIndices += Integer.toString(minVertex) + "->"; 
+//                }
+//            }
+//            
+//        }
+//    }
+//        System.out.println( "PATH: " +pathIndices);
+//        return shortestDistances; 
+//    }
+
+    //INTENTO 3: algoritmo de dijkstra: 
+    public int dijkstraAlgorithm(int start, int end){// start es el índice del  vértice desde donde se inicia el recorrido 
+        //y end es el indice del vertice donde se quiere terminar el recorrido 
+        // vamos a retornar la distancia mínima: 
+        int shortesDistance = 0; // donde guardaremos la distancia mínima total. 
+        boolean[] visited = new boolean[numVertices]; // arreglo que dice si un vértice ya fue visitado o no
+        visited[start] = true; // el inicio ya está visitado
+        String path = "->" + Integer.toString(start); // donde guardamos el indice de cada camino. Metemos el índice del primero 
+        
+        // se empieza el recorrido: 
+        int[] result = findMinVertex(start, shortesDistance, visited); 
+        
+        shortesDistance = result[1]; 
+        path += "->" + Integer.toString(result[0]); 
+        int index = result[0]; 
+        visited[index] = true; 
+        
+        while(!visited[end]){
+            int[] result2 = findMinVertex(index, shortesDistance, visited); 
+            index = result2[0]; 
+            shortesDistance = result2[1]; 
+            visited[index] = true; 
+            path +="->" + Integer.toString(index); 
+        }
+    
+        
+        System.out.println("PATH: " + path);
+        
+        return shortesDistance; 
         
         
-        
+    }
+    
+    public int[] findMinVertex(int v, int currentDistance, boolean[] visited){
+        // retorna el indice del vertice adyacente que hace menor la distancia
+        // si no existe se devuelve -1 como idnice 
+        // le pasamos como parámetro el  índice del vértice al cual le queremos evaluar cual de sus vértices adyacentes tiene la menor distancia
+        int[] resultados = new int[2]; 
+        int index =-1; 
+        int totalDistance = currentDistance; 
+        int shortesDistance = Integer.MAX_VALUE; //establecemos el menor como el primero
         for (int i = 0; i < numVertices; i++) {
-            if (i != start) {// para que no cuente el vértice donde empieza el recorrido
-                int minVertex = findMinVertex(shortesDistances,visited); // para encontrar el vértice con el menor peso 
-                visited[minVertex] = true; // se marca que ya fue visitado
-                // exploramos vertices vecinos: 
-                for (int j = 0; j < numVertices; j++) {
-                    if (matAd[minVertex][j] != 0 && !visited[j] && shortesDistances[minVertex] != Integer.MAX_VALUE) {
-                        int newDistance = shortesDistances[minVertex] + matAd[minVertex][j]; 
-                        if(newDistance < shortesDistances[j]){
-                            shortesDistances[j] = newDistance; 
-                            pathIndices += Integer.toString(j) + "->"; 
-              
-                    }else pathIndices += Integer.toString(minVertex) + "->"; 
-                }
+            if ((matAd[v][i] + currentDistance)< shortesDistance+currentDistance && !visited[i]) {
+                shortesDistance = matAd[v][i]; 
+                index = i; 
+                
             }
             
+            
         }
-    }
-        System.out.println( "PATH: " +pathIndices);
-        return shortesDistances; 
-    }
-    
-    
-    
-    public int findMinVertex(int[] shortesDistances, boolean[] visited){// te retorna el indice del vertice con menor peso
-        int minVertex = -1; // lo inicializamos 
         
-        for (int i = 0; i < shortesDistances.length; i++) {
-            if(!visited[i] && minVertex == -1 || shortesDistances[i] < shortesDistances[minVertex]){
-                minVertex = i; 
-            }
-        }
-        return minVertex; 
+        // sacamos la distancia total: 
+        totalDistance += shortesDistance; 
+        resultados[0] = index; 
+        resultados[1] = totalDistance; 
+        return resultados; // estoy devolviendo el indice del vertice y la distancia total hasta el momento. 
     }
+    
+    
+    
+    
+    
+//    public int findMinVertex(int[] shortesDistances, boolean[] visited){// te retorna el indice del vertice con menor peso
+//        int minVertex = -1; // lo inicializamos 
+//        
+//        for (int i = 0; i < shortesDistances.length; i++) {
+//            if(!visited[i] && minVertex == -1 || shortesDistances[i] < shortesDistances[minVertex]){
+//                minVertex = i; 
+//            }
+//        }
+//        return minVertex; 
+//    }
  
     
     ////////////////////////////////////////////
