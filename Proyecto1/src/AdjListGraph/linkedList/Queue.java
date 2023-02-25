@@ -14,7 +14,12 @@ public class Queue <T> {
     private QueueNode pLast;
     private int size;
 
-    // Constructor vacío.
+    /**
+     * @Descripcion: constructor vacío
+     * @author: Erika Hernández
+     * @version: 20/02/2023
+     */
+    
     public Queue() {
         this.pFirst = null;
         this.pLast = null;
@@ -22,10 +27,23 @@ public class Queue <T> {
         
     }
     
+    /**
+     * @Descripcion: revisa si está vacía 
+     * @author: Erika Hernández
+     * @version: 20/02/2023
+     * @return 
+     */
+    
     public boolean isEmpty(){
         return pFirst==null;
     }
     
+    /**
+     * @Descripcion: inserta al final de la cola
+     * @author: Erika Hernández
+     * @version: 20/02/2023
+     * @param data 
+     */
     public void enqueue(T data){
         QueueNode node = new QueueNode(data);
         if (this.isEmpty()){
@@ -38,6 +56,12 @@ public class Queue <T> {
         }
         size++;
     }
+    
+    /**
+     * @Descripcion: elimina al comienzo de la cola
+     * @author: Erika Hernández
+     * @version: 20/02/2023
+     */
      
     public void dequeue(){
         if (pFirst!=null){

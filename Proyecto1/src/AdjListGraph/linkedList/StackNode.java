@@ -5,13 +5,18 @@
 package AdjListGraph.linkedList;
 
 /**
- *
- * @author user
+ *@Descripcion: clase Nodo para las pilas
+ * @author: Erika Hernández
  */
 public class StackNode <T> {
     private T data;
     private StackNode pNext;
 
+    /**
+     * @Descripcion: constructor
+     * @author: Erika Hernández
+     * @param data 
+     */
     public StackNode(T data) {
         this.data = data;
     }

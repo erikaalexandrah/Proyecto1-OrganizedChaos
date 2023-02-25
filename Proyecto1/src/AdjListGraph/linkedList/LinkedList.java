@@ -5,29 +5,55 @@
 package AdjListGraph.linkedList;
 
 /**
- *
- * @author user
+ *@Descripcion: clase LinkedList (lista simple)
+ * @author: Erika Hernández & Catalina Matheus
  */
 public class LinkedList <T> {
     private ListNode pFirst;  
     private int size; 
+    
+    /**
+     * @Descripcion: constructor. Crea lista vacía
+     *@author: Erika Hernández & Catalina Matheus
+     */
 
     public LinkedList() {
         this.pFirst = null; 
         this.size = 0;
     }
     
+    /**
+     * @Descripcion: método que revisa si la lista está vacía 
+     *@author: Erika Hernández & Catalina Matheus
+     * @return 
+     */
     public boolean isEmpty(){
         return (getpFirst() == null);
     }
     
+    /**
+     * @Descripcion: retorna el primer nodo de la lista 
+     * @author: Erika Hernández & Catalina Matheus
+     * @return 
+     */
     public ListNode first(){
         return getpFirst();
     }
+    
+    /**
+     * @Descripcion: retorna el ultimo elemento de lista
+     * @author: Erika Hernández & Catalina Matheus
+     * @return 
+     */
     public ListNode last(){
         return null;
     }
     
+    /**
+     * @Descripcion: inserta el inicio de la lista
+     * @author: Erika Hernández & Catalina Matheus
+     * @param element 
+     */
     public void insertAtHead(T element){
         ListNode newNode= new ListNode(element); 
         newNode.pNext = getpFirst();
@@ -35,12 +61,18 @@ public class LinkedList <T> {
         setSize(getSize() + 1);
     }
     
+    /**
+     * @Descripcion: inserta al final de la lista
+     * @author: Erika Hernández & Catalina Matheus
+     */
     public void deleteAtHead(){
         if (getpFirst() != null){
             setpFirst(getpFirst().pNext); 
             setSize(getSize() - 1);
         }
     } 
+    
+    
     
      public T poll(){
         if (getpFirst() != null){
@@ -51,11 +83,22 @@ public class LinkedList <T> {
         }
         return null;
      } 
+     
+     /**
+      * @Descripcion: retorna el tamaño de la lista
+      * @author: Erika Hernández & Catalina Matheus
+      * @return 
+      */
     
     public int len(){
         return getSize();
     }
     
+    
+    /**
+     * @Descripcion: imprime la lista por consola
+     * @author: Erika Hernández & Catalina Matheus
+     */
     public void printList(){
         ListNode pAux = this.getpFirst();
         while (pAux != null){
@@ -64,6 +107,13 @@ public class LinkedList <T> {
         }
         System.out.println("null");
     }
+    
+    /**
+     * @Descripcion: inserta en una posición determinada
+     * @author: Erika Hernández & Catalina Matheus
+     * @param element
+     * @param position 
+     */
     
     public void inserAtPosition (T element, int position){
         if (position <0 || position > getSize()){
@@ -85,6 +135,12 @@ public class LinkedList <T> {
         }
     }
     
+    /**
+     * @Descripcion: inserta al final de la lista
+     * @author: Erika Hernández & Catalina Matheus
+     * @param element 
+     */
+    
     public void append (T element){
         ListNode newNode = new ListNode(element);
         if (getpFirst() == null){
@@ -98,6 +154,13 @@ public class LinkedList <T> {
         }
         setSize(getSize() + 1);
     }
+    
+    /**
+     * @Descripcion: retorna el elemento en una posición determinada
+     * @author: Erika Hernández & Catalina Matheus
+     * @param position
+     * @return 
+     */
     
     public T getByPosition(int position){
        if (position <0 || position > getSize()){
@@ -117,8 +180,12 @@ public class LinkedList <T> {
     }
 
 
+    /**
+     * @Descripcion: para insertar en orden (tomando en cuenta la distacia). Esto es para el algoritmo de dijkstra
+     * @author: Erika Hernández & Catalina Matheus
+     * @param result 
+     */
     
-    // para insertar en orden (tomando en cuenta la distacia). Esto es para el algoritmo de dijkstra
     
     public void insertInOrder(String[] result){
         if(isEmpty()){

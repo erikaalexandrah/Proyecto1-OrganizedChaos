@@ -5,12 +5,18 @@
 package AdjListGraph.linkedList;
 
 /**
- *
- * @author user
+ *@Descripcion: clase Nodo para la clase Cola (Queue)
+ * @author: Erika Hernández
  */
 public class QueueNode <T> {
     private T data;
     private QueueNode pNext;
+    
+    /**
+     * @Descripcion: constructor
+     * @author: Erika Hernández
+     * @param data 
+     */
 
     public QueueNode(T data) {
         this.data = data;

@@ -5,23 +5,38 @@
 package AdjListGraph.linkedList;
 
 /**
- *
- * @author user
+ *@Descripcion: clase nodo para las listas simples
+ * @author Erika Hernández & Catalina Matheus
  * @param <T>
  */
 public class ListNode <T> {
     public T element;
     public ListNode pNext; 
     
+    /**
+     * @Descripcion: constructor
+     * @author Erika Hernández & Catalina Matheus
+     * @param element 
+     */
     public ListNode(T element) {
         this.element = element;
     }
 
+   /**
+    * @Descripcion: constructor
+    *  @author Erika Hernández & Catalina Matheus
+    * @param element
+    * @param pNext 
+    */
     public ListNode(T element, ListNode pNext) {
         this.element = element;
         this.pNext = pNext;
     }
 
+    /**
+     * @Descripcion: constructor
+     * @author Erika Hernández & Catalina Matheus
+     */
     public ListNode() {
     }
 
