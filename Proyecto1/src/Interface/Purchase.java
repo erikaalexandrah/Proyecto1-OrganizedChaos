@@ -72,7 +72,7 @@ public class Purchase extends javax.swing.JFrame {
          
          ListNode aux4 = allProductsSet.getpFirst(); 
          for (int i = 0; i < allProductsSet.getSize(); i++) {
-            productsDisplay.addItem(((Product)aux4.getElement()).getName()+".Cantidad: " + ((Product)aux4.getElement()).getQuantity());
+            productsDisplay.addItem(((Product)aux4.getElement()).getName()+". Cantidad: " + ((Product)aux4.getElement()).getQuantity());
              aux4 = aux4.getpNext(); 
         }
            
@@ -225,7 +225,7 @@ public class Purchase extends javax.swing.JFrame {
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
         if(app.getGraph().getNumVertices() == 0){
-            JOptionPane.showMessageDialog(null, "No es posible realizar una compra ya los almacenes y productos no se encuentran en la base de datos.\nCargue un txt o cargue el repositorio. ");
+            JOptionPane.showMessageDialog(null, "No es posible realizar una compra ya que los almacenes y productos no se encuentran en la base de datos.\nCargue un txt o cargue el repositorio. ");
         }else{
              try{
                  String name = inputName.getText();
@@ -237,15 +237,16 @@ public class Purchase extends javax.swing.JFrame {
                  String location = inputLocation.getText(); 
                  if (location. equals("")) throw new Exception("Debe colocar la ubicación.");
                  String warehouseStr = (String) warehousesDisplay.getSelectedItem(); 
-                 System.out.println(warehouseStr);
+                
+                 
+                 
                  Warehouse wa = app.getGraph().findWarehouse(warehouseStr);
+               
                  
                  if(products.getSize() == 0) throw new Exception(" No hay productos en el carrito."); 
                  
                  Client client = new Client(name, lastName,id, location, wa, products); 
-                 
-                 app.addClient(client);
-                 
+               
                   boolean productsAvailable = app.productsAvailableInWarehouse(client.getProducts(), client.getWarehouse()); 
            
            if (productsAvailable){
@@ -263,12 +264,12 @@ public class Purchase extends javax.swing.JFrame {
                    int indexWarehouse = app.getIndexVertex(warehouseFound);// buscamos el indice del almacen que tiene todos los productos que es el inicio del recorrido.
                    // se busca el camino mas cercano: 
 //                   LinkedList allPaths = app.getGraph().dijkstra(indexWarehouse); 
-                     int shortesDistances = app.getGraph().dijkstraAlgorithm(indexWarehouse, app.getIndexVertex(client.getWarehouse()));
+//                     int shortesDistances = app.getGraph().dijkstraAlgorithm(indexWarehouse, app.getIndexVertex(client.getWarehouse()));
 //                     String distances = ""; 
 //                     for (int i = 0; i < shortesDistances.length; i++) {
 //                       distances += Integer.toString(shortesDistances[i]) +","; 
 //                   }
-                     System.out.println("Distancia total:" + shortesDistances);
+//                     System.out.println("Distancia total:" + shortesDistances);
                  
             
             }}
@@ -284,13 +285,7 @@ public class Purchase extends javax.swing.JFrame {
                 inputId.setText(""); 
                 inputLocation.setText("");
             }}
-        
-        
-        
-        
-        
-        
-        
+
         
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
@@ -301,12 +296,15 @@ public class Purchase extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // se van a agregar los productos que la persona escoja: 
         String product = (String) productsDisplay.getSelectedItem(); 
-        String[] productArray = product.split("."); 
+        
+        String[] productArray = new String[2]; 
+        productArray = product.split(". "); 
         int quantity = Integer.parseInt(inputQuantity.getText()); 
         
         
         Product productObj = new Product(productArray[0], quantity); 
         products.append(productObj);
+        System.out.println(products);
         
         
         
