@@ -37,8 +37,12 @@ public class GraphMA {
    private boolean[] visited; 
 
    
+   /**
+    * @Descripcion: cosntructor del grafo vacío
+    * @author: Erika Hernandez
+    * @param max 
+    */
    
-   // Constructor del grafo vacio. 
     public GraphMA(int max) {
         this.n = max; 
         this.matAd = new int[max][max];
@@ -52,10 +56,11 @@ public class GraphMA {
     }
     
     /** 
-     *Se busca por nombre si el vertice existe en el grafo; 
+     *@Descripcion: Se busca por nombre si el vertice existe en el grafo; 
      * Lo busca en el arreglo auxiliar, no directamente en la matriz de adyacencia.
      * Si lo encuentra, retorna su posición en el arreglo auxiliar y por tanto su fila en la matriz.
      * Si no lo encuentra retorna -1 (NO EXISTE EN EL GRAFO).
+     * @author: Erika Hernández
      */
     
     public int searchVertice(String nameVertice){
@@ -81,9 +86,10 @@ public class GraphMA {
   
     
      /** 
-      * Anadir el vértice al grafo una vez se haya creado el objeto almacen.
+      * @ Descripcion: Anadir el vértice al grafo una vez se haya creado el objeto almacen.
       * Se pasa para que entre dentro del arreglo auxiliar del grafo.
       * AQUI NO se le asignan adyacencias (a traves de los arcos) en la matriz. Se hace en otro método. 
+      * @author: Erika Hernández
       */
     
     public void addVertice(Warehouse newWarehouse){
@@ -320,6 +326,13 @@ public class GraphMA {
         return resultados; // estoy devolviendo el indice del vertice y la distancia total hasta el momento. 
     }
     
+    
+    /**
+     * @Descripcion: crea un JFrame para el grafo. Cuando se cierra no se cierra todo el programa. 
+     * @author: Catalina Matheus 
+     * @version: 24/02/2023
+     * @param graph 
+     */
     public void displayGraph(Graph graph){// crea JFrame para el grafo. Cuando se cierra no se cierra todo el programa
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 

@@ -5,8 +5,9 @@
 package AdjListGraph;
 
 /**
- *
- * @author user
+ *@Descripcion: clase Edge(vértice del grafo)
+ * @author Erika Hernández
+ * 
  */
 public class Edge {
     private String originNode;
@@ -14,6 +15,13 @@ public class Edge {
     private int weight; 
 
     
+    /**
+     * @Descripcion: constructor de la clase Edge 
+     * @author: Erika Hernández
+     * @param originNode
+     * @param nextNode
+     * @param weight 
+     */
     public Edge(String originNode, String nextNode, int weight) {
         this.originNode = originNode;
         this.nextNode = nextNode;

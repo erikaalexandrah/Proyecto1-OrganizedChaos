@@ -7,8 +7,8 @@ package AdjListGraph;
 import AdjListGraph.linkedList.LinkedList;
 
 /**
- *
- * @author user
+ *@Descripcion: clase warehouse
+ * @author Erika Hernández
  */
 
 public class Warehouse  <T>  {
@@ -18,6 +18,12 @@ public class Warehouse  <T>  {
     private int numVertice; 
     
     
+    /**
+     * @Descripcion: constructor de la clase. Se le pasa nombre y lista de productos
+     * @author: Erika Hernández
+     * @param name
+     * @param products1 
+     */
     
     public Warehouse (String name, LinkedList products1){
         this.name = name; 
@@ -27,13 +33,22 @@ public class Warehouse  <T>  {
         
     }
     
+    /**
+     * @Descripcion: constructor de la clase. Se le pasa unicamente el nombre del almacen
+     * @author: Erika Hernández
+     * @param name 
+     */
     public Warehouse(String name){
         this.name = name; 
         this.numVertice = -1;
     }
     
+    /**
+     * @Descripcion: determina si ya fue visitado o no este nodo durante busqueda BFS O DFS
+     * @author: Erika Hernández
+     * @return 
+     */
     
-    // Determina si ya fue visitado o no este nodo durante busqueda BFS o DFS
     public boolean isVisited(){
         return visited;
     }
@@ -45,13 +60,22 @@ public class Warehouse  <T>  {
         this.visited = visited;
     }
    
-    
-    // Evaluar si dos vertices tienen el mismo nombre
+    /**
+     * @Descripcion: evalua si dos vertices tienen el mismo nombre
+     * @author: Erika Hernández
+     * @param b
+     * @return 
+     */
+  
     public boolean equals(Warehouse b){
         return getName().equals(b.getName());
     }
     
-    // Se muestran los atributos del vértice
+    /**
+     * @Descripcion: Se muestran los atributos del vértice
+     * @author: Erika Hernández
+     */
+   
     public void showAttr(){
         System.out.println("Almacen:" + "(" + getName() + ")");
     }
