@@ -26,12 +26,13 @@ public class Client {
     
     // constructor: 
 
-    public Client(String name, String lastName, int id, String location, Warehouse warehouse) {
+    public Client(String name, String lastName, int id, String location, Warehouse warehouse, LinkedList products) {
         this.name = name;
         this.lastName = lastName;
         this.id = id;
         this.location = location;
         this.warehouse = warehouse;
+        this.products = products; 
     }
 
     // constructor para la interfaz RegisterClient
