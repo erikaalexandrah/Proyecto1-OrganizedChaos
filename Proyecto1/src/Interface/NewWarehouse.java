@@ -291,11 +291,12 @@ public class NewWarehouse extends javax.swing.JFrame {
             if (data4.equalsIgnoreCase(data1) && data2.equalsIgnoreCase(data5))throw new Exception("El almacen ya existe");       
         
         // Se limpian los textfield de la ventana.
-            this.clearWindow();
+            
             app.getGraph().addVertice(new Warehouse(data0.toUpperCase()));
-//            app.getGraph().addEdge(new Edge (data1, data2, data3));
-//            app.getGraph().addEdge(new Edge (data4, data5, data6));
+            app.getGraph().addEdge(new Edge (data1, data2, data3));
+            app.getGraph().addEdge(new Edge (data4, data5, data6));
             JOptionPane.showMessageDialog(null, "El almacen fue cargado con éxito.");
+            this.clearWindow();
             this.setVisible(false);
             Interface interface1 = new Interface();
             interface1.setVisible(true);
