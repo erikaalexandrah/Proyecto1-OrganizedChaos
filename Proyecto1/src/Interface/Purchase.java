@@ -260,27 +260,21 @@ public class Purchase extends javax.swing.JFrame {
            if (productsAvailable){
                app.addClient(client);
                JOptionPane.showMessageDialog(null, "Registro exitoso. El almacén escogido tiene todos los productos que desea."); 
+               
     
            }else{
                Warehouse warehouseFound = app.findWarehouse(client.getProducts()); 
                if(warehouseFound == null){
                    JOptionPane.showMessageDialog(null, "No se logró procesar el pedido.\nActualmente ningún almacen tiene todos los productos que desea."); 
                }else{
-                   app.addClient(client);
-                   JOptionPane.showMessageDialog(null, "Compra exitosa.\nEl almacen seleccionado no tiene todos los productos que desea, sin embargo, el Alamacen "+warehouseFound.getName() + " mandará al almacen seleccionado todos los productos");
-                   // se muestra la ruta mas corta: 
-                   int indexWarehouse = app.getIndexVertex(warehouseFound);// buscamos el indice del almacen que tiene todos los productos que es el inicio del recorrido.
-                   // se busca el camino mas cercano: 
-//                   LinkedList allPaths = app.getGraph().dijkstra(indexWarehouse); 
-//                     int shortesDistances = app.getGraph().dijkstraAlgorithm(indexWarehouse, app.getIndexVertex(client.getWarehouse()));
-//                     String distances = ""; 
-//                     for (int i = 0; i < shortesDistances.length; i++) {
-//                       distances += Integer.toString(shortesDistances[i]) +","; 
-//                   }
-//                     System.out.println("Distancia total:" + shortesDistances);
-                 
-            
-            }}
+                   
+                  boolean algorithDijkstra = app.getGraph().Dijkstra(app.getIndexVertex(warehouseFound)); // esto nos retorna si existe un path o no 
+                   if (algorithDijkstra) {
+                     app.addClient(client);  
+                   }
+               }
+
+         }
              inputName.setText(""); 
               inputLastName.setText(""); 
               inputId.setText(""); 

@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.graphstream.graph.Graph;
 import org.graphstream.ui.swing_viewer.SwingViewer;
@@ -156,7 +157,84 @@ public class GraphMA {
         }return j; 
     }
     
- 
+    public boolean Dijkstra(int source) {
+        // Inicializa distancias de cada vértice como infinito
+        int[] dist = new int[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            dist[i] = Integer.MAX_VALUE;
+    }
+    
+        // Inicializa el conjunto de vertices ya visitados
+        boolean[] visited = new boolean[numVertices];
+
+        // La distancia al origen es 0
+        dist[source] = 0;
+
+        // Inicializa los predecesores de cada vértice como -1
+        int[] pred = new int[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            pred[i] = -1;
+        }
+
+        // Encuentra la ruta más corta a cada vértice
+        for (int i = 0; i < numVertices - 1; i++) {
+            // Encuentra el vértice no visitado con la distancia mínima
+            int u = findMinimum(dist, visited);
+
+            // Marca el vértice como visitado
+            visited[u] = true;
+
+            // Actualiza las distancias de los vecinos de u
+            for (int v = 0; v < numVertices; v++) {
+                if (!visited[v] && matAd[u][v] != 0 && 
+                    dist[u] != Integer.MAX_VALUE && 
+                    dist[u] + matAd[u][v] < dist[v]) {
+                    dist[v] = dist[u] + matAd[u][v];
+                    pred[v] = u;
+                }
+            }
+        }
+
+        // Imprime la ruta más corta desde A hasta E
+        int dest = 4; // E tiene un numVertice de 4
+        if (dist[dest] == Integer.MAX_VALUE) {
+            String print = "no se puede llegar desde " + source + " hasta " + dest+"."; 
+            JOptionPane.showMessageDialog(null, "El almacen escogido no tiene todos los productos que desea.\n"+source+ " si los tiene, sin embargo, "+print+"\nDebido a esto se canceló la compra."); 
+            return false; 
+//            System.out.println("No se puede llegar desde " + source + " hasta " + dest);
+        } else {
+            String print = "La ruta más corta desde " + source + " hasta " + dest + " es: " + printPath(pred, dest) +"\nLa distancia es "+dist[dest]; 
+            return true; 
+//            System.out.print("La ruta más corta desde " + source + " hasta " + dest + " es: ");
+//            printPath(pred, dest);
+//            System.out.println();
+//            System.out.println("La distancia es " + dist[dest]);
+        }
+}
+
+// Imprime la ruta desde el origen hasta el vértice dado
+private String printPath(int[] pred, int vertex) {
+    if (vertex == -1) {
+        return "";
+    }
+    printPath(pred, pred[vertex]);
+    return vertex + " ";
+}
+
+private int findMinimum(int[] dist, boolean[] visited) {
+    int min = Integer.MAX_VALUE;
+    int minIndex = -1;
+    for (int i = 0; i < numVertices; i++) {
+        if (!visited[i] && dist[i] < min) {
+            min = dist[i];
+            minIndex = i;
+        }
+    }
+    return minIndex;
+}
+    
+    
+   
     
     // ALGORITMO DE DIJKSTRA: 
 //    public LinkedList dijkstra(int index){
