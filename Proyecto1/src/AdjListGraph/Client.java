@@ -24,7 +24,19 @@ public class Client {
     private Warehouse warehouse; // PREGUNTAR: almacen que el cliente desea 
     private LinkedList products; // una lista con los productos que el cliente desea
     
-    // constructor: 
+ 
+    
+    /**
+     * @Descripcion: construtor de la clase
+     * @author: Catalina Matheus
+     * @version: 24/01/2023
+     * @param name
+     * @param lastName
+     * @param id
+     * @param location
+     * @param warehouse
+     * @param products 
+     */
 
     public Client(String name, String lastName, int id, String location, Warehouse warehouse, LinkedList products) {
         this.name = name;
@@ -35,37 +47,7 @@ public class Client {
         this.products = products; 
     }
 
-    // constructor para la interfaz RegisterClient
-    public Client(String name, String lastName, int id, String location, Warehouse warehouse, String strProducts) {
-        this.name = name; 
-        this.lastName = lastName; 
-        this.id = id; 
-        this.location = location; 
-        this.warehouse = warehouse; 
-        
-        LinkedList products = new LinkedList(); 
-        
-        // se colocan los productos en una lista enlazada: 
-        String[] listProducts = strProducts.split(","); 
-        for (int i = 0; i < listProducts.length; i++) {
-            String[] pro = listProducts[i].split("//"); //separa el producto en 2 
-            Product product = new Product(pro[0], Integer.parseInt(pro[1])); 
-            products.append(product); 
-            
-        this.products = products; 
-            
-        }
-        
-    }
-    
-    // Teclado//2,Pantalla//1
-    
-    // metodo para revisar si hay productos en la lista products: 
-    private boolean isEmpty(){
-        return getProducts().getSize() == 0; 
-    }
-    
-    
+
     /**
      * Muestra un mensaje al cliente que su pedido fue procesado con éxito. 
      * @author: Catalina Matheus
@@ -74,7 +56,7 @@ public class Client {
     
     public void show(){
         
-        if(!this.isEmpty()){
+        if(!this.products.isEmpty()){
             JOptionPane.showMessageDialog(null, "Cliente: " +getName() + " \nSu pedido fue procesado con éxito.\n Para ver los productos comprados de a siguiente. ");
         
         // para desplegar producto: 

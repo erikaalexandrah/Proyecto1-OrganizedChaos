@@ -19,8 +19,8 @@ import org.graphstream.graph.implementations.MultiGraph;
 import org.graphstream.ui.view.Viewer;
 
 /**
- * Descripción: Interfaz principal de todas.
- * @author Catalina Matheus & Erika Hernández 
+ * @Descripción: Interfaz principal de todas.
+ * @author Erika Hernández 
  * @version 19/02/2023
  */
 public class Interface extends javax.swing.JFrame {

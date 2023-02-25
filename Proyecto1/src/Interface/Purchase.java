@@ -13,8 +13,9 @@ import AdjListGraph.linkedList.ListNode;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author catalina
+ *@Descripcion: interfaz gráfica para registrar compras
+ * @version : 24/02/2023
+ * @author Catalina Matheus 
  */
 public class Purchase extends javax.swing.JFrame {
 
@@ -222,6 +223,13 @@ public class Purchase extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
+    
+    /**
+     * @Descripcion: procedimiento que guarda toda la información colocada en la ventana en la lista cliente de app
+     * @version: 24/02/2023
+     * @author: Catalina Matheus
+     * @param evt 
+     */
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
         if(app.getGraph().getNumVertices() == 0){
@@ -293,6 +301,12 @@ public class Purchase extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_warehousesDisplayActionPerformed
 
+    /**
+     * @Descripcion: procedimiento que guarda los productos colocas por el usuario en la lista products
+     * @version: 24/02/2023
+     * @author: Catalina Matheus
+     * @param evt 
+     */
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // se van a agregar los productos que la persona escoja: 
         String product = (String) productsDisplay.getSelectedItem(); 

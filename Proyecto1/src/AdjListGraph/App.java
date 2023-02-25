@@ -66,6 +66,13 @@ public class App {
         return app; 
     }
     
+    /**
+     * @Descripcion: procedimiento para guardar la información que se encuentra en un txt.
+     * @author: Erika Hernandez & Catalina Matheus
+     * @version: 10/02/2023
+     * @param path 
+     */
+    
     public void saveFile( String path){
         String line;
         String txt = "";
@@ -203,7 +210,7 @@ public class App {
          
     }
     
-       /**
+     /**
      * @Descripcion: procedimiento que guarda los almacenes y rutas de la base de datos en un txt. 
      * @author: Catalina Matheus
      * @version: 22/02/2023
@@ -259,7 +266,14 @@ public class App {
       
     }
     
-
+    /**
+     * @Descripcion: método que revisa si un producto se encuentra en una lista
+     * @author: Catalina Matheus
+     * @version: 19/02/2023
+     * @param list
+     * @param product
+     * @return 
+     */
     
     // método que revisa si un producto se encuentra en la lista pasada como parámetro
     public boolean itExists(LinkedList list, Product product){
@@ -281,6 +295,15 @@ public class App {
         }
     }
     
+    /**
+     * @Descripcion: método que devuelve un producto en una lista
+     * @author: Catalina Matheus
+     * @version: 19/02/2023
+     * @param list
+     * @param product
+     * @return 
+     */
+    
     // método que retorna el producto de la lista: 
     public Product getProduct(LinkedList list, Product product){
         Product productFound = null; 
@@ -301,9 +324,14 @@ public class App {
     }
     
     
-    
-    // método para revisar si el almacen seleccionado tiene todos los productos que el cliente quiere
-    // si ese almacen tiene todo entonces se descuenta la cantidad de los productos
+    /**
+     * @Descripcion: método que revisa si todos los productos de una lista estan en un almacen
+     * @author: Catalina Matheus
+     * @version: 19/02/2023
+     * @param productsClient
+     * @param warehouse
+     * @return 
+     */
     
     public boolean productsAvailableInWarehouse(LinkedList productsClient, Warehouse warehouse){
         boolean productsAvailable = true;
@@ -336,6 +364,13 @@ public class App {
         return productsAvailable; 
     }
     
+    /**
+     * @Descripcion: método que busca el almacen que tenga todos los productos de una lista pasada como parametro
+     * @author: Catalina Matheus
+     * @version: 20/02/2023
+     * @param productsClient
+     * @return 
+     */
     // revisa que almacen tiene todos los productos pedidos por el cliente y te devuelve el almacen y descuenta la cantidad al almacen
     public Warehouse findWarehouse(LinkedList productsClient){
         Warehouse[] vertices = app.getGraph().getVertices(); // arreglo de almancenes
@@ -351,9 +386,14 @@ public class App {
         // si se encuentra el almacen se retorna el mismo, si no se encuentra se retorna null
     }
     
+    /**
+     * @Descripcion: método que busca el índice de un vértice en la lista de vertices del grafo. Si no encuentra el almacen retorna -1
+     * @author: Catalina Matheus 
+     * @version: 24/02/2023
+     * @param warehouse
+     * @return 
+     */
     
-    // metodo que retorna el indice donde se encuentra un vertice en la lista vertices del grafo
-    // si no encuentra al almacen retorna -1
        public int getIndexVertex(Warehouse warehouse){
            int index = -1; 
            
