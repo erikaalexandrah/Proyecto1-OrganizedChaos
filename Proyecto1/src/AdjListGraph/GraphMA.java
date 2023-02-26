@@ -229,10 +229,7 @@ private int findMinimum(int[] dist, boolean[] visited) {
         vertices[i] = null; 
         
     }
-    
-    
-    
-    
+
     ////////////////////////////////////////////
 
     /**

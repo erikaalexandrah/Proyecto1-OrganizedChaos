@@ -276,7 +276,7 @@ public class Purchase extends javax.swing.JFrame {
                   boolean algorithDijkstra = app.Dijkstra(destWarehouse, wa); // esto nos retorna si existe un path o no 
                    if (algorithDijkstra) {
                    app.addClient(client);  
-                   JOptionPane.showMessageDialog(null, "Registro exitoso. El almacén escogido tiene todos los productos que desea."); 
+                   JOptionPane.showMessageDialog(null, "Compra procesada con éxito.") ;
                    this.setVisible(false);
                    Interface mainInterface = new Interface();
                    mainInterface.setVisible(true);
