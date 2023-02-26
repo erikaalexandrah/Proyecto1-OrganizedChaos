@@ -436,12 +436,11 @@ public class App {
 
     // Imprime la ruta desde el origen hasta el vértice dado
     private String printPath(int[] pred, int vertex) {
-        if (vertex == -1) {
-            return "";
-        }
-        printPath(pred, pred[vertex]);
-        return vertex + " ";
+    if (vertex == -1) {
+        return "";
     }
+    return printPath(pred, pred[vertex]) + " ---> " + graphMA.getVertices()[vertex].getName();
+}
 
     private int findMinimum(int[] dist, boolean[] visited) {
         int min = Integer.MAX_VALUE;
