@@ -378,6 +378,14 @@ public class App {
     }
     return productsAvailable; 
 }
+        /**
+         * @Descripcion: devuelve si se puede hacer el recorrido y le aparece al usuario con un JOptionPane la distancia y el recorrido
+         * @author: Erika Hernández & Catalina Matheus
+         * @version: 26/02/2023
+         * @param warehouse
+         * @param warehouse2
+         * @return 
+         */
   
   public boolean Dijkstra(Warehouse warehouse, Warehouse warehouse2) {
         
@@ -440,6 +448,14 @@ public class App {
     return printPath(pred, pred[vertex]) + " ---> " + graphMA.getVertices()[vertex].getName();
 }
 
+    /**
+     * @Descripcion: 
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version: 26/02/2023
+     * @param dist
+     * @param visited
+     * @return 
+     */
     private int findMinimum(int[] dist, boolean[] visited) {
         int min = Integer.MAX_VALUE;
         int minIndex = -1;
