@@ -126,30 +126,7 @@ public class Warehouse  <T>  {
         this.numVertice = numVertice;
     }
     
-        /**
-     * @Descripcion: método que busca el índice de un vértice en la lista de vertices del grafo. Si no encuentra el almacen retorna -1
-     * @author: Catalina Matheus 
-     * @version: 24/02/2023
-     * @param warehouse
-     * @return 
-     */
-    
-       public int getIndexVertex(Warehouse warehouse){
-           int index = -1; 
-           
-           for (int i = 0; i < app.getGraph().getVertices().length; i++) {
-               
-               if(app.getGraph().getVertices()[i] == null) break; 
-               else{
-                   if (app.getGraph().getVertices()[i].getName().equals(warehouse.getName())) {
-                       index = i; 
-                       
-                   }
-               }
-               
-           } return index; 
-        
-    }
+
 
    
 }

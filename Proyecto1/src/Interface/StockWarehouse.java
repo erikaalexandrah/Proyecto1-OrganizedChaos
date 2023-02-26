@@ -149,6 +149,12 @@ public class StockWarehouse extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @Descripcion: crea instancia de StockManagement y la muestra
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     * @param evt 
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         StockManagement newstock = new StockManagement();
@@ -157,6 +163,12 @@ public class StockWarehouse extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * @Descripcion: crea instancia de StockAddProduCt y la muestra
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         StockAddProduct newProduct = new StockAddProduct(number);
@@ -164,6 +176,12 @@ public class StockWarehouse extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * @Descripcion: crea instancia de StoclModifyProduct y la muestra. 
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         StockModifyProduct modifyProduct = new StockModifyProduct(number);
@@ -171,6 +189,12 @@ public class StockWarehouse extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
     
+    /**
+     * @Descripcion: busca y coloca en un string todos los productos de un almacen determinado
+     * @author: Erika Hernández & Catalina Matheus
+     * @version 20/02/2023
+     * @return 
+     */
     private String getProducts (){
     // Se instancia el almacen en específico que se seleccionó.
     Warehouse warehouse = app.getGraph().getVertices()[this.number-1];
@@ -185,6 +209,11 @@ public class StockWarehouse extends javax.swing.JFrame {
     return products;
         
     }
+    /**
+     * @Descripcion: coloca el nombre del almacen en el text field "warehouseName"
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     */
     private void showNameWarehouse() {
         warehouseName.setText(app.getGraph().getVertices()[this.number-1].getName());
     }

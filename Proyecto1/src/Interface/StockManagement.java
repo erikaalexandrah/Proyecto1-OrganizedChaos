@@ -8,7 +8,7 @@ import AdjListGraph.App;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *@Descripcion: interfaz para manejar el stock de los almacenes
  * @author Erika Hernández & Catalina Matheus.
  * @version 20/02/2023
  */
@@ -136,6 +136,12 @@ public class StockManagement extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @Descripcion: revisa si el número ingresado es válido. De ser así muestra una nueva ventana con los productos de ese almacen
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     * @param evt 
+     */
     private void showStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStockActionPerformed
         // TODO add your handling code here:
         try{
@@ -154,6 +160,12 @@ public class StockManagement extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_showStockActionPerformed
 
+    /**
+     * @Descripcion: abre la ventana principal 
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.clearWindow();
@@ -162,6 +174,12 @@ public class StockManagement extends javax.swing.JFrame {
         interface1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * @Descripcion: crea un string con el nombre del almacen
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     * @return 
+     */
      private String showWarehouses (){
         // Se guarda en string los almacenes para luego mostrar en textArea.
          String warehouses = "";
@@ -171,6 +189,11 @@ public class StockManagement extends javax.swing.JFrame {
         return warehouses;
      }
      
+     /**
+      * @Descripcion: borra lo que se encuentre en los text fields
+      * @author: Erika Hernández & Catalina Matheus 
+      * @version 20/02/2023
+      */
      private void clearWindow(){
          this.answer.setText("");
      }
