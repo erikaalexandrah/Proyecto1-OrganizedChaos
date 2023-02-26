@@ -462,23 +462,22 @@ public class App {
 }
     
     
-    public void createGraphPath(int[] pred, int vertex){
+    public void createGraphPath(int[] pred){
          // se crea un grafo con los vértices obtenidos para desplegarlos graficamente: 
             int n = 0; 
             for (int i = 0; i < pred.length; i++) {
                 if (pred[i]!=-1) {
                     n ++; 
-   
-                }
-            
+                }   
         }
             GraphMA graphPath = new GraphMA(n); 
             for (int i = 0; i < pred.length; i++) {
                 if (pred[i] != -1) {
-                    graphPath.addVertice(graphMA.getVertices()[i]);
-                    
+                    graphPath.addVertice(graphMA.getVertices()[i]);    
                 } 
         }
+            
+            
             
          System.setProperty("org.graphstream.ui", "swing");
          Graph graph = new MultiGraph("Ruta");
