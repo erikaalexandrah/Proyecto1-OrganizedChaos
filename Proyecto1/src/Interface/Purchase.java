@@ -127,13 +127,16 @@ public class Purchase extends javax.swing.JFrame {
         jLabel1.setText("REALIZAR COMPRA");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 120, 30));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Por favor, suministre los siguientes datos: ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 250, 30));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("APELLIDO: ");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
         getContentPane().add(inputLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 150, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ÁLMACEN: ");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
 
@@ -144,6 +147,7 @@ public class Purchase extends javax.swing.JFrame {
         });
         getContentPane().add(inputId, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 170, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("NOMBRE: ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
         getContentPane().add(inputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 140, -1));
@@ -162,6 +166,7 @@ public class Purchase extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 140, -1));
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("CANTIDAD: ");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
 
@@ -172,10 +177,12 @@ public class Purchase extends javax.swing.JFrame {
         });
         getContentPane().add(warehousesDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 120, -1));
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("CÉDULA: ");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
         getContentPane().add(inputLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 270, -1));
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("DIRECCIÓN PARA EL ENVÍO: ");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
@@ -186,6 +193,7 @@ public class Purchase extends javax.swing.JFrame {
         });
         getContentPane().add(productsDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 160, -1));
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("PRODUCTOS : ");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
         getContentPane().add(inputQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 100, -1));
