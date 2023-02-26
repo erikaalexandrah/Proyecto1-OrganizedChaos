@@ -146,6 +146,12 @@ public class StockAddProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @Descripcion: trata de añadir un nuevo producto a un almacen
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         // Se crea copia del almacen.
@@ -179,11 +185,23 @@ public class StockAddProduct extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * @Descripcion: borra lo que exista en los text fields 
+     * @author: Erika Hernández
+     * @version 20/02/2023
+     */
     private void clearWindow(){
         // Se limpian los textfield
         name.setText("");
         quantity.setText("");
     }
+    
+    /**
+     * @Descripcion: abre la ventana principal 
+     * @author: Erika Hernández & Catalina Matheus
+     * @version 20/02/2023
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);

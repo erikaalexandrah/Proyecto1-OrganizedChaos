@@ -104,6 +104,12 @@ public class SelectFile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @Descripcion: intentá guardar la información del txt seleccionado por el usuario
+     * @author: Catalina Matheus
+     * @version: 20/02/2023
+     * @param evt 
+     */
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         
         // Para que la persona agarre el archivo que desea
@@ -127,6 +133,12 @@ public class SelectFile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputFileActionPerformed
 
+    /**
+     * @Descripcion: abre la ventana principal 
+     * @author: Catalina Matheus
+     * @version: 20/02/2023
+     * @param evt 
+     */
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
        this.setVisible(false); 
        Interface v1 = new Interface(); 
@@ -135,6 +147,12 @@ public class SelectFile extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    /**
+     * @Descripcion: intenta leer el repositorio y llenar las estructuras de datos del programa
+     * @author: Catalina Matheus
+     * @version: 20/02/2023
+     * @param evt 
+     */
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
        
         try { 

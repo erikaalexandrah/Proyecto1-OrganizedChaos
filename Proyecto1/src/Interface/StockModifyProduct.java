@@ -136,6 +136,12 @@ public class StockModifyProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @Descripcion: se intenta modificar cantidad del producto ingresado
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         // Se crea copia del almacen.
@@ -169,12 +175,23 @@ public class StockModifyProduct extends javax.swing.JFrame {
 
     }                                        
 
+    /**
+     * @Descripcion: elimina lo que se encuentre en los text fields
+     * @author: Erika Hernández & Catalina Matheus 
+     * @version 20/02/2023
+     */
     private void clearWindow(){
         // Se limpian los textfield
         name1.setText("");
         quantity1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * @Descripcion: crea instancia de StockWarehouse y muestra esa ventana
+     * @author: Erika Hernández & Catalina Matheus
+     * @version 20/02/2023
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
          this.setVisible(false);
