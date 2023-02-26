@@ -120,25 +120,46 @@ public class GraphMA {
         return matAd[origin][next]>=1;
     }
     // PARA EL ALGORITMO DE DIJKSTRA: 
+    
+    /**
+     * @Descripcion: retorna el primer vértice adyacente del vértice especificado
+     * @author: Erika Hernández & Catalina Matheus
+     * @param index
+     * @return 
+     */
     public int getFirstVertex(int index){
-        // retorna el primer vértice adyacente del vértice especificado
         for (int i = 0; i < numVertices; i++) {
             if(matAd[index][i]>0) return i;  
         }return n; 
         
     }
     
+    /**
+     * @Descripcion: devuelve los vertices adyacentes secuenciales del vértice pasado como parámetro
+     * @author: Erika Hernández & Catalina Matheus
+     * @param index
+     * @param firstVertex
+     * @return 
+     */
+    
     public int getNextVertex(int index, int firstVertex){
-        // devuelve los vertices adyacentes secuenciales del vértice pasado como parámetro
+       
         for (int i = firstVertex+1; i < numVertices; i++) {
             if (matAd[index][i]>0) return i; 
    
         }return n; 
     }
     
+    /**
+     * @Descripcion: retorna el siguiente vértice requerido con la matriz de distancia y la de vertices visitados 
+     * @author: Erika Hernández & Catalina Matheus
+     * @param distance
+     * @param visited
+     * @return 
+     */
     
     public int getIndex(double[] distance, boolean[] visited ){
-        // retorna el siguiente vértice requerido con la matriz de distancia y la de vertices visitados 
+   
         int j = 0; 
         double min = Double.POSITIVE_INFINITY; // Te devuelve el valor del infinito positivo de tipo double
         for (int i = 0; i < distance.length; i++) {
@@ -151,6 +172,13 @@ public class GraphMA {
         }return j; 
     }
     
+    /**
+     * @Descripcion: algoritmo de Dijkstra. Devuelve si se encontró una ruta
+     * @author: Erika Hernández & Catalina Matheus
+     * @param source
+     * @param destination
+     * @return 
+     */
     public boolean Dijkstra(int source, int destination) {
         // Inicializa distancias de cada vértice como infinito
         int[] dist = new int[numVertices];
@@ -195,19 +223,23 @@ public class GraphMA {
             String print = "no se puede llegar desde " + vertices[source].getName() + " hasta " + vertices[dest].getName()+"."; 
             JOptionPane.showMessageDialog(null, "El almacen escogido no tiene todos los productos que desea.\n"+vertices[source].getName()+ " si los tiene, sin embargo, "+print+"\nDebido a esto se canceló la compra."); 
             return false; 
-//            System.out.println("No se puede llegar desde " + source + " hasta " + dest);
+
         } else {
             String print = "La ruta más corta desde " + vertices[source].getName() + " hasta " + vertices[dest].getName() + " es: " + printPath(pred, dest) +"\nLa distancia es "+dist[dest]+"."; 
             JOptionPane.showMessageDialog(null, "La compra fue realizada con éxito.\nEl alamcen " + vertices[dest].getName()+ " no tiene todos los productos, sin embargo, serán suministrados por "+ vertices[source].getName()+ "\n"+print); 
             return true; 
-//            System.out.print("La ruta más corta desde " + source + " hasta " + dest + " es: ");
-//            printPath(pred, dest);
-//            System.out.println();
-//            System.out.println("La distancia es " + dist[dest]);
+
         }
 }
 
-// Imprime la ruta desde el origen hasta el vértice dado
+    /**
+     * @Descripcion: Imprime la ruta desde el origen hasta el vértice dado
+     * @author: Erika Hernández & Catalina Matheus
+     * @param pred
+     * @param vertex
+     * @return 
+     */
+
 private String printPath(int[] pred, int vertex) {
     if (vertex == -1) {
         return "";
@@ -216,6 +248,13 @@ private String printPath(int[] pred, int vertex) {
     return vertices[vertex].getName() + " ";
 }
 
+/**
+ * @Descripcion: busca el indice del vertice con menor distancia 
+ * @author: Erika Hernández & Catalina Matheus
+ * @param dist
+ * @param visited
+ * @return 
+ */
 private int findMinimum(int[] dist, boolean[] visited) {
     int min = Integer.MAX_VALUE;
     int minIndex = -1;

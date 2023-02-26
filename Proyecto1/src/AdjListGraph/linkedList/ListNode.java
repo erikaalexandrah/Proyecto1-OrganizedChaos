@@ -7,6 +7,7 @@ package AdjListGraph.linkedList;
 /**
  *@Descripcion: clase nodo para las listas simples
  * @author Erika Hernández & Catalina Matheus
+ *  @version: 24/01/2023
  * @param <T>
  */
 public class ListNode <T> {
@@ -16,6 +17,7 @@ public class ListNode <T> {
     /**
      * @Descripcion: constructor
      * @author Erika Hernández & Catalina Matheus
+     *  @version: 24/01/2023
      * @param element 
      */
     public ListNode(T element) {
@@ -25,6 +27,7 @@ public class ListNode <T> {
    /**
     * @Descripcion: constructor
     *  @author Erika Hernández & Catalina Matheus
+    *  @version: 24/01/2023
     * @param element
     * @param pNext 
     */
@@ -36,6 +39,7 @@ public class ListNode <T> {
     /**
      * @Descripcion: constructor
      * @author Erika Hernández & Catalina Matheus
+     *  @version: 24/01/2023
      */
     public ListNode() {
     }

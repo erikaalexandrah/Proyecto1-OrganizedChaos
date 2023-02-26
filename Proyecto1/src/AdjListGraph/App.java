@@ -131,10 +131,7 @@ public class App {
             }
         
     }
-    
-  
-    
-    
+
      /**
      * @Descripcion: procedimiento que guarda los almacenes y rutas de la base de datos en un txt. 
      * @author: Catalina Matheus
@@ -335,17 +332,7 @@ public class App {
            } return index; 
         
     }
-
-     
-//    public void start () {
-//        try {
-//            this.restartProgram();
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    
-//    }
-       
+  
         public boolean productsAvailableInWarehouse(LinkedList productsClient, Warehouse warehouse){
     boolean productsAvailable = true;
     
