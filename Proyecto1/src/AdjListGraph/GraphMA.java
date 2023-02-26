@@ -172,81 +172,6 @@ public class GraphMA {
         }return j; 
     }
     
-    /**
-     * @Descripcion: algoritmo de Dijkstra. Devuelve si se encontró una ruta
-     * @author: Erika Hernández & Catalina Matheus
-     * @param source
-     * @param destination
-     * @return 
-     */
-    public boolean Dijkstra(int source, int destination) {
-        // Inicializa distancias de cada vértice como infinito
-        int[] dist = new int[numVertices];
-        for (int i = 0; i < numVertices; i++) {
-            dist[i] = Integer.MAX_VALUE;
-    }
-    
-        // Inicializa el conjunto de vertices ya visitados
-        boolean[] visited = new boolean[numVertices];
-
-        // La distancia al origen es 0
-        dist[source] = 0;
-
-        // Inicializa los predecesores de cada vértice como -1
-        int[] pred = new int[numVertices];
-        for (int i = 0; i < numVertices; i++) {
-            pred[i] = -1;
-        }
-
-        // Encuentra la ruta más corta a cada vértice
-        for (int i = 0; i < numVertices - 1; i++) {
-            // Encuentra el vértice no visitado con la distancia mínima
-            int u = findMinimum(dist, visited);
-
-            // Marca el vértice como visitado
-            visited[u] = true;
-
-            // Actualiza las distancias de los vecinos de u
-            for (int v = 0; v < numVertices; v++) {
-                if (!visited[v] && matAd[u][v] != 0 && 
-                    dist[u] != Integer.MAX_VALUE && 
-                    dist[u] + matAd[u][v] < dist[v]) {
-                    dist[v] = dist[u] + matAd[u][v];
-                    pred[v] = u;
-                }
-            }
-        }
-
-        // Imprime la ruta más corta desde A hasta E
-        int dest = destination; // E tiene un numVertice de 4
-        if (dist[dest] == Integer.MAX_VALUE) {
-            String print = "no se puede llegar desde " + vertices[source].getName() + " hasta " + vertices[dest].getName()+"."; 
-            JOptionPane.showMessageDialog(null, "El almacen escogido no tiene todos los productos que desea.\n"+vertices[source].getName()+ " si los tiene, sin embargo, "+print+"\nDebido a esto se canceló la compra."); 
-            return false; 
-
-        } else {
-            String print = "La ruta más corta desde " + vertices[source].getName() + " hasta " + vertices[dest].getName() + " es: " + printPath(pred, dest) +"\nLa distancia es "+dist[dest]+"."; 
-            JOptionPane.showMessageDialog(null, "La compra fue realizada con éxito.\nEl alamcen " + vertices[dest].getName()+ " no tiene todos los productos, sin embargo, serán suministrados por "+ vertices[source].getName()+ "\n"+print); 
-            return true; 
-
-        }
-}
-
-    /**
-     * @Descripcion: Imprime la ruta desde el origen hasta el vértice dado
-     * @author: Erika Hernández & Catalina Matheus
-     * @param pred
-     * @param vertex
-     * @return 
-     */
-
-private String printPath(int[] pred, int vertex) {
-    if (vertex == -1) {
-        return "";
-    }
-    printPath(pred, pred[vertex]);
-    return vertices[vertex].getName() + " ";
-}
 
 /**
  * @Descripcion: busca el indice del vertice con menor distancia 
@@ -266,7 +191,6 @@ private int findMinimum(int[] dist, boolean[] visited) {
     }
     return minIndex;
 }
-    
 
     /**
      * @Descripcion: crea un JFrame para el grafo. Cuando se cierra no se cierra todo el programa. 
@@ -292,8 +216,7 @@ private int findMinimum(int[] dist, boolean[] visited) {
          frame.setLocationRelativeTo(null); 
          frame.setVisible(true); 
          
-
-        
+   
     }
     
     ////////////////////////////////////////////

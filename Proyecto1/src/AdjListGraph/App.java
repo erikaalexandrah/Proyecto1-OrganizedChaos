@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 // IMPORTAR PARA MANEJO DE TXT
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.MultiGraph;
 
 
 
@@ -435,18 +437,69 @@ public class App {
             return false; 
 //            System.out.println("No se puede llegar desde " + source + " hasta " + dest);
         } else {
-            JOptionPane.showMessageDialog( null,"El almacen que posee sus productos es el: "+ warehouse.getName()+ "\n"+"La ruta más corta desde " + warehouse.getName() + " hasta " + warehouse2.getName() + " es: " + printPath(pred, dest) +"\nLa distancia es "+dist[dest]); 
+            JOptionPane.showMessageDialog( null,"El almacen que posee sus productos es el: "+ warehouse.getName()+ "\n"+"La ruta más corta desde " + warehouse.getName() + " hasta " + warehouse2.getName() + " es: " + printPath(pred, dest) +"\nLa distancia es "+dist[dest]);
+           
+            
+            
             return true; 
         }
 }
 
-    // Imprime la ruta desde el origen hasta el vértice dado
+  /**
+   * @Descripcion: Imprime la ruta desde el origen hasta el vértice dado
+   * @author: Erika Hernández 
+   * @version: 26/02/2023
+   * @param pred
+   * @param vertex
+   * @return 
+   */
+   
     private String printPath(int[] pred, int vertex) {
     if (vertex == -1) {
         return "";
     }
     return printPath(pred, pred[vertex]) + " ---> " + graphMA.getVertices()[vertex].getName();
 }
+    
+    
+    public void createGraphPath(int[] pred, int vertex){
+         // se crea un grafo con los vértices obtenidos para desplegarlos graficamente: 
+            int n = 0; 
+            for (int i = 0; i < pred.length; i++) {
+                if (pred[i]!=-1) {
+                    n ++; 
+   
+                }
+            
+        }
+            GraphMA graphPath = new GraphMA(n); 
+            for (int i = 0; i < pred.length; i++) {
+                if (pred[i] != -1) {
+                    graphPath.addVertice(graphMA.getVertices()[i]);
+                    
+                } 
+        }
+            
+         System.setProperty("org.graphstream.ui", "swing");
+         Graph graph = new MultiGraph("Ruta");
+         graph.setAttribute("ui.stylesheet", "edge{ text-size: 30; }");
+         for (int i=0;i<graphPath.getNumVertices();i++){
+            graph.addNode(graphPath.getVertices()[i].getName()).setAttribute("ui.label", graphPath.getVertices()[i].getName());
+            graph.getNode(graphPath.getVertices()[i].getName()).setAttribute("ui.style", "text-size: 100; text-color: blue;");
+        }
+         for (int i=0; i<graphPath.getNumVertices(); i++){
+            String node1 = graphPath.getVertices()[i].getName();
+            for (int j=0; j<graphPath.getNumVertices(); j++){
+                String node2 = graphPath.getVertices()[j].getName();
+                if (graphPath.getMatAd()[i][j]>0){
+                    String nodeAux = node1 + node2;
+                    graph.addEdge(nodeAux, node1, node2, true).setAttribute("ui.label",graphPath.getMatAd()[i][j]);
+                }
+            }
+        }
+         graphPath.displayGraph(graph); 
+
+    }
 
     /**
      * @Descripcion: 
