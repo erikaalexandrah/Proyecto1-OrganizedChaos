@@ -300,6 +300,8 @@ public class Purchase extends javax.swing.JFrame {
                 inputLastName.setText(""); 
                 inputId.setText(""); 
                 inputLocation.setText("");
+                inputQuantity.setText(""); 
+                this.products = new LinkedList(); 
             }} 
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
