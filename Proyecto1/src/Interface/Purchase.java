@@ -95,7 +95,6 @@ public class Purchase extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         inputLastName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -126,10 +125,6 @@ public class Purchase extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("REALIZAR COMPRA");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 120, 30));
-
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Por favor, suministre los siguientes datos: ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 250, 30));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("APELLIDO: ");
@@ -392,7 +387,6 @@ public class Purchase extends javax.swing.JFrame {
     private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputQuantity;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
