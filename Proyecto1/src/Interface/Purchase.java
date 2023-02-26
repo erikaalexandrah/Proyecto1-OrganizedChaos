@@ -270,14 +270,15 @@ public class Purchase extends javax.swing.JFrame {
                  if(products.getSize() == 0) throw new Exception(" No hay productos en el carrito."); 
                  
                  Client client = new Client(name, lastName,id, location, wa, products); 
-                  boolean productsAvailable = app.productsAvailableInWarehouse(client.getProducts(), client.getWarehouse()); 
+                 boolean productsAvailable = app.productsAvailableInWarehouse(client.getProducts(), client.getWarehouse()); 
 
            if (productsAvailable){
                app.addClient(client);
                JOptionPane.showMessageDialog(null, "Registro exitoso. El almacén escogido tiene todos los productos que desea."); 
     
            }else{
-                  boolean algorithDijkstra = app.Dijkstra(wa, client.getProducts()); // esto nos retorna si existe un path o no 
+                  Warehouse destWarehouse = app.findWarehouse(client.getProducts()); 
+                  boolean algorithDijkstra = app.Dijkstra(destWarehouse, wa); // esto nos retorna si existe un path o no 
                    if (algorithDijkstra) {
                    app.addClient(client);  
                    JOptionPane.showMessageDialog(null, "Registro exitoso. El almacén escogido tiene todos los productos que desea."); 

@@ -379,7 +379,7 @@ public class App {
     return productsAvailable; 
 }
   
-  public boolean Dijkstra(Warehouse warehouse, LinkedList productsClient) {
+  public boolean Dijkstra(Warehouse warehouse, Warehouse warehouse2) {
         
         int source = warehouse.getNumVertice();
         // Inicializa distancias de cada vértice como infinito
@@ -420,16 +420,14 @@ public class App {
         }
 
         // Imprime la ruta más corta desde A hasta E
-        Warehouse destWarehouse = this.findWarehouse(productsClient); 
-        System.out.println(destWarehouse);
-        int dest = destWarehouse.getNumVertice();
+        int dest = warehouse2.getNumVertice();
         if (dist[dest] == Integer.MAX_VALUE) {
             String print = "no se puede llegar desde " + source + " hasta " + dest+"."; 
             JOptionPane.showMessageDialog(null, "El almacen escogido no tiene todos los productos que desea.\n"+source+ " si los tiene, sin embargo, "+print+"\nDebido a esto se canceló la compra."); 
             return false; 
 //            System.out.println("No se puede llegar desde " + source + " hasta " + dest);
         } else {
-            JOptionPane.showMessageDialog( null, "La ruta más corta desde " + warehouse.getName() + " hasta " + destWarehouse.getName() + " es: " + printPath(pred, dest) +"\nLa distancia es "+dist[dest]); 
+            JOptionPane.showMessageDialog( null,"El almacen que posee sus productos es el: "+ warehouse.getName()+ "\n"+"La ruta más corta desde " + warehouse.getName() + " hasta " + warehouse2.getName() + " es: " + printPath(pred, dest) +"\nLa distancia es "+dist[dest]); 
             return true; 
         }
 }
