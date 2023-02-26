@@ -314,6 +314,12 @@ public class NewWarehouse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameNewWarehouseActionPerformed
 
+    /**
+     * @Descripcion: crea nuevo almacen
+     * @author: Erika Hernández
+     * @version 19/02/2023
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
            
         try{   
@@ -378,6 +384,12 @@ public class NewWarehouse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edge1WeightActionPerformed
 
+    /**
+     * @Descripcion: abre ventana principal
+     * @author: Erika Hernández
+     * @version 19/02/2023
+     * @param evt 
+     */
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         // TODO add your handling code here:
         this.clearWindow();
@@ -386,6 +398,11 @@ public class NewWarehouse extends javax.swing.JFrame {
         interface1.setVisible(true);
     }//GEN-LAST:event_returnButtonActionPerformed
 
+    /**
+     * @Descripcion: borra toda la información de los text fields
+     * @author: Erika Hernández
+     * @version 19/02/2023
+     */
     private void clearWindow(){
          nameNewWarehouse.setText("");
          edge1Origin.setText("");

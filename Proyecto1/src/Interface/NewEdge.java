@@ -156,6 +156,12 @@ public class NewEdge extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @Descripcion: carga una nueva ruta
+     * @author: Erika Hernández
+     * @version 19/02/2023
+     * @param evt 
+     */
     private void addEgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEgeActionPerformed
         // TODO add your handling code here:
         try {
@@ -174,7 +180,11 @@ public class NewEdge extends javax.swing.JFrame {
             this.clearWindow();
         }
     }//GEN-LAST:event_addEgeActionPerformed
-
+    /**
+     * @Descripcion: abre ventana principal
+     * @author: Erika Hernández
+     * @param evt 
+     */
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         // TODO add your handling code here:
         this.clearWindow();
@@ -183,6 +193,11 @@ public class NewEdge extends javax.swing.JFrame {
         interface1.setVisible(true);
     }//GEN-LAST:event_returnButtonActionPerformed
 
+    /**
+     * @Descripcion: elimina la información en los text fields
+     * @author: Erika Hernández
+     * @version 19/02/2023
+     */
     private void clearWindow(){
         originNode.setText("");
         nextNode.setText("");

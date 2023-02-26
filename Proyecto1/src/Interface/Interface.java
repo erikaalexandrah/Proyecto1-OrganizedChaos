@@ -211,8 +211,7 @@ public class Interface extends javax.swing.JFrame {
         this.setVisible(false); 
         Purchase purchase = new Purchase(); 
         purchase.setVisible(true); 
-//        RegisterClient registerCliente = new RegisterClient(); 
-//        registerCliente.setVisible(true); 
+
     }//GEN-LAST:event_placeOrderActionPerformed
 
     private void newWarehouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWarehouseActionPerformed
@@ -223,6 +222,12 @@ public class Interface extends javax.swing.JFrame {
         
     }//GEN-LAST:event_newWarehouseActionPerformed
 
+    /**
+     * @Descripcion: muestra el grafo (se crea una instancia del grafo de tipo grafoGraphStream) y se utiliza el procedimiento .displayGraph() para crear la ventana con el grafo
+     * @author: Erika Hernández & Catalina Matheus
+     * @version: 24/02/2023
+     * @param evt 
+     */
     private void showGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGraphActionPerformed
         
 

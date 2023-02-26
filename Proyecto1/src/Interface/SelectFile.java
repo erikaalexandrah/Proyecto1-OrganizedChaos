@@ -13,8 +13,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author catalina
+ *@Descripcion: interfaz SelectFile para guardar la información de un txt para llenar las estructuras de la base de datos
+ * @author Catalina Matheus
+ * @version: 20/02/2023
  */
 public class SelectFile extends javax.swing.JFrame {
 

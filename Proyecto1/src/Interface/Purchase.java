@@ -26,7 +26,11 @@ public class Purchase extends javax.swing.JFrame {
     private App app = App.getInstance(); 
     private LinkedList products = new LinkedList(); // para ir guardando los productos del cliente 
     
-    
+    /**
+     * @Descripcion: crea ventana Purchase y coloca la información en los combo box
+     * @author: Catalina Matheus 
+     * @version : 24/02/2023
+     */
     public Purchase() {
         initComponents();
         this.setVisible(true); 
@@ -327,6 +331,12 @@ public class Purchase extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_productsDisplayActionPerformed
 
+    /**
+     * @Descripcion: abre ventana principal
+     * @author: Catalina Matheus
+     * @version : 24/02/2023
+     * @param evt 
+     */
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false); 

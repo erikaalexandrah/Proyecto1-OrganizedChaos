@@ -13,7 +13,7 @@ import AdjListGraph.linkedList.Queue;
 import AdjListGraph.linkedList.Stack;
 
 /**
- * Descripción: Interfaz gráfica de reporte de stock (disponibilidad)
+ * @Descripción: Interfaz gráfica de reporte de stock (disponibilidad)
  * @author Erika Hernández
  * @version 20/02/2023
  */
@@ -22,6 +22,8 @@ public class DisponibilityReport extends javax.swing.JFrame {
 
     /**
      * Creates new form disponibilityReport
+     * @author: Erika Hernández
+     * @version: 20/02/2023
      */
     public DisponibilityReport() {
         initComponents();
@@ -92,7 +94,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addComponent(jLabel4)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +113,7 @@ public class DisponibilityReport extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
         );
@@ -139,13 +141,11 @@ public class DisponibilityReport extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -158,6 +158,11 @@ public class DisponibilityReport extends javax.swing.JFrame {
         interface1.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
     
+    /**
+     * @Descripcion: muestra los productos en los almacenes con DFS
+     * @author: Erika Hernández
+     * @version: 20/02/2023
+     */
     private void showDFS(){
         // Recorrido por profundidad del grafo.    
         // Creamos un arreglo auxiliar que permita determinar que vertices fueron visitados.     
@@ -208,6 +213,11 @@ public class DisponibilityReport extends javax.swing.JFrame {
         dfs.setText(information); 
     }
     
+    /**
+     * @Descripcion: muestra los productos en los almacenes con BFS
+     * @author: Erika Hernández
+     * @version: 20/02/2023
+     */
     private void showBFS(){
         // Recorrido por anchura del grafo    
         // Creamos un arreglo auxiliar que permita determinar que vertices fueron visitados.     
