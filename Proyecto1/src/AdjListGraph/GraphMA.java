@@ -219,6 +219,20 @@ private int findMinimum(int[] dist, boolean[] visited) {
    
     }
     
+    /**
+     * @Descripcion: cambia el vertice a null
+     * @author: Catalina Matheus 
+     * @version: 26/02/2023
+     * @param i 
+     */
+    public void changeVertex(int i){
+        vertices[i] = null; 
+        
+    }
+    
+    
+    
+    
     ////////////////////////////////////////////
 
     /**

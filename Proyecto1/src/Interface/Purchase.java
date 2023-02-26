@@ -322,8 +322,9 @@ public class Purchase extends javax.swing.JFrame {
         
         Product productObj = new Product(productArray[0], quantity); 
         products.append(productObj);
-        System.out.println(products);
+       
         
+        JOptionPane.showMessageDialog(null, "Producto registrado con éxito."); 
         
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
