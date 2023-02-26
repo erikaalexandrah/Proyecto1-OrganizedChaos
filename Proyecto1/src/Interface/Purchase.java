@@ -273,6 +273,9 @@ public class Purchase extends javax.swing.JFrame {
                    if (algorithDijkstra) {
                    app.addClient(client);  
                    JOptionPane.showMessageDialog(null, "Registro exitoso. El almacén escogido tiene todos los productos que desea."); 
+                   this.setVisible(false);
+                   Interface mainInterface = new Interface();
+                   mainInterface.setVisible(true);
                    } else {
                    JOptionPane.showMessageDialog(null, "No se logró procesar el pedido.\nActualmente ningún almacen tiene todos los productos que desea."); 
                }
