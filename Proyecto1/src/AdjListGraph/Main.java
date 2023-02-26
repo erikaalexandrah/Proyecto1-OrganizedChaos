@@ -10,8 +10,9 @@ import AdjListGraph.linkedList.LinkedList;
 import Interface.Interface;
 
 /**
- *
- * @author David
+ * @Descripcion: clase main que tiene el método main para correr el programaß
+ * @author David Dávila
+ * @version: 11/02/2023
  */
 public class Main {
 

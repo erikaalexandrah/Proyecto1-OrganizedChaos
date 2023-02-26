@@ -111,6 +111,7 @@ public class Purchase extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,6 +119,7 @@ public class Purchase extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("REALIZAR COMPRA");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 120, 30));
 
@@ -208,6 +210,9 @@ public class Purchase extends javax.swing.JFrame {
         });
         getContentPane().add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, -1, -1));
 
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 390));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -268,7 +273,7 @@ public class Purchase extends javax.swing.JFrame {
                    JOptionPane.showMessageDialog(null, "No se logró procesar el pedido.\nActualmente ningún almacen tiene todos los productos que desea."); 
                }else{
                    
-                  boolean algorithDijkstra = app.getGraph().Dijkstra(app.getIndexVertex(warehouseFound)); // esto nos retorna si existe un path o no 
+                  boolean algorithDijkstra = app.getGraph().Dijkstra(app.getIndexVertex(warehouseFound),app.getIndexVertex(client.getWarehouse())); // esto nos retorna si existe un path o no 
                    if (algorithDijkstra) {
                      app.addClient(client);  
                    }
@@ -380,6 +385,7 @@ public class Purchase extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JToggleButton jToggleButton1;
