@@ -241,7 +241,7 @@ public class Purchase extends javax.swing.JFrame {
      */
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
-        if(app.getGraph().getNumVertices() == 0){
+       if(app.getGraph().getNumVertices() == 0){
             JOptionPane.showMessageDialog(null, "No es posible realizar una compra ya que los almacenes y productos no se encuentran en la base de datos.\nCargue un txt o cargue el repositorio. ");
         }else{
              try{
@@ -256,31 +256,25 @@ public class Purchase extends javax.swing.JFrame {
                  String warehouseStr = (String) warehousesDisplay.getSelectedItem(); 
                 
                  
-                 
                  Warehouse wa = app.getGraph().findWarehouse(warehouseStr);
                
                  
                  if(products.getSize() == 0) throw new Exception(" No hay productos en el carrito."); 
                  
                  Client client = new Client(name, lastName,id, location, wa, products); 
-               
                   boolean productsAvailable = app.productsAvailableInWarehouse(client.getProducts(), client.getWarehouse()); 
-           
+
            if (productsAvailable){
                app.addClient(client);
                JOptionPane.showMessageDialog(null, "Registro exitoso. El almacén escogido tiene todos los productos que desea."); 
-               
     
            }else{
-               Warehouse warehouseFound = app.findWarehouse(client.getProducts()); 
-               if(warehouseFound == null){
-                   JOptionPane.showMessageDialog(null, "No se logró procesar el pedido.\nActualmente ningún almacen tiene todos los productos que desea."); 
-               }else{
-                   
-                  boolean algorithDijkstra = app.getGraph().Dijkstra(app.getIndexVertex(warehouseFound),app.getIndexVertex(client.getWarehouse())); // esto nos retorna si existe un path o no 
+                  boolean algorithDijkstra = app.Dijkstra(wa, client.getProducts()); // esto nos retorna si existe un path o no 
                    if (algorithDijkstra) {
-                     app.addClient(client);  
-                   }
+                   app.addClient(client);  
+                   JOptionPane.showMessageDialog(null, "Registro exitoso. El almacén escogido tiene todos los productos que desea."); 
+                   } else {
+                   JOptionPane.showMessageDialog(null, "No se logró procesar el pedido.\nActualmente ningún almacen tiene todos los productos que desea."); 
                }
 
          }
@@ -295,9 +289,7 @@ public class Purchase extends javax.swing.JFrame {
                 inputLastName.setText(""); 
                 inputId.setText(""); 
                 inputLocation.setText("");
-            }}
-
-        
+            }} 
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void warehousesDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warehousesDisplayActionPerformed

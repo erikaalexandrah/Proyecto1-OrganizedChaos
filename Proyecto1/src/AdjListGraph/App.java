@@ -6,9 +6,7 @@ package AdjListGraph;
 
 import AdjListGraph.linkedList.LinkedList;
 import AdjListGraph.linkedList.ListNode;
-import Interface.Interface;
 //import Interface.NewWarehouse2;
-import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,12 +18,7 @@ import javax.swing.JOptionPane;
 // IMPORTAR PARA MANEJO DE TXT
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-// IMPORTAR GRAPHSTREAM PARA GRAFICAR GRAFO
-import org.graphstream.graph.Graph;
-import org.graphstream.graph.implementations.SingleGraph;
-import org.graphstream.ui.swing_viewer.DefaultView;
-import org.graphstream.ui.view.View;
-import org.graphstream.ui.view.Viewer;
+
 
 
 /**
@@ -333,37 +326,37 @@ public class App {
      * @return 
      */
     
-    public boolean productsAvailableInWarehouse(LinkedList productsClient, Warehouse warehouse){
-        boolean productsAvailable = true;
-        
-        ListNode aux = productsClient.getpFirst(); 
-       
-        for (int i = 0; i < productsClient.getSize(); i++) {
-            if(!this.itExists(warehouse.getProducts(), (Product)aux.getElement())){
-                productsAvailable = false; 
-                return productsAvailable; 
-            } else if (((Product)aux.getElement()).getQuantity() > app.getProduct(warehouse.getProducts(), ((Product)aux.getElement())).getQuantity()) {
-                productsAvailable = false; 
-                return productsAvailable; 
-            }
-            aux = aux.getpNext(); 
-        }
-        
-        // si al final del for loop productsAvailable es true es porque si estan todos los productos y hay la cantidad que el cliente pide
-        // ahora se descuentan las cantidades pedidas: 
-        
-        ListNode aux2 = productsClient.getpFirst(); 
-        if (productsAvailable) {
-            for (int i = 0; i < productsClient.getSize(); i++) {
-                Product pro = app.getProduct(warehouse.getProducts(), (Product)aux2.getElement()); 
-                pro.setQuantity(pro.getQuantity() -((Product) aux2.getElement()).getQuantity()); 
-                aux2 = aux2.getpNext(); 
-            } 
-        }
-        
-        return productsAvailable; 
-    }
-    
+//    public boolean productsAvailableInWarehouse(LinkedList productsClient, Warehouse warehouse){
+//        boolean productsAvailable = true;
+//        
+//        ListNode aux = productsClient.getpFirst(); 
+//       
+//        for (int i = 0; i < productsClient.getSize(); i++) {
+//            if(!this.itExists(warehouse.getProducts(), (Product)aux.getElement())){
+//                productsAvailable = false; 
+//                return productsAvailable; 
+//            } else if (((Product)aux.getElement()).getQuantity() > app.getProduct(warehouse.getProducts(), ((Product)aux.getElement())).getQuantity()) {
+//                productsAvailable = false; 
+//                return productsAvailable; 
+//            }
+//            aux = aux.getpNext(); 
+//        }
+//        
+//        // si al final del for loop productsAvailable es true es porque si estan todos los productos y hay la cantidad que el cliente pide
+//        // ahora se descuentan las cantidades pedidas: 
+//        
+//        ListNode aux2 = productsClient.getpFirst(); 
+//        if (productsAvailable) {
+//            for (int i = 0; i < productsClient.getSize(); i++) {
+//                Product pro = app.getProduct(warehouse.getProducts(), (Product)aux2.getElement()); 
+//                pro.setQuantity(pro.getQuantity() -((Product) aux2.getElement()).getQuantity()); 
+//                aux2 = aux2.getpNext(); 
+//            } 
+//        }
+//        
+//        return productsAvailable; 
+//    }
+//    
     /**
      * @Descripcion: método que busca el almacen que tenga todos los productos de una lista pasada como parametro
      * @author: Catalina Matheus
@@ -420,6 +413,128 @@ public class App {
 //        }
 //    
 //    }
+       
+        public boolean productsAvailableInWarehouse(LinkedList productsClient, Warehouse warehouse){
+    boolean productsAvailable = true;
+    
+    ListNode aux = productsClient.getpFirst(); 
+   
+    for (int i = 0; i < productsClient.getSize(); i++) {
+        boolean foundProduct = false;
+        ListNode aux2 = warehouse.getProducts().getpFirst();
+        for (int j = 0; j < warehouse.getProducts().getSize(); j++) {
+            if (((Product)aux.getElement()).getName().equals(((Product)aux2.getElement()).getName())) {
+                foundProduct = true;
+                if (((Product)aux.getElement()).getQuantity() > ((Product)aux2.getElement()).getQuantity()) {
+                    productsAvailable = false; 
+                    return productsAvailable;
+                }
+                break;
+            }
+            aux2 = aux2.getpNext();
+        }
+        if (!foundProduct) {
+            productsAvailable = false;
+            return productsAvailable;
+        }
+        aux = aux.getpNext(); 
+    }
+    
+    // si al final del for loop productsAvailable es true es porque si estan todos los productos y hay la cantidad que el cliente pide
+    // ahora se descuentan las cantidades pedidas: 
+    
+    ListNode aux3 = productsClient.getpFirst(); 
+    if (productsAvailable) {
+        for (int i = 0; i < productsClient.getSize(); i++) {
+            ListNode aux4 = warehouse.getProducts().getpFirst();
+            while (aux4 != null) {
+                if (((Product)aux3.getElement()).getName().equals(((Product)aux4.getElement()).getName())) {
+                    ((Product)aux4.getElement()).setQuantity(((Product)aux4.getElement()).getQuantity() - ((Product)aux3.getElement()).getQuantity());
+                    break;
+                }
+                aux4 = aux4.getpNext();
+            }
+            aux3 = aux3.getpNext(); 
+        } 
+    }
+    return productsAvailable; 
+}
+  
+  public boolean Dijkstra(Warehouse warehouse, LinkedList productsClient) {
+        
+        int source = warehouse.getNumVertice();
+        // Inicializa distancias de cada vértice como infinito
+        int[] dist = new int[graphMA.getNumVertices()];
+        for (int i = 0; i < graphMA.getNumVertices(); i++) {
+            dist[i] = Integer.MAX_VALUE;
+    }
+    
+        // Inicializa el conjunto de vertices ya visitados
+        boolean[] visited = new boolean[graphMA.getNumVertices()];
+
+        // La distancia al origen es 0
+        dist[source] = 0;
+
+        // Inicializa los predecesores de cada vértice como -1
+        int[] pred = new int[graphMA.getNumVertices()];
+        for (int i = 0; i < graphMA.getNumVertices(); i++) {
+            pred[i] = -1;
+        }
+
+        // Encuentra la ruta más corta a cada vértice
+        for (int i = 0; i < graphMA.getNumVertices() - 1; i++) {
+            // Encuentra el vértice no visitado con la distancia mínima
+            int u = findMinimum(dist, visited);
+
+            // Marca el vértice como visitado
+            visited[u] = true;
+
+            // Actualiza las distancias de los vecinos de u
+            for (int v = 0; v < graphMA.getNumVertices(); v++) {
+                if (!visited[v] && graphMA.getMatAd()[u][v] != 0 && 
+                    dist[u] != Integer.MAX_VALUE && 
+                    dist[u] + graphMA.getMatAd()[u][v] < dist[v]) {
+                    dist[v] = dist[u] + graphMA.getMatAd()[u][v];
+                    pred[v] = u;
+                }
+            }
+        }
+
+        // Imprime la ruta más corta desde A hasta E
+        Warehouse destWarehouse = this.findWarehouse(productsClient); 
+        System.out.println(destWarehouse);
+        int dest = destWarehouse.getNumVertice();
+        if (dist[dest] == Integer.MAX_VALUE) {
+            String print = "no se puede llegar desde " + source + " hasta " + dest+"."; 
+            JOptionPane.showMessageDialog(null, "El almacen escogido no tiene todos los productos que desea.\n"+source+ " si los tiene, sin embargo, "+print+"\nDebido a esto se canceló la compra."); 
+            return false; 
+//            System.out.println("No se puede llegar desde " + source + " hasta " + dest);
+        } else {
+            JOptionPane.showMessageDialog( null, "La ruta más corta desde " + warehouse.getName() + " hasta " + destWarehouse.getName() + " es: " + printPath(pred, dest) +"\nLa distancia es "+dist[dest]); 
+            return true; 
+        }
+}
+
+    // Imprime la ruta desde el origen hasta el vértice dado
+    private String printPath(int[] pred, int vertex) {
+        if (vertex == -1) {
+            return "";
+        }
+        printPath(pred, pred[vertex]);
+        return vertex + " ";
+    }
+
+    private int findMinimum(int[] dist, boolean[] visited) {
+        int min = Integer.MAX_VALUE;
+        int minIndex = -1;
+        for (int i = 0; i < graphMA.getNumVertices(); i++) {
+            if (!visited[i] && dist[i] < min) {
+                min = dist[i];
+                minIndex = i;
+            }
+        }
+        return minIndex;
+    }
     
     public void addClient(Client client){
         this.clients.append(client); 
