@@ -1,6 +1,6 @@
 Almacenes;
 Almacen A:
-Pantalla,3
+Pantalla,6
 RAM,2
 Procesador,1;
 Almacen B:
