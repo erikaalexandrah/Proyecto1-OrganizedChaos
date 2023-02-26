@@ -334,6 +334,15 @@ public class App {
            } return index; 
         
     }
+       
+       /**
+        * @Descripcion: revisa si todos los productos de una lista estan disponibles en un almacen determinado 
+        * @author: Catalina Matheus 
+        * @version: 20/02/2023
+        * @param productsClient
+        * @param warehouse
+        * @return 
+        */
   
         public boolean productsAvailableInWarehouse(LinkedList productsClient, Warehouse warehouse){
     boolean productsAvailable = true;
