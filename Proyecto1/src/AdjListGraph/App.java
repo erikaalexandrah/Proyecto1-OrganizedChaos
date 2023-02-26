@@ -447,10 +447,9 @@ public class App {
 //            System.out.println("No se puede llegar desde " + source + " hasta " + dest);
         } else {
             JOptionPane.showMessageDialog( null,"El almacen que posee sus productos es el: "+ warehouse.getName()+ "\n"+"La ruta más corta desde " + warehouse.getName() + " hasta " + warehouse2.getName() + " es: " + printPath(pred, dest) +"\nLa distancia es "+dist[dest]);
-            createGraphPath(pred); 
+//            createGraphPath(pred); 
            
-            
-            
+ 
             return true; 
         }
 }
